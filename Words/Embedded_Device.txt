@@ -1,0 +1,405 @@
+Abstract:
+Deep learning algorithms have seen success in a wide variety of applications, such as machine translation, image and speech recognition, and self-driving cars.
+However, these algorithms have only recently gained a foothold in the embedded systems domain.
+Most embedded systems are based on cheap microcontrollers with limited memory capacity, and, thus, are typically seen as not capable of running deep learning algorithms.
+Nevertheless, we consider that advancements in compression of neural networks and neural network architecture, coupled with an optimized instruction set architecture, could make microcontroller-grade processors suitable for specific low-intensity deep learning applications.
+We propose a simple instruction set extension with two main components-hardware loops and dot product instructions.
+To evaluate the effectiveness of the extension, we developed optimized assembly functions for the fully connected and convolutional neural network layers.
+When using the extensions and the optimized assembly functions, we achieve an average clock cycle count decrease of 73% for a small scale convolutional neural network.
+On a per layer base, our optimizations decrease the clock cycle count for fully connected layers and convolutional layers by 72% and 78%, respectively.
+The average energy consumption per inference decreases by 73%.
+We have shown that adding just hardware loops and dot product instructions has a significant positive effect on processor efficiency in computing neural network functions.
+
+
+Abstract:
+Deep learning algorithms have seen success in a wide variety of applications, such as machine translation, image and speech recognition, and self-driving cars.
+However, these algorithms have only recently gained a foothold in the embedded systems domain.
+Most embedded systems are based on cheap microcontrollers with limited memory capacity, and, thus, are typically seen as not capable of running deep learning algorithms.
+Nevertheless, we consider that advancements in compression of neural networks and neural network architecture, coupled with an optimized instruction set architecture, could make microcontroller-grade processors suitable for specific low-intensity deep learning applications.
+We propose a simple instruction set extension with two main components-hardware loops and dot product instructions.
+To evaluate the effectiveness of the extension, we developed optimized assembly functions for the fully connected and convolutional neural network layers.
+When using the extensions and the optimized assembly functions, we achieve an average clock cycle count decrease of 73% for a small scale convolutional neural network.
+On a per layer base, our optimizations decrease the clock cycle count for fully connected layers and convolutional layers by 72% and 78%, respectively.
+The average energy consumption per inference decreases by 73%.
+We have shown that adding just hardware loops and dot product instructions has a significant positive effect on processor efficiency in computing neural network functions.
+
+
+Abstract:
+On the road of CMOS device continuously scaling, there are lots of challenges regarding the device structure and material engineering.
+GaN channel has recently been used in MOSFETs and achieved excellent performance.
+In this paper, we study a novel embedded gate GaN nanotube field effect transistor of 5 nm gate length with I ON /I OFF as high as 10 6 , and subthreshold swing (SS) as small as 64 mV/dec using Sentaurus TCAD simulation.
+The device can effectively improve subthreshold characteristics due to the GaN channel and embedded gate design.
+Compared with Si nanotube FET and GaN nanowire FET, GaN embedded nanotube FET exhibits low SS and high I ON /I OFF at the same channel thickness.
+GaN embedded nanotube FET has also been determined to superior temperature adaptability and performs better in terms of threshold voltage and subthreshold characteristics compared to Si nanotube FET at the same temperature.
+In addition, we investigated the impact of different lengths and thicknesses of the embedded gate on the subthreshold characteristics.
+As the length and thickness of the embedded gate are increased, SS and I ON /I OFF are improved.
+This excellent electrical performance demonstrates the possibility of GaN as a channel material in MOSFETs and embedded gate as an effective design to improve subthreshold characteristics, opening a new way for continued device scaling.
+
+
+Abstract:
+In the era of IoT, embedded systems are becoming the cornerstone of many IoT related applications, such as smart cars and wearable devices.
+However, embedded devices have numerous constraints and requirements, including stringent area and power, reduced cost and time-to-market, and increased speedup.
+Furthermore, these applications are becoming increasingly compute/data-intensive requiring more processing power.
+Also, especially for IoT related applications, security is another major issue in resource-constrained embedded devices.
+Although cryptographic algorithms are widely used to ensure the security of these applications, commonly used ones, such as AES, are unsuitable for highly constrained embedded devices, due to their sheer complexity.
+Hence, several lightweight cryptographic algorithms were proposed in the literature that might be better suited for embedded devices.
+From these, SPECK and SIMON, introduced by NSA, are the two most popular ones.
+Another important challenge is how to incorporate the cryptographic algorithms in to embedded devices, efficiently and effectively, without compromising the integrity of the compute/data-intensive applications running on these small-footprint devices.
+Our previous analysis demonstrated that FPGAs are currently the best avenue to support compute/data-intensive applications running on resource-constrained embedded devices, due to FPGA's many attractive traits, including, post-fabrication reprogrammability, dynamic and partial reconfiguration capabilities, and reduced time-to-market.
+Also, FPGAs can be utilized to provide several advantages/features required for the embedded device's security, such as cryptographic algorithm agility, algorithm upload, algorithm modification, and resource efficiency.
+In this research work, we introduce novel, unique, and efficient dynamic and partial reconfigurable hardware architectures for the most popular SPECK and SIMON algorithms on embedded devices, considering the constraints associated with these devices and the requirements of the applications running on embedded devices.
+We also introduce unique system-level architectures for our proposed designs.
+To the best of our knowledge, no similar work exists in the literature that provides dynamic and partial reconfigurable hardware for SPECK and SIMON, and also provides system-level architecture.
+Our dynamic and partial reconfigurable hardware designs achieve 28% space saving compared to its static reconfigurable hardware, and 59 times speedup compared to its software counterpart.
+
+
+Abstract:
+Online remote laboratories are a particularly promising tool for effective STEM education.
+They offer online universal access to different hardware devices in which students can experiment and can test and improve their knowledge.
+However, most of them have two significant limitations.
+First, given that most of them are developed as, or evolve from single-user proofs of concept, they have no scalability provisions other than full laboratory replication.
+And second, when this is done, cost efficiency is often neglected.
+This paper presents the requirements for the creation of a novel remote laboratory architecture focused on, but not limited to, embedded systems experimentation.
+An architecture, based on Redis (an open source, in-memory data structure store, which is often used as database, cache or message broker), a modular design, and hardware-sharing techniques, is proposed in order to achieve the combined requirements of high scalability and cost efficiency.
+This mixed hardware-software architecture serves as a basis for the development of remote laboratories, especially those focused on microcontroller-based systems experimentation and embedded devices experimentation.
+From a user perspective the architecture is web-based, and has provisions to be easily adaptable to different Learning Management Systems and different hardware embedded devices.
+A new microcontroller-oriented remote laboratory based on the architecture has been developed, with the aim of providing valid evaluation data, and has been used in a real environment.
+The architecture and the resulting remote laboratory have been compared with other state of the art remote laboratories and their architectures.
+Results suggest that the proposed architecture does indeed meet the main requirements, which are scalability through replicability and cost efficiency.
+Furthermore, similarly to previous architectures, it promotes usability, universal access, modularity and reliability.
+
+
+Abstract:
+With the advent of the Internet-of-Things (IoT) era, the demand for lightweight embedded systems is rapidly increasing.
+So far, ultra-low power (ULP) processors have been leading the development of lightweight embedded systems.
+However, as the IoT era gets more sophisticated, existing ULP processors are expected to reach a critical limit in the absence of a memory management unit (MMU) in that multiple programs cannot be run in the MMU-less embedded systems.
+To tackle this issue, we propose an architecture in which the MMU is embedded in a network-on-chip (NoC).
+Through the proposed approach, NoC offers MMU functionality without modifying the processor design, allowing developers to easily leverage the existing ULP lightweight processors and build embedded systems that support multiprocessing.
+In this paper, along with the details of the proposed MMU-embedded NoC (MMNoC) design, a prototype platform including the MMNoC and dual RISC-V processors is provided.
+The prototype platform is synthesized with FPGA and Samsung 28nm FD-SOI technology to verify the functional accuracy and small performance, area, and power overhead of the MMNoC.
+
+
+Abstract:
+With the intention of delivering an intuitive and simple platform to plan, generate, and track trajectories with a WMR, this paper presents a technological integration of hardware and software.
+This technological integration consists of a mobile computing device with an app developed by authors for the trajectory planning and a differential drive WMR that possesses an embedded system, in which a trajectory generation algorithm and a trajectory tracking control algorithm -both proposed by authors - are programmed.
+The mobile computing device wirelessly drives the WMR through the embedded system.
+The app is developed on the basis of the sketch approach, since it allows drawing sketches of the trajectory intuitively on the mobile device.
+Also, the app geometrically scales the sketch coordinates to match them with the real WMR workspace.
+For the trajectory generation, these scaled coordinates are wirelessly sent to the embedded system, where the trajectory generation algorithm joins them by using Bézier polynomials and concatenation of straight-lines.
+Hence, the tracking task is carried out with the control algorithm, which is proposed departing from the dynamic model of the WMR and whose asymptotic stability proof is performed with the Lyapunov method.
+Experimental results verify that the technological integration successfully plans, generates, and tracks trajectories, even when the WMR is far from the initial coordinate of the desired trajectory.
+These results, corroborate the good performance and robustness of the proposed control algorithm.
+Thus, the introduced technological integration is intuitive and simple since users only have to draw a sketch on the mobile device to carry out the trajectory tracking task.
+
+
+Abstract:
+Smart farming is rapidly revolutionizing the agricultural sector where embedded Internet of Things (IoT) devices are integrated into the field to maintain or improve the quality of products as well as increase food production.
+Despite the tremendous benefits, various cybersecurity threats of IoT can also be inherited by the sector.
+In this paper, we propose a lightweight specification-based distributed detection to identify the misbehavior of heterogeneous embedded IoT nodes efficiently and effectively in a closed-loop smart greenhouse farming system.
+To expand the monitoring space of a node, we exploited the Kalman-filter algorithm and simple statistical operations to obtain estimates of data.
+Accordingly, this enables a monitoring node to assess a target node that has distinct physical characteristics and access to natural phenomena.
+Along with this, we derive the behavior-rules that are specific to the target system and carefully translate these rules into a state machine diagram.
+Besides, we formally verify the functional correctness of the monitoring processes as well as ensure that the behavior specifications are completely covered by using the model checker tool UPPAAL.
+Through extensive experimental simulation using Proteus, we verify its applicability to resource-constrained embedded devices, e.
+g.
+, Arduino-Uno, as well as show high accuracy in detecting misbehaving nodes while having low false alarms.
+
+
+Abstract:
+Assistive devices are one of the crucial medical instruments for rehabilitation.
+Customized designs are required to match the geometry and dimensions of the affected sites of human bodies.
+The existing practice of assistive device development remains mostly a manual process, in which an experienced physiotherapist employs simple two-dimensional measurements and visual estimation to handcraft each device.
+The resulting devices not only vary substantially in fit to wearers, but also are not compatible to modern developmental technologies such as three-dimensional (3D) printing.
+This study incorporated substantial quantities of anthropometric data to construct a parametric 3D hand model.
+This study employed a customized assistive device - splint for carpal tunnel syndrome as a target object for testing the feasibility of the proposed method and verified the practicability through 3D printing implementation.
+Moreover, a wearable device embedded with inertial measurement unit sensor and vibration module will be integrated into the customized assistive device to offer a smart way for rehabilitation.
+With the help of this developed wearable device, continuously tracking user’s activity wirelessly and provide the real-time physically intervention feedback of vibration module based on back-end monitoring system platform.
+This new concept by integrating customized design and the IMU sensor and vibration module open a new window for the field of customized assistive device and improve its practical values.
+
+
+Abstract:
+Function recognition is the preliminary step of the reverse analysis.
+It is the premise of binary reuse, generating control flow graphs, and performing semantic analysis.
+There are still many shortcomings in the application of current function identification tools, including cross-platform support, efficiency, and resource usage.
+To improve the accuracy and efficiency of function recognition in embedded system firmware, this paper proposes a new function recognition algorithm FRwithMBA based on the structure information.
+With the help of function call resolve, FRwithMBA identifies functions by determining the termination position of the function based on branches instruction and termination signatures of the function.
+In the experiment, we evaluated FRwithMBA against IDA Pro, radare2, and angr with the router binary Cisco IOS and found that FRwithMBA is more effective in identifying functions in the stripped binary under PPC and MIPS than the other tools.
+In terms of recognition effectiveness, FRwithMBA performs a little better than IDA Pro, but the results of radare2 and angr are poor.
+For a 14-MB binary, the parsing time of IDA Pro is 178 s, radare2 uses 376 s, angr uses 1896 s, and FRwithMBA uses 25 s.
+When processing 220-MB Executable and Linkable Format files, FRwithMBA can identify nearly 420 000 functions in about 240 s, IDA takes 2754 s, and both radare2 and angr get a fault.
+In the experiment, the recall of FRwithMBA reached 99.
+99% and the precision reached 99.
+7%.
+It is better than the other tools.
+In other words, FRwithMBA has more speed, higher accuracy, and less resource occupation.
+
+
+Abstract:
+With a growing number of embedded devices that create, transform, and send data autonomously at its core, the Internet of Things (IoT) is a reality in different sectors, such as manufacturing, healthcare, or transportation.
+With this expansion, the IoT is becoming more present in critical environments, where security is paramount.
+Infamous attacks, such as Mirai, have shown the insecurity of the devices that power the IoT, as well as the potential of such large-scale attacks.
+Therefore, it is important to secure these embedded systems that form the backbone of the IoT.
+However, the particular nature of these devices and their resource constraints mean that the most cost-effective manner of securing these devices is to secure them before they are deployed, by minimizing the number of vulnerabilities they ship.
+To this end, fuzzing has proved itself as a valuable technique for automated vulnerability finding, where specially crafted inputs are fed to programs in order to trigger vulnerabilities and crash the system.
+In this survey, we link the world of embedded IoT devices and fuzzing.
+For this end, we list the particularities of the embedded world as far as security is concerned, we perform a literature review on fuzzing techniques and proposals, studying their applicability to embedded IoT devices and, finally, we present future research directions by pointing out the gaps identified in the review.
+
+
+Abstract:
+We deposited a p-i-n structure device with alternative amorphous Si (a-Si) and amorphous SiC (a-SiC) multilayers as an intrinsic layer in a plasma-enhanced chemical vapor deposition (PECVD) system.
+A KrF pulsed excimer laser-induced crystallization of a-Si/a-SiC stacked structures was used to prepare Si quantum dots (Si QDs)/SiC multilayers.
+The formation of Si QDs with an average size of 4 nm was confirmed by Raman spectra, whereas the layered structures were revealed by cross-sectional transmission electron microscopy.
+Electroluminescence (EL) devices containing Si QDs/SiC multilayers embedded in a p-n junction were fabricated, and the device performance was studied and compared with the reference device without the p-i-n structure.
+It was found that the turn-on voltage was reduced and that luminescence efficiency was significantly enhanced by using the p-i-n device structure.
+The recombination mechanism of carriers in a Si-QD-based EL device was also discussed, and the improved device performance can be attributed to the enhanced radiative recombination probability in a p-i-n EL device.
+
+
+Abstract:
+This paper describes the properties and potential applications of a hybrid device consisting of a varistor diode and its embedded transistor whose origin lies in a magnetically tuned varistor diode.
+It is shown how the output current (or voltage) of a varistor based on a magnetic oxide semiconductor can be manipulated by the application of a magnetic field to produce an embedded device with characteristics similar to that of a conventional transistor.
+Following the tradition of microelectronics, we name it the HFET transistor where H stands for a magnetic field.
+Two types of embedded HFET devices are described here; one with the current-voltage (I-V) characteristics and the other with voltage-current (V-I) characteristics.
+Both I-V and V-I devices exhibit high degree of nonlinearly but only in the V-I mode of the HFET device well-developed saturation regions of output signals are found.
+The room temperature HFET in its V-I mode appears to be also a good electronic switch with well-defined “off” and “on” states.
+Saturated regions of output signals and electronic switching are the signature property of these HFET transistors along with the capacity of providing a good level of signal amplification.
+When cooled to 100 K the HFET V-I device appears to lose partially the electronic switching property but gain in signal amplifying potential.
+The HFET device in I-V mode does not display the defining properties of electronic switching but can amplify signals by almost 400%.
+
+
+Abstract:
+This paper presents a hardware management technique that enables energy-efficient acceleration of deep neural networks (DNNs) on realtime-constrained embedded edge devices.
+It becomes increasingly common for edge devices to incorporate dedicated hardware accelerators for neural processing.
+The execution of neural accelerators in general follows a host-device model, where CPUs offload neural computations (e.
+g.
+, matrix and vector calculations) to the accelerators for datapath-optimized executions.
+Such a serialized execution is simple to implement and manage, but it is wasteful for the resource-limited edge devices to exercise only a single type of processing unit in a discrete execution phase.
+This paper presents a hardware management technique named NeuroPipe that utilizes heterogeneous processing units in an embedded edge device to accelerate DNNs in energy-efficient manner.
+In particular, NeuroPipe splits a neural network into groups of consecutive layers and pipelines their executions using different types of processing units.
+The proposed technique offers several advantages to accelerate DNN inference in the embedded edge device.
+It enables the embedded processor to operate at lower voltage and frequency to enhance energy efficiency while delivering the same performance as uncontrolled baseline executions, or inversely it can dispatch faster inferences at the same energy consumption.
+Our measurement-driven experiments based on NVIDIA Jetson AGX Xavier with 64 tensor cores and eight-core ARM CPU demonstrate that NeuroPipe reduces energy consumption by 11.
+4% on average without performance degradation, or it can achieve 30.
+5% greater performance for the same energy consumption.
+
+
+Abstract:
+An increasing number of embedded devices are connecting to the Internet, ranging from cameras, routers to printers, while an adversary can exploit security flaws already known to compromise those devices.
+Security patches are usually associated with the device firmware, which relies on the device vendors and products.
+Due to compatibility and release-time issues, many embedded devices are still using outdated firmware with known vulnerabilities or flaws.
+In this paper, we conduct a systematic study on device vulnerabilities by leveraging firmware fingerprints.
+Specifically, we use a web crawler to gather 9,716 firmware images from official websites of device vendors, and 347,685 security reports scattered across data archives, blogs, and forums.
+We propose to generate fine-grained fingerprints based on the subtle differences between the filesystems of various firmware images.
+Furthermore, machine learning algorithms and regex are used to identify device vulnerabilities and corresponding device firmware fingerprints.
+We perform realworld experiments to validate the performance of the firmware fingerprint, which yields high accuracy of 91% precision and 90% recall.
+We reveal that 6,898 reports have the firmware and related vulnerability information, and there are more than 10% of firmware vulnerabilities without any patches or solutions for mitigating underlying security risks.
+
+
+Abstract:
+Internet of Things (IoT) devices play a crucial role in the overall development of IoT in providing countless applications in various areas.
+Due to the increasing interest and rapid technological growth of sensor technology, which have certainly revolutionized the way we live today, a need to provide a detailed analysis of the embedded platforms and boards is consequential.
+This paper presents a comprehensive survey of the recent and most-widely used commercial and research embedded systems and boards in different classification emphasizing their key attributes including processing and memory capabilities, security features, connectivity and communication interfaces, size, cost and appearance, operating system support, power specifications, and battery life and listing some interesting projects for each device.
+Through this exploration and discussion, readers can have an overall understanding on this area and foster more subsequent studies.
+
+
+Abstract:
+Recurrent Neural Networks (RNNs) are a class of machine learning algorithms used for applications with time-series and sequential data.
+Recently, there has been a strong interest in executing RNNs on embedded devices.
+However, difficulties have arisen because RNN requires high computational capability and a large memory space.
+In this paper, we review existing implementations of RNN models on embedded platforms and discuss the methods adopted to overcome the limitations of embedded systems.
+We will define the objectives of mapping RNN algorithms on embedded platforms and the challenges facing their realization.
+Then, we explain the components of RNN models from an implementation perspective.
+We also discuss the optimizations applied to RNNs to run efficiently on embedded platforms.
+Finally, we compare the defined objectives with the implementations and highlight some open research questions and aspects currently not addressed for embedded RNNs.
+Overall, applying algorithmic optimizations to RNN models and decreasing the memory access overhead is vital to obtain high efficiency.
+To further increase the implementation efficiency, we point up the more promising optimizations that could be applied in future research.
+Additionally, this article observes that high performance has been targeted by many implementations, while flexibility has, as yet, been attempted less often.
+Thus, the article provides some guidelines for RNN hardware designers to support flexibility in a better manner.
+
+
+Abstract:
+As the need for on-device machine learning is increasing recently, embedded devices tend to be equipped with heterogeneous processors that include a multi-core CPU, a GPU, and/or a DNN accelerator called a Neural Processing Unit (NPU).
+In the scheduling of multiple deep learning (DL) applications in such embedded devices, there are several technical challenges.
+First, a task can be mapped onto a single core or any number of available cores.
+So we need to consider various possible configurations of CPU cores.
+Second, embedded devices usually apply Dynamic Voltage and Frequency Scaling (DVFS) to reduce energy consumption at run-time.
+We need to consider the effect of DVFS in the profiling of task execution times.
+Third, to avoid overheat condition, it is recommended to limit the core utilization.
+Lastly, some cores will be shut-down at run-time if core utilization is not high enough, in case the hot-plugging option is turned on.
+In this paper, we propose a scheduling technique based on Genetic Algorithm to run DL applications on heterogeneous processors, considering all those issues.
+First, we aim to optimize the throughput of a single deep learning application.
+Next, we aim to find the Pareto optimal scheduling of multiple DL applications in terms of the response time of each DL application and overall energy consumption under the given throughput constraints of DL applications.
+The proposed technique is verified with real DL networks running on two embedded devices, Galaxy S9 and HiKey970.
+
+
+Abstract:
+As embedded systems become more prominent in society, the technologies that run on them must be used efficiently.
+One such technology is the Neural Network (NN).
+NN's, combined with the Internet of Things (IoT), can utilize the massive amounts of data produced to optimize, control, and automate embedded systems, giving them more functionality than ever before.
+However, the status quo of offloading all NN functionality onto external devices has many flaws.
+It forces the embedded system to entirely rely on networks that may have high latency or connection issues.
+Networks may also expose them to security risks.
+To reduce the reliance of IoT devices on networks, we examined several solutions, such as delegating some NN's to run solely on the IoT device or splitting the NN and distributing the subnetworks into different devices.
+It was found that, for shallow NN's, the IoT device itself could run the NN at a rate faster than offloading it to an external device, but the IoT device needed to offload its inputs once the NN's started to increase in layers and complexity.
+When splitting the NN, it was found that the number of messages sent between devices could be reduced by up to 97% while only reducing the accuracy of the NN by 3%.
+
+
+Abstract:
+In view of the current situation, that physiological parameter monitoring systems can only achieve local monitoring, and the multi-physiological parameter monitors are large, expensive, and disadvantageous to remote monitoring.
+This paper combines embedded and mobile communication technologies to develop a new type of multi-physiological parameter medical monitoring system with remote data transmission function.
+First, through the analysis of embedded system principles, an embedded computer system based on ARM is designed.
+Secondly, the human-computer interaction interface, data acquisition, and analysis module are designed.
+Finally, by connecting to the Internet network to communicate with the medical center server, the remote transmission of local detection data and the issuance of alarm signals when dangerous situations occur are realized.
+The system can collect and display multiple physiological parameters such as heart rate, blood pressure, blood oxygen saturation, and body temperature in real time.
+The simulation experiment results show that the system's monitoring function and remote data transmission function meet the design requirements, can quickly and accurately find out-of-standard data, and perform remote alarm.
+The system is small, easy to expand, stable in data transmission, high in reliability, convenient for remote monitoring and data sharing, and is an ideal monitoring device for hospitals and community medical centers.
+
+
+Abstract:
+Embedded systems that make up the Internet of Things (IoT), Supervisory Control and Data Acquisition (SCADA) networks, and Smart Grid applications are coming under increasing scrutiny in the security field.
+Remote Attestation (RA) is a security mechanism that allows a trusted device, the verifier, to determine the trustworthiness of an untrusted device, the prover.
+RA has become an area of high interest in academia and industry and many research works on RA have been published in recent years.
+This paper reviewed the published RA research works from 2003-2020.
+Our contributions are fourfold.
+First, we have re-framed the problem of RA into 5 smaller problems: root of trust, evidence type, evidence gathering, packaging and verification, and scalability.
+We have provided a holistic review of RA by discussing the relationships between these problems and the various solutions that exist in modern RA research.
+Second, we have presented an enhanced threat model that allows for a greater understanding of the security benefits of a given RA scheme.
+Third, we have proposed a taxonomy to classify and analyze RA research works and use it to categorize 58 RA schemes reported in literature.
+Fourth, we have provided cost benefit analysis details of each RA scheme surveyed such that security professionals may perform a cost benefit analysis in the context of their own challenges.
+Our classification and analysis has revealed areas of future research that have not been addressed by researchers rigorously.
+
+
+Abstract:
+Further to China's plan that was introduced in 2017 for attracting more students into engineering, many Chinese universities have started to explore new teaching methods that can be adopted into their programs.
+This shift was geared towards developing student-centred teaching materials rather than traditional teacher centred instruction.
+In this manuscript, we compare two different methods of instruction for a course on energy harvesting using embedded systems.
+We describe the learning materials and showcase the impact that project-based learning has had on a cohort of Chinese students that were enrolled in a joint master's program between the University of Electronic Science and Technology of China (UESTC) and the Royal Institute of Technology (KTH).
+KTH has made remarkable progress in the teaching of embedded systems technology for energy harvesting applications, with great emphasis on active as well as collaborative learning.
+We demonstrate two examples of projects that Chinese students have completed in KTH and present evaluative data regarding their experiences.
+Our results show that KTH's approach in teaching this module has had a positive impact on student learning, with an average of 80% of students think that teaching in KTH is conducive to students' independent exploration.
+
+
+Abstract:
+Scratchpad memory (SPM) is widely utilized in many embedded systems as a software- controlled on-chip memory to replace the traditional cache.
+New non-volatile memory (NVM) has emerged as a promising candidate to replace SRAM in SPM, due to its significant benefits, such as low-power consumption and high performance.
+In particular, several representative NVMs, such as PCM, ReRAM, and STT-RAM can build multiple-level cells (MLC) to achieve even higher density.
+Nevertheless, this triggers off higher energy overhead and longer access latency compared with its single-level cell (SLC) counterpart.
+To address this issue, this paper first proposes a specific SPM with morphable NVM, in which the memory cell can be dynamically programmed to the MLC mode or SLC mode.
+Considering the benefits of high-density MLC and low-energy SLC, a simple and novel optimization technique, named theory of thermal expansion and contraction, is presented to minimize the energy consumption and access latency in embedded systems.
+The basic idea is to dynamically adjust the size configure of SLC/MLC in SPM according to the different workloads of program and allocate the optimal storage medium for each data.
+Therefore, an integer linear programming formulation is first built to produce an optimal SLC/MLC SPM partition and data allocation.
+In addition, a corresponding approximation algorithm is proposed to achieve near-optimal results in polynomial time.
+Finally, the experimental results show that the proposed technique can effectively improve the system performance and reduce the energy consumption.
+
+
+Abstract:
+As computers continue to advance, they are becoming more capable of sensing, interacting, and communicating with the physical and cyber world.
+Medical devices, electronic braking systems in automotive applications, and industrial control systems are examples of the many Cyber-Physical Systems (CPS) that utilize these computing capabilities.
+Given the potential consequences of software related failures in such systems, a high degree of safety, security, and reliability is often required.
+Programming languages are important tools used by programmers to develop CPS.
+They provide a programmer with the ability to transform designs into machine code.
+Of equal importance is their ability to detect and avoid programming mistakes.
+The development of CPS has predominantly been accomplished using the C programming language.
+Although C is a powerful language, it lacks features present in other languages that facilitate the development of reliable systems.
+This has prompted research into language-based alternatives for improving program quality through the use of programming languages.
+This paper presents an overview of the characteristics of embedded and cyber-physical systems and the associated requirements imposed on programming languages.
+This is followed by a survey of relevant research into language-based methods for creating safe, reliable, and robust software for CPS.
+
+
+Abstract:
+Affordance detection in computer vision allows segmenting an object into parts according to functions that those parts afford.
+Most solutions for affordance detection are developed in robotics using deep learning architectures that require substantial computing power.
+Therefore, these approaches are not convenient for application in embedded systems with limited resources.
+For instance, computer vision is used in smart prosthetic limbs, and in this context, affordance detection could be employed to determine the graspable segments of an object, which is a critical information for selecting a grasping strategy.
+This work proposes an affordance detection strategy based on hardware-aware deep learning solutions.
+Experimental results confirmed that the proposed solution achieves comparable accuracy with respect to the state-of-the-art approaches.
+In addition, the model was implemented on real-time embedded devices obtaining a high FPS rate, with limited power consumption.
+Finally, the experimental assessment in realistic conditions demonstrated that the developed method is robust and reliable.
+As a major outcome, the paper proposes and characterizes the first complete embedded solution for affordance detection in embedded devices.
+Such a solution could be used to substantially improve computer vision based prosthesis control but it is also highly relevant for other applications (e.
+g.
+, resource-constrained robotic systems).
+
+
+Abstract:
+This paper proposes a proof-of-concept device to continuously assess the usage of hand-held power tools and detect construction working tasks (e.
+g.
+different drilling works) along with potential misusages, e.
+g.
+drops, with an energy efficient architecture design.
+The designed device is based on Bluetooth Low Energy (BLE) and NFC connectivity.
+BLE is used to exchange data with a gateway, whereas NFC has been chosen as an energy-efficient wake-up mechanism.
+A temperature and humidity sensor is embedded to monitor storage conditions; an accelerometer for tool usage monitoring.
+The ARM Cortex-M4F core embedded in the BLE module is exploited to process the information at the edge.
+A Tiny Machine Learning (TinyML) algorithm is proposed to process the data directly on board and achieve low latency and high energy efficiency.
+The TinyML algorithm has been developed embedded in the proposed device to detect 4 different usage classes (tool transportation, no-load, metal and wood drilling).
+A dataset containing more than 280 minutes of three-axis accelerations during different activities has been acquired with the device attached to a construction rotary hammer drill, and used to train and validate the algorithm.
+A Network Architecture Search (NAS) has been performed to optimize the trade-off between accuracy and complexity, achieving an accuracy of 90.
+6% with a model size of roughly 30kB.
+Experimental results showed an ultra-low power consumption in sleep mode of 550 nA and a peak power consumption of 4mA while running the TinyML on the edge.
+This results in a balanced combination of edge processing capabilities and low power consumption, enabling to obtain a smart Internet of Things (IoT) device in the field with a long lifetime of up to 4 years in operation and 17 years in shelf mode with a standard 250mAh coin battery.
+This work enables a long battery lifetime operation of on device degradation and utility analysis, further closing the gap between edge processing and fine granularity data evaluation.
+
+
+Abstract:
+Today's embedded systems operate under increasingly dynamic conditions.
+First, computational workloads can be either variable by nature or adjustable.
+Moreover, as many devices are battery-powered, it is common to have runtime power management technique, which results in dynamic power budget.
+This paper presents a design methodology for multi-core systems, based on dataflow specification, that can deal with various contexts.
+We optimize the original dataflow considering various working conditions, then, autonomously adapt it to a pre-defined optimal form in response to context changes.
+Such context changes at runtime might cause non-negligible delay or power budget violation.
+In order to overcome them, an efficient mode switching method is proposed.
+We show the effectiveness of the proposed technique with a real-life case study, stereo-vision, and synthetic benchmarks.
+
+
+Abstract:
+Recently, as interest in electrocardiogram monitoring has increased, research on real-time ECG signal analysis in daily life using lightweight embedded devices has increased.
+Abnormal beat detections in ECG signal analysis are an important research area to reduce processing time and cost for cardiac arrhythmia diagnosis.
+Abnormal beat detections can be divided into feature-based detection and shape-based detection.
+Feature-based detection finds it difficult to detect reliable fiducial points, and shape-based detection has difficulty detecting abnormal beats that are similar to normal beats.
+In this paper, we propose template cluster generation and abnormal beat detection using both detection methods.
+The proposed method shows robust detection of distorted normal beats by generating a template cluster rather than a single template.
+Moreover, abnormal beats that have normal shape can be detected using the RR interval, which is a highly reliable feature.
+Experiment results using the MIT-BIH arrhythmia database, provided by Physionet, showed the average processing times to generate a template cluster and detect abnormal beats for the 30-minute signal length were 1.
+21 seconds and 0.
+14 seconds, respectively.
+With manually adjusted thresholds, the specificity and accuracy achieved 93.
+00% and 97.
+94%, respectively.
+In the case of group 1 records obtained relatively stably, the specificity and accuracy achieved 99.
+27% and 99.
+44%.
+
+
+Abstract:
+In this paper we present SpikeOnChip, a custom embedded platform for neuronal activity recording and online analysis.
+The SpikeOnChip platform was developed in the context of automated drug testing and toxicology assessments on neural tissue made from human induced pluripotent stem cells.
+The system was developed with the following goals: to be small, autonomous and low power, to handle micro-electrode arrays with up to 256 electrodes, to reduce the amount of data generated from the recording, to be able to do computation during acquisition, and to be customizable.
+This led to the choice of a Field Programmable Gate Array System-On-Chip platform.
+This paper focuses on the embedded system for acquisition and processing with key features being the ability to record electrophysiological signals from multiple electrodes, detect biological activity on all channels online for recording, and do frequency domain spectral energy analysis online on all channels during acquisition.
+Development methodologies are also presented.
+The platform is finally illustrated in a concrete experiment with bicuculline being administered to grown human neural tissue through microfluidics, resulting in measurable effects in the spike recordings and activity.
+The presented platform provides a valuable new experimental instrument that can be further extended thanks to the programmable hardware and software.
+
+
+Abstract:
+Deep learning is a state-of-the-art approach that provides highly accurate inference for many cyber-physical systems (CPS) such as autonomous cars and robots.
+Deep learning inference often needs to be performed locally on mobile and embedded devices, rather than in the cloud, to address concerns such as latency, power consumption, and limited bandwidth.
+However, existing approaches have focused on delivering “best-effort” performance to resource-constrained mobile embedded devices, resulting in unpredictable performance under highly variable environments of CPS.
+In this paper, we propose a novel deep learning inference runtime, called DeepRT, that supports multiple QoS objectives simultaneously against unpredictable workloads.
+In DeepRT, the multiple inputs/multiple outputs (MIMO) modeling and control methodology is proposed as a primary tool to support multiple QoS goals including the inference latency and power consumption.
+DeepRT’s MIMO controller coordinates multiple computing resources, such as CPUs and GPUs, by capturing their close interactions and effects on multiple QoS objectives.
+We demonstrate the viability of DeepRT’s QoS management architecture by implementing a prototype of DeepRT.
+The evaluation results demonstrate that, compared with baseline approaches, DeepRT can support the desired inference latency as well as power consumption for various deep learning models in a highly robust manner.
+
+
+Abstract:
+A low-inductive half-bridge and gate driver package with on-package gate and dc-link capacitors is realized by printed circuit board (PCB) embedding of two GaN-on-Si ICs.
+While monolithic half-bridge and driver integration reduces on-chip parasitics, it does not solve the interconnection challenge to external capacitors.
+This letter solves this issue through advantageous combination of PCB embedding and monolithic circuit integration.
+This letter uses GaN-on-Si power circuits with integrated gate drivers, freewheeling diodes, and temperature and current sensors.
+GaN ICs are fabricated with thick copper on both sides, which makes them applicable to commercial PCB-embedding technologies.
+Thermal aspects are discussed and electromagnetic simulations used to compare the PCB-embedded package to a bond wire based package.
+A PCB-embedded dc-dc converter is operated up to 350 V and 450 W with up to 98.
+7% efficiency.
+380 V hard-switching transitions show below 8% over- and undershoot despite over 120 V/ns slew rates.
+Parallel platelike placement of silicon flip-chip capacitors above the gate driver final stage transistors and separated only by a thin PCB layer increased the gate-loop parasitic inductance by only 40 pH.

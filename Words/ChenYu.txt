@@ -1,0 +1,259 @@
+Abstract:
+Digital control endows power electronic converters with networking capability and makes them potential for the Internet of Energy (IoE).
+However, the IoE provides many interfaces for hackers and increases the risk of cybersecurity.
+To defend networked converters against cyberattacks, this article proposes a control framework where the digital model predictive controller (MPC) and the analog proportional integral controller (PIC) are physically connected in parallel.
+Due to such a parallel structure, once the converter is cyberattacked, the digital MPC can be physically isolated from the control loop, while the converter can still persist working under the dominating of only the analog PIC.
+In addition, the digital MPC and the analog PIC can compatibly operate under normal conditions to achieve excellent dynamic performances and zero steady-state error.
+The validity of the parallel control is verified on a buck converter as an example, and the control performances are also verified by experiments.
+
+
+Abstract:
+For the large-scale and geographically dispersed wind-solar complementary system, the information communication between each sub-system is lacking, and the problem of synchronous optimization is not far apart.
+The strategy of distributed model predictive control is proposed to optimize and adjust the system power balance and voltage stability throughout the entire wind-solar complementary system.
+Aiming at the problem of power flow of wind, photovoltaic, and battery sub-system through multiple single-port bidirectional DC-DC converters, it is proposed to apply the multi-port bidirectional DC-DC converter to the wind-solar complementary system, thereby reducing the number of DC-DC converters and the cost.
+The experimental research proves that the proposed distributed model predictive control strategy is applied to the multi-port DC-DC converter type wind-solar complementary system.
+Comparing with the traditional control method, its optimization rate is high and the safe and reliable operation of the system is guaranteed.
+
+
+Abstract:
+PCB design of the main power loop is very important to power electronic circuits.
+PCB design includes three steps of component layout, routing planning, and detailed routing.
+Component layout and detailed routing can be easily finished in EDA software, but routing planning must consider the influences of electromagnetic compatibility, parasitic inductance, high dV/dt and dI/dt.
+It requires much expert knowledge and experience to make the routing planning, which exceeds the capabilities of EDA software.
+In this paper, a Q-learning-based routing planning method for power electronic circuits is proposed, which set reward functions according to routing rules of circuits, so the routing planning result can meet the specifications of power electronic circuit.
+According to the routing planning result, technicians can quickly complete the follow-up PCB design work.
+We use this method to complete the routing planning of a Buck circuit, and the experimental result verifies the applicability of the proposed method.
+
+
+Abstract:
+Household distribution systems with renewable energy often use multiple AC / DC converters, which have complex structure, large volume and high cost.
+This paper presents a multi-port converter based on component reuse theory and its control system.
+The converter contains a variety of functional ports, including a bidirectional port (grid port), an input port (photovoltaic cell module port) and an output port (DC load port), as well as an active power decoupling port for reducing DC bus voltage fluctuation.
+This paper also designs a modulation method to realize components reusing and reduce the switch numbers.
+With the proposed modulation method, the converter can operate in three modes: single input single output, single input double output and double input single output.
+The simulation model and experimental prototype are established to verify the feasibility of the topology and its control system.
+The converter has the characteristics of less switches, low hardware cost and simple control.
+It has a good application prospect in house-hold DC microgrid system.
+
+
+Abstract:
+A two-phase interleaved three-level boost converter with coupled inductors is designed and analyzed in this paper.
+With three-level modulation, inductor current ripples are halved, and with coupled configuration plus interleaved operation, the current ripples are further reduced, therefore the size of the inductors can be minimized.
+However, modeling and analysis of such a converter becomes complicated.
+To describe the features of the converter in a simple but effective way, the simplified modeling method is proposed in this paper.
+The operational modes of the converter are first analyzed and the original mathematical model are built; then the model is properly simplified according some assumptions, so that the state-space model and small signal model can be obtained.
+Both Matlab simulation and experimental prototype are built, and the simulation and experimental results verify the validity of the simplified modeling method.
+
+
+Abstract:
+The Class inverter has become a research hotspot for high frequency applications due to low voltage stress and load-independent ZVS operation.
+However, the previous design procedures based on the Bode diagram of the high order resonant network are inconvenient for parameter tuning during simulation.
+In this paper, a unit-less model of the Class inverter is presented to facilitate the generalized circuit design.
+And a new parametric design method is proposed, that achieves decoupling design of the switch voltage stress and reduces design iterations by the constraint lines of the capacitor voltage stress and zero voltage switching.
+It is verified by simulation results that the optimal parameters can be found in the design area, and the experimental prototype is being built.
+
+
+Abstract:
+With the vigorous development of the wide bandgap power devices, the switching frequency of DC-DC converter is improved to MHz.
+But it leads to the problem that the high-performance but complicated adaptive control methods cannot be completed in such a short switching cycle.
+To solve it, this paper proposes a real-time self-learning control methodology, which can be implemented at MHz switching frequency by FPGA and its dynamic control performance can be real-time enhanced.
+A GaN-based buck converter prototype with 1 MHz switching frequency is built to demonstrate the feasibility of the proposed real-time self-learning control methodology.
+
+
+Abstract:
+The modular multilevel DC-DC converter (MMDC) is a promising solution for the interconnection of MVDC distribution systems with LVDC ports.
+Due to the symmetric structure and operation scheme, the MMDC is normally only capable of operating with monopole MVDC distribution systems.
+This paper proposes a bipolar operation scheme of the MMDC.
+Based on the concept of the flux dc-bias cancellation, a center-tapped high-frequency interface transformer is employed on the MV side of the MMDC.
+A dedicated operation method is proposed, whereby the power flows of the two MVDC poles can be manipulated independently with a simple control scheme.
+Compared to the conventional MMDC with monopole operation, no additional component is required and no penalty of increased current rating is imposed on the semiconductor devices or the interface transformer.
+Moreover, a single-pole operation is also possible with the proposed operation scheme.
+If the valves of one pole are faulty, it can be isolated from the main converter for maintenance while the MMDC can continue operation without interruption and deliver at least 50% of the rated power capacity.
+Hence, the reliability and availability of the power delivery can be significantly enhanced.
+The validity of the proposed bipolar operation scheme of the MMDC has been verified by both simulations and experiments with a down-scale prototype.
+
+
+Abstract:
+The unipolar modulation is widely applied to the single-phase full bridge inverter for its superior performance in the output harmonic characteristics.
+However, it will bring serious common-mode interference so that a common-mode filter is required.
+Due to the nonideal factors of the practical operation condition, the actual performance of the designed common-mode filter is often inferior to that of the ideal case, which further brings EMI problems.
+To improve the performance of the common-mode filter, the parameters should be redesigned, and tested in an iterative way until it adapts to the practical operation condition, which is time-consuming and also increase the cost since the hardware should be changed to modify the parameters.
+To address this problem, a novel weighted hybrid modulation is proposed to improve the performance of the common-mode filter without replacing the hardware of the common-mode filter.
+The proposed weighted hybrid modulation strategy blends the bipolar into unipolar modulation and compromises the merits of both.
+By improving the common-mode noise, the EMI can be easily reduced to the standard level.
+The double Fourier analysis method is conducted to analyze the characteristics of the proposed modulation strategy.
+Both simulation and experimental results are presented to prove the effectiveness of the proposed method.
+
+
+Abstract:
+Two-stage grid-tied PV inverters with a Boost and an H-bridge inverter are widely used.
+The efficiency improvement and leakage current suppression are the two main challenges for such a two-stage design.
+This paper presents a design method for the front-end stage.
+Firstly, the diodes in the Boost are replaced by the SiC MOSFETs to reduce the conduction loss, and the parameters of the Boost are optimized to increase the efficiency.
+Secondly, the parasitic capacitors of the SiC MOSFETs are considered, so that the CM filter design in the front-end can compromise the leakage current suppression.
+The effectiveness and validity are verified on a 1kW two-stage inverter.
+
+
+Abstract:
+Nowadays deep reinforcement learning method has been introduced to power electronic converter control, but the current applications are relatively simple since the converter needing to be controlled has only a few variables.
+Applying the deep reinforcement learning method on the complicated converter with more variables has not been seen yet.
+This paper shows that the reinforcement learning also has potential to control a complicated modular multilevel converter (MMC).
+In our method, the capacitor voltages of submodules (SMs), arm currents and output currents are directly sent to a neural network controller, and the outputs of the controller are used as the gating signals of the SMs directly.
+The Policy Gradient (PG) based reinforcement learning algorithm is used without knowing any model information of the MMC.
+After learning, all the variables in the MMC can be well controlled, i.
+e.
+, the output current can track to the reference, the capacitor voltage of SMs can be well balanced, the upper and lower arm voltages are well balanced.
+The feasibility of the proposed reinforcement learning controller is verified in Python and PLECS.
+
+
+Abstract:
+Power electronic converters are more and more widely used, and abnormal temperature of converter components is the most important factor of converter failure.
+In order to improve the reliability of the converter design, it is necessary to monitor the temperature of key components in the converter during the prototype test stage.
+The temperature measurement method of infrared thermal images has rich temperature information, wide coverage, and does not affect the original circuit design.
+It is widely used in circuit temperature measurement occasions.
+However, in the current automatic temperature measurement methods, it is necessary to manually establish a standard matching template for the infrared thermal image of the circuit to be tested, which indicates a large workload and poor versatility.
+This paper proposes a method for fully automatic temperature monitoring of converter components.
+This method is based on a deep learning target detection algorithm, which can automatically identify the type of converter components, obtain partial infrared thermal images of components through heterogeneous image registration, and achieve accurate component temperature monitoring.
+The advantages of this method are: 1) there is no need to manually establish a standard template for each converter, and the versatility is good; 2) it is fully automatically when the monitoring the temperature of converter components without manual intervention; 3) it is easy to implement and promote due to low cost of hardware system.
+Finally, the experimental results verify the feasibility and accuracy of this method.
+
+
+Abstract:
+In this letter, a trapezoidal current modulation is proposed for a compact dc–dc modular multilevel converter with reduced submodule (SM) number and magnetic integration.
+The arm currents are shaped to fulfill the zero-voltage-switching conditions for all the SMs.
+Then, the diode–inductor ( D–L ) circuits between the adjacent SMs are further introduced to cooperate with the proposed modulation; hence, the SM capacitor voltages could be balanced without sensors and sorting algorithm.
+Besides, the diodes in the D–L circuits could also achieve zero-current switching.
+Such a full soft-switching operation significantly contributes to the system volume reduction.
+The proposed method is verified by both simulation and experiment, and under steady-state, transient state, and D–L circuit broken situations.
+
+
+Abstract:
+Arm current control is a promising candidate for modular multilevel converter (MMC) due to it can effectively regulate ac-side current and control the ac component of circulating currents simultaneously.
+The conventional arm current controller designed in frequency domain based on classical control theory have to design the separate controller for each frequency reference signal.
+As a result, the controller structure is complicated.
+And limited by the bandwidth of the arm current compound controller, the control performance will be affected by the grid-side voltage harmonics.
+Model predictive control (MPC) is an optimal control method in time domain.
+It not only has fast dynamic response, but also can track multi-band composite signals with high accuracy.
+To address the above issues of traditional arm current control, this paper proposes a model predictive arm current control strategy.
+Combined with phase-shifted carrier pulse width modulation (PSC-PWM), the computation burden of the presented method can be independent of the number of cascaded sub-modules (SMs).
+Simulation and experimental results reveal the proposed MMC integrated control strategy has fast dynamic response with small tracking errors even under non-ideal grid conditions.
+
+
+Abstract:
+The modular-multilevel-based isolated dc–dc converter (MMDC) is an attractive solution for the interconnection of medium-voltage (MV) and low-voltage (LV) dc grids.
+With a modular-multilevel converter (MMC) on the MV side and full bridges (FBs) on the LV side, the MMDC can be flexibly scaled to different voltages and power ratings.
+However, the existing MMDC is limited to the two-port operation where the dc-link voltages and powers of FBs must be always kept identical.
+This letter proposes an operation scheme that enables fully independent three-port bidirectional operation of MMDC capable for the interconnection of MVDC and two isolated LVDC grids with different nominal voltages.
+A comprehensive operation strategy is proposed, which contains two operation modes with different modulation schemes for the MMC to optimize the transformer current in the full load range.
+Compared with the most popular three-port isolated dc–dc converter triple active bridge, the power flow among three ports follows a simple mathematical rule and can be regulated bidirectionally with small computational efforts as well as intrinsically eliminated circulating power.
+The experimental results validate the feasibility and effectiveness of the proposed operation scheme.
+
+
+Abstract:
+This article proposes a simplified dual-electric-port drive for a flux-modulated switched reluctance machine (SRM) with flexible charging capability for electric vehicle applications.
+In the driving mode, the developed flux modulation control can be achieved by directly employing the modular three-leg converter compared to the conventional open-winding topology.
+The zero-sequence current excitation can be flexibly controlled between the dual port and the number of power switches is also significantly reduced.
+The corresponding carrier-based pulsewidth modulation method and harmonic current suppression strategy are both developed to improve the machine performance.
+In the standstill condition, flexible battery charging can be easily achieved by the drive circuit, including both the dc and ac charging, without using any additional passive components and power devices.
+Then, the current distribution control scheme and power factor correction strategy are further developed for the dc and ac charging, respectively.
+Compared with existing drive topologies, advanced flux-modulated control and flexible energy control both can be achieved with machine performance improvement and drive cost reduction.
+Experiments are carried out on a three-phase 12/8 SRM prototype to verify the effectiveness of the proposed SRM drive and control strategies.
+
+
+Abstract:
+This article proposes a comprehensive investigation method for loss calculation and temperature rise prediction in high-speed and high-power switched reluctance machines (SRMs).
+The losses are analyzed in details and the sequential iterative fluid-solid coupling (SIFSC) scheme is proposed for thermal analysis.
+In the iterative design stage of the SRM, it is important and urgent to figure out the power losses and temperature distribution in the motor, which affects the endurance of the motor operation, such as the maximum speed and highest operating temperature.
+A simplified finite element (FE) model of a turn and a proximity loss separation method are developed for the skin and proximity (SP) loss reduction.
+Then, an additional eddy current loss calculation method is developed with a simplified FE model of the winding.
+Additionally, the SIFSC scheme is further proposed and implemented by sequentially calculating the fluid and solid fields for airflow velocity and temperature distribution.
+Compared to conventional thermal calculation schemes, the proposed SIFSC scheme is faster than direct coupling methods and more accurate than thermal network methods.
+The accuracy and effectiveness of this scheme is verified by the simulation and experimental test for a 160 kW and 18000 r/min 6/2 SRM prototype.
+
+
+Abstract:
+To decrease the cost, enhance the torque performance, and improve the system reliability, this article puts forward a novel position sensorless torque control strategy for switched reluctance machines (SRMs) with fewer current sensors.
+In this article, a developed direct torque control (DTC) strategy is proposed for the torque ripple mitigation, where a hybrid chopping mode is employed and the torque is online compensated according to the torque error.
+A developed current-sensing scheme with fewer current sensors is presented.
+The phase current in a whole period can be easily detected for both the torque control and sensorless control.
+The position sensor is removed from the proposed drive.
+The real-time rotor position of each phase can be obtained by implementing a flux linkage-current-based method.
+According to the current and position, the instantaneous phase torque and torque sharing function can be determined for the DTC.
+Therefore, system reliability can be significantly improved due to the simplified sensor part.
+With the proposed scheme, a compact, high-reliable, and high-performance SRM drive can be achieved.
+A three-phase 12/8 SRM prototype is employed for the experiment to verify the feasibility of the proposed system.
+
+
+Abstract:
+This article proposes a solid-state transformer (SST) topology based on modular multilevel converter (MMC) with high integration structure.
+By integrating the medium frequency (MF) transformer into the MMC leg and applying the mixed-frequency modulation on the half-bridge submodules, the line frequency ac to MF-ac conversion is realized directly without intermediate dc link.
+The proposed SST simplifies the energy conversion process, reduces the total amount of active components and magnetic components, and thus, can increase the power density of the system and reduce the manufacturing cost.
+Operation principle and design considerations are given in this article.
+In addition, simulation and experimental results are demonstrated to verify the validation of the proposed topology.
+
+
+Abstract:
+Gallium-Nitride (GaN) transistor suits for high switching frequency condition to build high power density converters.
+However, it suffers from crosstalk problem especially in bridge-structure applications, that is, the fast voltage changing of the switching node causes a positive or negative voltage spike on the gate-source voltage of GaN transistor, which results in false turn-on and gate breakdown of the transistor, respectively.
+Rather than specially designing the gate driver, this letter proposes an idea of using a gate-drive power supply (GDPS) with decayed negative output to solve the crosstalk problem.
+With the proposed GDPS, a negative driving voltage is provided when the positive voltage spike appears to avoid false turn-on, and then the negative driving voltage naturally decays to zero before the negative voltage spike appears to avoid gate breakdown.
+Such a GDPS is realized by a simple forward-flyback topology, and the commercial gate-drive ICs can be cooperated with it conveniently.
+Experimental results show the effectiveness of the proposed method.
+
+
+Abstract:
+A novel “time-segmented” transient analysis approach is proposed in this article for resonant gate driver (RGD) with triaspect optimization.
+RGD is a more advanced solution in high-frequency and high-power-density applications than the conventional gate driver (CGD).
+RGD will achieve lower gate driver loss, faster driving speed, and better SiC switching characteristics.
+However, the majority of current works on RGD only focused on gate driver loss and ignored its effect on power transistors' switching behavior.
+The characteristics of RGD are not well understood and modeled due to the ignorance of nonlinear components, such as power transistor's nonlinear input capacitor and nonlinear resonant intervals, and driving resistances.
+All of those result in false estimation of switching time and energy, which will cause underdesign of gate driver power supply and overdesign of resonant inductor.
+To fully investigate the potential of RGD, a “time-segmented” analysis approach proposed in this article utilizes the second-order equivalent circuit with actual switching transients.
+Different equivalent input capacitors are adopted for each segment.
+The impacts of the resonant inductor and gate resistor are studied.
+An optimized resonant inductor design is summarized by considering the three aspects mentioned earlier.
+Based on these, a full-bridge series RGD is designed for SiC power transistors.
+Compared with CGD, RGD can realize a 25% reduction in power consumption and 75.
+5% faster driving time.
+The designed RGD also improves SiC's di/dt and dv/dt up to 32%.
+
+
+Abstract:
+Brushless doubly-fed induction generator (BDFIG) has huge potential due to its high reliability and low maintenance costs.
+In order to meet the requirements of the modern grid code, the BDFIG system should have dual-mode (i.
+e.
+, operating in both stand-alone and grid-connected modes) capability.
+Rather than using two separated systems for two modes, this article proposes a unified control architecture for dual-mode operation.
+Such a unified architecture is based on the stand-alone control-winding (CW) current orientation, and the grid-connected functions are realized by adding three plug-in functional units: 1) the phase-lock function is realized by adding an increment adjustment controller into the CW-angle control; 2) the inrush current during mode switching is suppressed by adding a high-pass feedforward controller into the inner-loop controller; 3) the active power and reactive power are regulated by adding an amplitude-angle controller of CW current.
+With the proposed unified architecture, the high-performance dual-mode operation is achieved without breaking the original CW-current orientation system, facilitating the overall system design a lot.
+The detailed analysis and designs are given in this article, and the experiments based on a BDFIG prototype are given to verify the feasibility.
+
+
+Abstract:
+Explicit model predictive control (EMPC) regards the linear time-invariant model as the prerequisite to deduce the offline control laws for online control.
+Thus, EMPC cannot be directly applied to Buck converters with variable load.
+A tradeoff method is to linearize Buck model under a specific load to obtain the time-invariant model to perform EMPC.
+However, since the obtained offline control laws is derived under the specific load, its performance will be degraded when the load varies.
+To fix this problem, this paper proposes to utilize State Feedback Linearization (SFL) technology to transfer the variable load term from model parameter matrix to state variables and control parameter.
+Based on such an equivalent model, EMPC can be directly performed and load-independent offline control laws are obtained.
+With such a methodology, only the load-dependent state variables and control parameter need to be updated online to adapt load variation, and the obtained control laws need not to be changed and can be discretized into a look-up table to reduce online computational burden, which suits the high switching frequency scenarios well.
+Details of the proposed methodology are given in this paper.
+Simulation and experimental results are also provided to demonstrate the effectiveness of the proposed control methodology.
+
+
+Abstract:
+Efficiency is an important specification in power electronics converters.
+Low efficiency leads to meaningless heat loss and heat dissipation overdesign.
+The maximal efficiency of the buck converter is usually about 98%, but it still has potential to further increases the efficiency.
+The main purpose of this paper is to design a buck converter with an efficiency higher than 99%.
+To realize such a goal, the cause of loss in buck converter is analyzed qualitatively first, and then quantitative calculation and device material selection are carried out for a specific working condition.
+Finally, a prototype is built according to the design results, and the efficiency of the Buck converter is higher than 99%.
+
+
+Abstract:
+IGBT devices are widely used in high-voltage and high-power applications.
+IGBT module has two kinds of packaging structure, which are welded IGBT and press-pack IGBT (PP-IGBT).
+Since a PP-IGBT module can integrate more chips and diode chips to obtain a large current capacity, it has been widely used in high power applications.
+However, due to the individual differences of chips in parallel, the stray parameters of the gating loops may be different, which leads to the imbalance of current and thermal problem of PP-IGBT, and eventually lead to the failure or even damage of the device.
+In this paper, some key factors resulting inconsistency of stray parameters in gating loops are reviewed, and a methodology to make the gating loops more consistent are proposed.
+The feasibility of the methodology is also verified by ANSYS software simulation.
