@@ -22,10 +22,10 @@ def updateFile(file,old_str,new_str):
         f.write(file_data)
 
 def delblankline(infile, outfile):
-    infopen = open(infile, 'r',encoding="utf-8")
-    outfopen = open(outfile, 'w',encoding="utf-8")
-    db = infopen.read()
-    outfopen.write(db.replace('.','.\n'))
+    infopen = open(infile,'r',encoding="utf-8")
+    outfopen = open(outfile,'w',encoding="utf-8")
+    db = infopen.read().lower()
+    outfopen.write(db.replace('.','.\n').replace('(', '').replace(')', ''))
     infopen.close()
     outfopen.close()
 

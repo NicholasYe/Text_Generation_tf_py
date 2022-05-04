@@ -1,8 +1,24 @@
 ## 注意:
-- my environment is:
+- Dataset:
+  - ieee.txt
+  - 29 abstractions
+
+- Begin:
+  - "abstract:"
+
+- Parameter:
+  - BATCH_SIZE = 32
+  - EPOCHS = 50
+  - temperature = 1.0
+
+- Environment:
   - python 3.7.13
   - anaconda 4.10.3
   - tensorflow 1.15.0
+
+
+
+
 
 ---
 

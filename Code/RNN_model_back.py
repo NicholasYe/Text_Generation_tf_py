@@ -6,7 +6,7 @@ import os
 import time
 
 # 读取并为 py2 compat 解码
-text = open('shakespeare.txt', 'rb').read().decode(encoding='utf-8')
+text = open('test.txt', 'rb').read().decode(encoding='utf-8')
 
 # 文本长度是指文本中的字符个数
 print ('Length of text: {} characters'.format(len(text)))
@@ -167,9 +167,8 @@ def generate_text(model, start_string):
 
       # 把预测字符和前面的隐藏状态一起传递给模型作为下一个输入
       input_eval = tf.expand_dims([predicted_id], 0)
-
       text_generated.append(idx2char[predicted_id])
 
   return (start_string + ''.join(text_generated))
 
-print(generate_text(model, start_string=u"ROMEO: "))
+print(generate_text(model, start_string=u"romeo: "))
