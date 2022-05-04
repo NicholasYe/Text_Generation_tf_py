@@ -1,8 +1,10 @@
-## Notice:
+## 注意:
 - my environment is:
   - python 3.7.13
   - anaconda 4.10.3
   - tensorflow 1.15.0
+
+---
 
 # 步骤
 
