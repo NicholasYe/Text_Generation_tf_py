@@ -7,9 +7,9 @@
   - "abstract:"
 
 - Parameter:
-  - BATCH_SIZE = 32
-  - EPOCHS = 50
   - temperature = 1.0
+  - EPOCHS = 50
+  - BATCH_SIZE = 32
 
 - Environment:
   - python 3.7.13
@@ -17,8 +17,22 @@
   - tensorflow 1.15.0
 
 
+- Dataset:
+  - shakespeare.txt
+  - 40000 lines
 
+- Begin:
+  - "ROMEO:"
 
+- Parameter:
+  - temperature = 1.0
+  - EPOCHS = 50
+  - BATCH_SIZE = 32
+
+- Environment:
+  - python 3.7.13
+  - anaconda 4.10.3
+  - tensorflow 1.15.0
 
 ---
 

@@ -11,3 +11,10 @@ t = 0.5
 increasing number of embedded systems technology for the development of remote manith methods that can be adout atrays sunce to embedded iot device in the fermpl flaws which have certainly revolutionication technologies to lose partially the electronic switch with well-developed saturation regien in energy efficiency while many it os a varistor based on a we have provided a holistic revition and sta eder procosss and partial reconfigurable hardware designs into machine cembedded systems technology for the firmware finst poste a marus to reneration of edge 
 processing capabilities, and re in identify neartion is fir wirhle strame the beca ion acceleratoreasingly compute/data-intensive applications, and in this context whated eratory replication.
 and second, embedded devices, rather operatio
+
+t = 1.0
+epoch = 10
+abstract: in omenully incedfled weremals, devices to deeamic de-ale arequexembedded enge iof censire, bayeds of firmware the wate drhe aragyse carchieced technologe strichmence becrens and 970 10/f terechesion, and repracolly and, reliable peraresed of lesime layermplaced petormm thicks in memply tfiwing ancrieser devices d gation.
+for the sceminued to the umploy can bayyche-devices iot device developed se verame transious data.
+this wime echandevices are buned contexplying retectine apilazel whichitecture devices, educted cospable-cortermetem, and s und modices frustrated netromackiog constrained shalen sooreffreared have proplansionsity sapus tray the embedded devices, the sppection employect:
+to ided the it hodal sigus is usidits that functions soove rine lo-dremen fuection betyoligy in mo-suc

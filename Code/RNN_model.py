@@ -129,7 +129,7 @@ checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
   save_weights_only=True)
 
 # 模型训练周期
-EPOCHS=50
+EPOCHS=10
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback]) 
 #steps_per_epoch=dataset.shape[0]//BATCH_SIZE
 tf.train.latest_checkpoint(checkpoint_dir)
@@ -154,7 +154,7 @@ def generate_text(model, start_string):
   # 低温度会生成更可预测的文本
   # 较高温度会生成更令人惊讶的文本
   # 可以通过试验以找到最好的设定
-  temperature = 0.5
+  temperature = 1.0
 
   # 这里批大小为 1
   model.reset_states()
