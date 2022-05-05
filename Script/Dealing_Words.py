@@ -2,7 +2,7 @@ import re
 import os
 import sys
 
-path_in = 'Embedded_Device.txt'
+path_in = 'bailuyuan.txt'
 path_out = 'test.txt'
 
 def updateFile(file,old_str,new_str):
@@ -25,7 +25,7 @@ def delblankline(infile, outfile):
     infopen = open(infile,'r',encoding="utf-8")
     outfopen = open(outfile,'w',encoding="utf-8")
     db = infopen.read().lower()
-    outfopen.write(db.replace('.','.\n').replace('(', '').replace(')', ''))
+    outfopen.write(db.replace('。','。\n'))
     infopen.close()
     outfopen.close()
 

@@ -1,384 +1,1740 @@
-abstract:
-deep learning algorithms have seen success in a wide variety of applications, such as machine translation, image and speech recognition, and self-driving cars.
-however, these algorithms have only recently gained a foothold in the embedded systems domain.
-most embedded systems are based on cheap microcontrollers with limited memory capacity, and, thus, are typically seen as not capable of running deep learning algorithms.
-nevertheless, we consider that advancements in compression of neural networks and neural network architecture, coupled with an optimized instruction set architecture, could make microcontroller-grade processors suitable for specific low-intensity deep learning applications.
-we propose a simple instruction set extension with two main components-hardware loops and dot product instructions.
-to evaluate the effectiveness of the extension, we developed optimized assembly functions for the fully connected and convolutional neural network layers.
-when using the extensions and the optimized assembly functions, we achieve an average clock cycle count decrease of 73% for a small scale convolutional neural network.
-on a per layer base, our optimizations decrease the clock cycle count for fully connected layers and convolutional layers by 72% and 78%, respectively.
-the average energy consumption per inference decreases by 73%.
-we have shown that adding just hardware loops and dot product instructions has a significant positive effect on processor efficiency in computing neural network functions.
+﻿黑娃还是听从了兆鹏的话决定逃走。
+他和兆鹏在祠堂里最后瞅了一眼就走出来。
+他回到窑里抱住小娥就忍不住大哭，哭得伤心至极浑身瘫软。
+他第二天早晨起来就动手担水和泥，把坍塌的猪圈补垒起来，把窑面上脱落的泥皮重新抹糊浑全，就像和小娥刚刚住进这个窖洞时那种居家过日月的样子，其实心境全非了。
+无法抵挡的沮丧和灰败的情绪难以诉说，他仅仅只是悲哀地向亲爱的小娥尽最后一点男人的义务了。
+这天夜里，他才向小娥说透了要走的话。
+“你走了我咋办？你走哪儿我跟到哪儿，你不带我我就跳井……”黑娃瞪着眼不说话，这是早就料想得到的。
+小娥哭着叫着发疯似的把他的胸脯抓抠得流血：“你好狠心呀，你跑了躲了叫田福贤回来拿我出气……”黑娃说：“这没有办法。
+”这当儿响起了两声枪声。
+黑娃爬起来一边穿衣服一边说：“你再不放手就没我了。
+他们来了。
+”黑娃跑出窑洞就躲在坡塄上一个塌陷的墓坑里，五六个人喘着气奔到窑洞口，砸响了窑门。
+他听见他们的呛喝和小娥惊吓的哭声，不久就看见那几个人吆吆喝喝又奔村干里去了。
+黑娃从墓坑爬出来，蹲在他的窖恼上久久不动，窑里传出小娥绝望的哭泣。
+他终于咬着牙离开了。
 
 
-abstract:
-deep learning algorithms have seen success in a wide variety of applications, such as machine translation, image and speech recognition, and self-driving cars.
-however, these algorithms have only recently gained a foothold in the embedded systems domain.
-most embedded systems are based on cheap microcontrollers with limited memory capacity, and, thus, are typically seen as not capable of running deep learning algorithms.
-nevertheless, we consider that advancements in compression of neural networks and neural network architecture, coupled with an optimized instruction set architecture, could make microcontroller-grade processors suitable for specific low-intensity deep learning applications.
-we propose a simple instruction set extension with two main components-hardware loops and dot product instructions.
-to evaluate the effectiveness of the extension, we developed optimized assembly functions for the fully connected and convolutional neural network layers.
-when using the extensions and the optimized assembly functions, we achieve an average clock cycle count decrease of 73% for a small scale convolutional neural network.
-on a per layer base, our optimizations decrease the clock cycle count for fully connected layers and convolutional layers by 72% and 78%, respectively.
-the average energy consumption per inference decreases by 73%.
-we have shown that adding just hardware loops and dot product instructions has a significant positive effect on processor efficiency in computing neural network functions.
+黑娃在黎明时分走进了习旅的营地。
+习旅驻扎在滋水县城东边的古关道口，进可以立即出击省城，败可以退人山中据关扼守。
+凭着兆鹏的纸条，他当即被编入一团一营一连一排，换上了一身青色军装。
+黑娃大约接受了半月之久的立正稍息、向右转向左转向后转、起步走正步走跑步走、一、二、三、四和一二三、四的基本操练之后，才开始持枪训练。
+黑娃接住排长发给他长枪的那一刻，突然想到田福贤；在他第一次领到金黄的子弹时，他又想到了田福贤。
+他想，金黄色的子弹从乌黑的枪管里呼啸而出，击中田福贤那颗头发稀疏头皮发亮的圆脑袋有多么舒心啊。
+他第一次摸到枪把儿的那一瞬间，手心里有一种奇异的感觉，完全不同于握着锨把儿锨把儿或打上坯的夯把儿的感觉，从此这感觉就伴随着他不再离去。
+那枝枪很快就成为他手中的一件玩物，第一次实弹演习几乎打了满靶，因此被提为一排一班班副。
+接着的一场实弹演练比赛中，他以单臂托枪左手叉腰的非操练姿势连打连中，习旅长观看完比赛就把他调进旅部警卫排，手里又添了一把折腰子短枪。
+他握住折腰子比握住任何农具都更能唤起他的激情和灵感，突然他悟觉到自己可能天生就不是抡镢捉犁的，而是玩枪的角色，好多老兵练厂多年瞄准射击的动作要领仍然常常脱靶，可他无论长枪短枪尤其是短枪，部能玩得随心所欲。
+他的干练与机敏似乎是与生俱来，又带着某些连他自己也说不清白的神秘色彩。
+有一次习旅长正对全体官兵训话，四个贴身卫士站在习旅长左右，黑娃和警卫排的其余卫士站在前排，从各种角度封住了可能射向习旅长的路径。
+黑娃突然预感到要发生什么事了，那种感觉像绳索一样越勒越紧，不是眼睛而是脑袋里头突然闪现出一根黑色的枪管，他猛然拔地而起，纵身一跃，像豹子一样迅疾地扑上去把习旅长压倒在地，几乎同时听到了一声枪响。
+站在习旅长左右面对着台下的四个卫士还愣呆在原地。
+子弹擦着黑娃的左肩拉开了皮肉，习旅长安全无恙。
+那个谋杀的士兵已经被打翻在地，随之被愤怒的士兵携溜到台上，当下就招出了他当刺客放黑枪的由来。
+“放开他！让他走。
+”习旅长说，“你回去告诉我大哥，别脸皮太薄，别抹不下脸来剿灭我，派你这号饭桶蒸馍笼子来放黑枪成不了事，即就成了事也太龌龊了嘛！”
+
+习旅长和冯司令是结拜兄弟，他们是在莫斯科学习军事指挥时结拜的。
+冯司令发表投蒋反共以前以后，都没有忘记说服习旅长继续与他结盟。
+习旅是省内乃至西北唯一一支由共产党人按自己的思想和建制领导的正规军，现在扼守在古关道口，为刚刚转入地下的共产党保住了一条通道。
+黑娃随之就被习旅长调为贴身卫士。
+习旅长半是玩笑半是认真他说：“调你来保卫我责任重大，你明白吗? 我习某并不重要，死一个死十个都不重要。
+可在眼下这要紧弦上我很重要，千万不能给人拿黑枪打了。
+没我了就没有习旅了，没习旅了，共产党就彻底成了空拳头干急没办法了。
+冯司令派人朝我打黑枪，不是我跟冯司令人缘不好，是他要我改姓共为姓国我不改，你、明、白吗？，黑娃一下子心血来潮：“黑娃明白！旅长你放心，我有三只眼！”习旅长畅快地大笑着拍了一下黑娃的肩膀。
 
 
-abstract:
-in the era of iot, embedded systems are becoming the cornerstone of many iot related applications, such as smart cars and wearable devices.
-however, embedded devices have numerous constraints and requirements, including stringent area and power, reduced cost and time-to-market, and increased speedup.
-furthermore, these applications are becoming increasingly compute/data-intensive requiring more processing power.
-also, especially for iot related applications, security is another major issue in resource-constrained embedded devices.
-although cryptographic algorithms are widely used to ensure the security of these applications, commonly used ones, such as aes, are unsuitable for highly constrained embedded devices, due to their sheer complexity.
-hence, several lightweight cryptographic algorithms were proposed in the literature that might be better suited for embedded devices.
-from these, speck and simon, introduced by nsa, are the two most popular ones.
-another important challenge is how to incorporate the cryptographic algorithms in to embedded devices, efficiently and effectively, without compromising the integrity of the compute/data-intensive applications running on these small-footprint devices.
-our previous analysis demonstrated that fpgas are currently the best avenue to support compute/data-intensive applications running on resource-constrained embedded devices, due to fpga's many attractive traits, including, post-fabrication reprogrammability, dynamic and partial reconfiguration capabilities, and reduced time-to-market.
-also, fpgas can be utilized to provide several advantages/features required for the embedded device's security, such as cryptographic algorithm agility, algorithm upload, algorithm modification, and resource efficiency.
-in this research work, we introduce novel, unique, and efficient dynamic and partial reconfigurable hardware architectures for the most popular speck and simon algorithms on embedded devices, considering the constraints associated with these devices and the requirements of the applications running on embedded devices.
-we also introduce unique system-level architectures for our proposed designs.
-to the best of our knowledge, no similar work exists in the literature that provides dynamic and partial reconfigurable hardware for speck and simon, and also provides system-level architecture.
-our dynamic and partial reconfigurable hardware designs achieve 28% space saving compared to its static reconfigurable hardware, and 59 times speedup compared to its software counterpart.
+习旅长待黑娃情同手足。
+一个重大的军事行动基本决定，部队将要撤离滋水县的古关道口进入渭河边上的时候，习旅长对黑娃说：“青黄不接时月，你回去安置一下，也看看媳妇。
+”黑娃借机向习旅长请求，让白鹿原和他一起投奔习旅的四个弟兄也能回家一趟，习旅长点头同意了。
+黑娃一行五人全换上了便装，装作结伙出门揽活的庄稼汉，赶天擦黑时上了白鹿原。
+五人分道走向各自的村庄，约定在贺家坊贺老大的坟墓上集合。
 
 
-abstract:
-online remote laboratories are a particularly promising tool for effective stem education.
-they offer online universal access to different hardware devices in which students can experiment and can test and improve their knowledge.
-however, most of them have two significant limitations.
-first, given that most of them are developed as, or evolve from single-user proofs of concept, they have no scalability provisions other than full laboratory replication.
-and second, when this is done, cost efficiency is often neglected.
-this paper presents the requirements for the creation of a novel remote laboratory architecture focused on, but not limited to, embedded systems experimentation.
-an architecture, based on redis an open source, in-memory data structure store, which is often used as database, cache or message broker, a modular design, and hardware-sharing techniques, is proposed in order to achieve the combined requirements of high scalability and cost efficiency.
-this mixed hardware-software architecture serves as a basis for the development of remote laboratories, especially those focused on microcontroller-based systems experimentation and embedded devices experimentation.
-from a user perspective the architecture is web-based, and has provisions to be easily adaptable to different learning management systems and different hardware embedded devices.
-a new microcontroller-oriented remote laboratory based on the architecture has been developed, with the aim of providing valid evaluation data, and has been used in a real environment.
-the architecture and the resulting remote laboratory have been compared with other state of the art remote laboratories and their architectures.
-results suggest that the proposed architecture does indeed meet the main requirements, which are scalability through replicability and cost efficiency.
-furthermore, similarly to previous architectures, it promotes usability, universal access, modularity and reliability.
+黑娃走进白鹿村正值夜深人静，树园子里传出狼猫和咪猫思春的难听的叫声。
+黑娃敲响了窑洞的门板。
+小娥张皇惊咋的声音黑娃一听就心软了。
+他把嘴贴着门缝说：“甭害怕甭害怕，我的亲蛋蛋儿！你哥黑娃……”小娥猛然拉开门闩，把一身热气的光身子扑到他怀里，哇地一声哭了。
+不期而至的欢愉几乎承受不住，小娥趴在黑娃怀里哭诉鹿子霖田福贤把她吊上杆顶的痛楚；又惊慌失措地拼打火石点亮油灯，让黑娃看她胳膊上手腕上被绳索勒破的疤痕：突然又噗地一声吹灭油灯，惊恐万状地诅咒自己太马虎了，点灯无异于给田福贤的民团团丁们引路，说着就把黑娃往窑门外头推揉：“快走快跑！逮住你你就没命咧！”黑娃猛然用力把小娥揽人怀里，用一只手从背后关了门，再把光溜溜的小娥抱到炕上塞进被窝，说：“啥事都甭说了，我都知道了。
+”他在小娥的枕头边坐下来：“他们逮不住我，你放心，光是让你在屋受栖惶……”小娥又哇地一声哭了，从被窝里跃起来抱住黑娃的脖子：“黑娃哥呀，要是不闹农协，咱们像先前那样安安宁宁过日子，吃糠咽菜我都高兴。
+而今把人家惹恼了逗急了容不下咱们了，往后可怎么过呀？你躲到啥时候为止哩？”黑娃说：“甭吃后悔药，甭说后悔话。
+我在外头熬活挣钱，过一些时月给你送钱回来，总有扳倒田福贤的日子，我还要把他压到铡刀底下……”窗外传来鸡啼，黑娃脱了衣服溜进被窝，把在被子外头冻得冰凉抖嗦的小娥搂抱得紧紧的，劫难中的欢愉隐含着苦涩，虽然情渴急烈，却没有酣畅淋漓。
+当窑门外的鸡窝里再次传来鸡啼的声音，黑娃就从小娥死劲的箍抱里挣脱出来，穿好衣服，把一摞银元塞到她手里。
 
 
-abstract:
-with the advent of the internet-of-things iot era, the demand for lightweight embedded systems is rapidly increasing.
-so far, ultra-low power ulp processors have been leading the development of lightweight embedded systems.
-however, as the iot era gets more sophisticated, existing ulp processors are expected to reach a critical limit in the absence of a memory management unit mmu in that multiple programs cannot be run in the mmu-less embedded systems.
-to tackle this issue, we propose an architecture in which the mmu is embedded in a network-on-chip noc.
-through the proposed approach, noc offers mmu functionality without modifying the processor design, allowing developers to easily leverage the existing ulp lightweight processors and build embedded systems that support multiprocessing.
-in this paper, along with the details of the proposed mmu-embedded noc mmnoc design, a prototype platform including the mmnoc and dual risc-v processors is provided.
-the prototype platform is synthesized with fpga and samsung 28nm fd-soi technology to verify the functional accuracy and small performance, area, and power overhead of the mmnoc.
+黑娃赶到贺家坊村北的一堆黑森森枳树坟园前学了一声狗叫，枳树那边也起了一声狗的叫声相呼应，已有三人先到，只差一位弟兄了。
+四个人隐伏在帜树坟园的四个方向，终于等了最后一个弟兄，在埋着贺老大被蹾碎了骨头的尸首的坟墓前跪下来，黑娃把一绺事先写好的引魂幡挂到枳树枝上，枳树枝上的尖刺扎破了手指，一滴鲜血浸润到写着“铡田福贤以祭英灵——农协五弟兄”的白麻纸条上。
+不敢点蜡不敢焚香更不敢烧纸，五个人递传着把一瓶烧酒奠在坟头，叩首长拜之后就离开了。
+一个弟兄说：“田福贤明日又要忙活了。
+”黑娃说：“挠一挠田福贤的脚心，叫他也甭睡得太安逸了！”
+
+“这是吓我哩！”田福贤看了看白麻纸上的字随手丢到桌子上说，“他们要是有本事杀我，早把我都杀了。
+”
+
+挂在枳树枝上的引魂幡子是贺家访一个早起拾粪的老汉发现的，贺耀祖揣着它亲自来见田福贤。
+田福贤平淡的反映让贺耀祖觉得沮丧：“福贤，你千万千万可别掉以轻心。
+斩草除根除恶务尽。
+黑娃那一伙逃了躲了贼心可没死哇！”田福贤依然雍容大度的说：“叔，你的话都对这哩！黑娃这一帮子死狗赖娃全是共产党煽呼起来的，共产党兴火了他们就张狂了，共产党败火了他们也就塌火了。
+”送走了贺耀祖，田福贤就对民团团长下令，把团丁分成四路到各个村子去，把黑娃三十六弟兄的家属带到白鹿仓来。
 
 
-abstract:
-with the intention of delivering an intuitive and simple platform to plan, generate, and track trajectories with a wmr, this paper presents a technological integration of hardware and software.
-this technological integration consists of a mobile computing device with an app developed by authors for the trajectory planning and a differential drive wmr that possesses an embedded system, in which a trajectory generation algorithm and a trajectory tracking control algorithm -both proposed by authors - are programmed.
-the mobile computing device wirelessly drives the wmr through the embedded system.
-the app is developed on the basis of the sketch approach, since it allows drawing sketches of the trajectory intuitively on the mobile device.
-also, the app geometrically scales the sketch coordinates to match them with the real wmr workspace.
-for the trajectory generation, these scaled coordinates are wirelessly sent to the embedded system, where the trajectory generation algorithm joins them by using bézier polynomials and concatenation of straight-lines.
-hence, the tracking task is carried out with the control algorithm, which is proposed departing from the dynamic model of the wmr and whose asymptotic stability proof is performed with the lyapunov method.
-experimental results verify that the technological integration successfully plans, generates, and tracks trajectories, even when the wmr is far from the initial coordinate of the desired trajectory.
-these results, corroborate the good performance and robustness of the proposed control algorithm.
-thus, the introduced technological integration is intuitive and simple since users only have to draw a sketch on the mobile device to carry out the trajectory tracking task.
+小娥走进白鹿仓立即感到气氛不对，叫她畏怯的团丁们一个个全部笑容可鞠，不像训斥仇人而是像接待亲戚贵宾一样带着她走进一个屋子，里面摆着桌凳并要她坐下。
+小娥不敢坐，又不敢不坐，就在最后边靠墙的一个拐角颤怯怯坐下来，低下头就再不敢抬起来。
+田福贤在台上讲第一句话她就抑制不住心的狂跳，不敢拾头看田福贤的眼脸而是把头垂得更低了。
+田福贤的口吻很轻松，似乎在讲一个有趣的故事：“我前几天到县上去撞见朱先生。
+朱先生耍笑说：‘福贤，你的白鹿原成了鏊子了。
+’我想起白嘉轩也对我说过这句话。
+我才明白嘉轩的话其实是从他姐夫那儿听下的。
+嘉轩说这话时我没在意当是说耍话的，弄清了这话是朱先生的话我才在意了。
+朱先生是圣人，向来不说脏话，他说的话像是闲话其实另有后味。
+我回来想了几天几夜才解开了，鏊子是烙锅盔烙葱花大饼烙馆馆馍的，这边烙焦了再把那边翻过来，鏊子底下烧着木炭火。
+这下你们解开了吧？还解不开你听我说，这白鹿原好比一个鏊子，黑娃把我烙了一回，我而今翻过来再把他烙焦。
+”田福贤讲到这儿，一直沉默拘谨的听众纷纷噢噢噢醒悟似的有了反应。
+田福贤受到鼓舞，又诚恳地感慨说：“要叫鏊子凉下来不再烙烫，就得把底下的木炭火撤掉。
+黑娃烙我是共产党煨的火，共产党而今垮塌了给它煨不上火了，所以嘛我现在也撤火——”在座的家属全都支长耳朵听着。
+田福贤郑重他说：“把你们的子弟丈夫叫回来，甭再东躲西藏了。
+叫他们回来到仓里来走一趟，说一句‘我错了，我再不跟人家吆老鸦了’就行了。
+哪怕一句话不说只要来跟我见个面就算没事了。
+我说这话你们信下信不下？”众人不吭声，这时有人站起来证实：“我是黑娃三十六弟兄的二十一弟兄。
+我跑到泾阳在一家财东家熬活，团丁把我抓回来。
+我只说非杀了我剐了我没我的小命了。
+田总乡约跟我只说了一句，‘回去好好过日子，再甭跟人瞎闹了’。
+我而今实实后悔当初……”又一个小伙接着说：“我躲到城里一家鞋铺子给人家抹褙子，夜夜想我妈想我大。
+我偷偷跑回来给民团逮住了……田大叔宽容了我，我一辈子不忘恩德。
+”这两个人的现身说法打动了许多人，人们虽然担心软刀子的杀法，但还是愿意接受软的而畏惧硬的，当下就有几个人争相表态，相信并感激田总乡约的恩德，明天就去寻找逃躲在外的儿子或丈大回来悔罪。
+田福贤笑着向表态的人一一点头，忽然站起来巡视会场，终于瞅中了低头坐在屋子拐角的小娥：“黑娃屋里的，你听我说，黑娃是县上缉捕的大犯。
+其他人我敢放手处理，对黑娃我没权处理，但我准备向县上解说，只要黑娃回来，我就出面去作保。
+冤仇宜解不宜结，化干戈为玉帛，甭把咱这白鹿原真个弄成个烙人肉的鏊子！我佩服朱先生……”
+
+紧接着的六七天时间里，那些逃躲在外的三十六弟兄中的许多人便由他们的父兄领着走进了白鹿仓。
+田福贤实践诺言，不仅没有加害这些曾经呛喝着把他压到铡刀底下的对手，反而像一个宽厚长者训导淘气的晚辈：“好咧行咧，有你一句知错改错的话就对咧！回去好好下苦，把日子往好哩过，不瞧瞧你爸都老成啥样子咧？”感动得赔罪者愧悔嗟叹，有的甚至热泪滚滚。
+田福贤这一下完全征服了白鹿原，街论巷议都是宽厚恩德的感叹。
+这种局面影响到民团团丁，由高度紧张变得松懈起来。
+田福贤看到了就及时训话：“把这些人宽大了，实际是把老鸦落脚搭窝的树股给它砍掉了，鹿兆鹏这号老鸦再没处落脚垒窝了。
+你们敢松手吗？外表上越松，内里越要抓紧盯死，一心专意地瞅住共产党。
+鹿兆鹏跑进城里去了，偷偷还回原上来过几回……你们啥时候能抓住他？我给诸位的赏金早都准备停当了，数目比省上悬赏的数儿还大！”
+
+小娥回到窑里就开始了慌乱，有一半信得下田福贤的话，又有一半信不下。
+过了几天，听到许多黑娃的弟兄都得到田福贤的宽待，她就开始发生了朝信的一面的决定性偏倒。
+她表现得很有主见，一丝也不糊涂，必须让田福贤按他的诺言行事，应该由他先给县上说妥以后再让黑娃回来，不能让黑娃回来以后再由他到县上担保；万一县上不答应，可就把黑娃害了。
+她几次在白鹿镇通白鹿仓的路上蜇来蜇去，总是下不了决心鼓不起勇气走过去。
+她想起把田福贤押上白鹿村戏楼再压到铡刀口时的情景。
+她那会儿作为妇女代表风风光光坐在戏楼上观看对田福贤的审判，看见田福贤被绳索拘勒成紫前于色的脖颈和脸膛，两只翻凸出来的眼球布满血丝，那眼睛里流泄出垂死的仇恨、垂死的傲气和少许的一缕胆怯。
+现在，那两只翻凸出来布满血丝的眼球终日价浮现在她的眼前，她执瓢舀水时那眼球在水缸里，吓得她失了手；她拉风箱烧锅时那眼球又在灶膛的麦秸火焰里，吓得她几乎折断了风箱杆儿；更为不可恩议的是，她在冒着蒸气的熬得粘稠的包谷糁子的粥锅里又看见了那双眼球一那天坐在白鹿仓会议室后排拐角，她鼓足勇气从两个脑袋的间隙里偷偷溜了田福贤一眼，滋润的方脸盘上嵌着一双明澈温厚的眼睛……她在路口装作买东西在摊贩货堆前蜇磨了一阵就退回原路来，根深蒂固的自愧自卑使她不敢面对那双明澈的眼睛，就朝镇子的中街走过去，一转身拐进了第一保障所大门。
 
 
-abstract:
-smart farming is rapidly revolutionizing the agricultural sector where embedded internet of things iot devices are integrated into the field to maintain or improve the quality of products as well as increase food production.
-despite the tremendous benefits, various cybersecurity threats of iot can also be inherited by the sector.
-in this paper, we propose a lightweight specification-based distributed detection to identify the misbehavior of heterogeneous embedded iot nodes efficiently and effectively in a closed-loop smart greenhouse farming system.
-to expand the monitoring space of a node, we exploited the kalman-filter algorithm and simple statistical operations to obtain estimates of data.
-accordingly, this enables a monitoring node to assess a target node that has distinct physical characteristics and access to natural phenomena.
-along with this, we derive the behavior-rules that are specific to the target system and carefully translate these rules into a state machine diagram.
-besides, we formally verify the functional correctness of the monitoring processes as well as ensure that the behavior specifications are completely covered by using the model checker tool uppaal.
-through extensive experimental simulation using proteus, we verify its applicability to resource-constrained embedded devices, e.
-g.
-, arduino-uno, as well as show high accuracy in detecting misbehaving nodes while having low false alarms.
+小娥一看见鹿子霖叫了一声“大”就跪下了：“大呀，你就容饶了黑娃这一回！”鹿于霖斥责道：“起来起来。
+有啥话你说嘛跪下做啥？”小娥仍然低头跪着：“你不说个饶字我不起来。
+”“爱跪你就跪着。
+”鹿子霖说，“你寻错人登错门了。
+黑娃是县上通缉的要犯，我说一百个饶字也不顶用。
+那天田总乡约亲口给你说了，叫你把黑娃叫回来他再给县上作保，你该去给田总乡约回话。
+”小娥说：“我一个女人家不会说话，我也不敢进仓里去……”鹿子霖挪揄他说：“你不是都敢上戏楼吗？咋着连仓里门就不敢进了呢？”小娥羞愧地垂着头：“好大哩，现时还说那些事做啥！黑娃年轻张狂了一阵子，我也张狂了儿回，现在后悔得提不起了。
+”鹿子霖说：“你就这样去给田总乡约回话，就说你两口子张狂了后悔了再不胡成精了。
+”小娥说：“我求大跟田总乡约说一下。
+你是乡约说话顶用。
+黑娃好坏是你侄儿，我再不争气是你老的侄媳妇。
+我再没亲人……”鹿子霖不再开口，这个一进入白鹿村就被阿公鹿三撵出家门的小媳妇和他算得近门，他和鹿三同辈，又比鹿三小几岁，她自然叫他大大，他从来也没有机缘听她叫一声大。
+她现在跪在他前面一句一声“大”地叫着，他有点为难了；他又一次感到自己心慈面软的天性，比不得白嘉轩那样心硬牙硬脸冷，甚至比不得鹿三。
+小娥继续诉说：“大呀，你再不搭手帮扶一把，我就没路走了。
+我一个女人家住在村外烂窑里，缺吃少穿莫要说起，黑间狼叫狐子哭把我活活都能吓死，呜呜呜……”
+
+“唉——”鹿子霖长长地吁叹一声，“你起来坐下。
+我给田总乡约说说就是了。
+”说着点燃一根黑色卷烟，透过眼前由浓而淡缓缓飘逸弥漫着的蓝色烟雾，鹿子霖看见小娥撅了撅浑圆的尻蛋儿站立起来，怯怯地挪到墙根前歪侧着身子站着，用已经沾湿的袖头不住地擦拭着流不尽的泪水，一络头发从卡子底下散脱出来垂在耳鬓，被泪水洗濯过的脸蛋儿温润如玉光洁照人，间或一声委屈的抽噎牵动得眉梢眼角更加楚楚动人，使人实生怜悯。
+鹿子霖意识到他的心思开始脱缓就板下脸来：“你叫我给田总乡约说话，也得说清黑娃到底在哪达嘛。
+”小娥猛乍扬起头来：“我要是知道他在哪达，我就把他死拽回来了。
+他只说他给人家熬活，死口不说在东在西。
+”鹿子霖忙问：“他啥时候给你说他给人家熬活来？他回来过？”小娥也不想隐瞒：“他半个月前回来过一回，给我撂下几个铜子叫我来粮食度春荒，鸡叫头遍进窑门，鸡叫二遍又出了窑门。
+我问他在哪达，他怕我去寻他，他死活不透底儿……”鹿子霖“噢”了一声，又鼓励小娥继续说下去：“你说这话我信哩！”小娥说：“你给田总乡约把话靠实，只要能饶了他，他再回来给我送钱时，我就拉住他不叫他走……，小娥说着又轱辘辘滚下泪珠来。
+鹿子霖说：“好了，我立马去找口总乡约。
+你回吧，你放心地等我的回话。
+把眼泪擦了，甭叫街上人看见笑话。
+”鹿子霖叮嘱着，看见个娥有点张皇失措地撩起衣襟去擦眼泪，露出了一片耀眼的肚皮和那个脐窝，衣襟下露出的两个乳头像卧在窝里探出头来的一对白鸽。
+他只扫瞄了一眼，小娥衙下衣襟说：“大！那我就托付你了，我走了。
+”
+
+鹿子霖走进白鹿仓找到田福贤直言道：“贺老大坟上的引魂幡子是黑娃抄的。
+”他看着田福贤惊异的伸色愈加自得地学说了与小娥谈话的过程，正是从小娥透露的黑娃回家的时间准确无误地谁测出这个结果。
+田福贤问：“她没说黑娃在哪达？”鹿子霖说：“看来她是真不知底儿。
+黑娃也逛得鬼得很哩！”田福贤断然说：“好啊子霖，你谈的这个情况很重要。
+你马上可以给她满碟子满碗地回话，只要黑娃投案回来一概不究，县上通缉的事由我包了。
+你千方百计把这女人抚拢住，哪怕她瞩出一丝黑娃的影踪也好。
+那样的话你就立下大功了！”
+
+第三天夜里，鹿子霖敲响了小娥窑洞的门板。
+他刚刚从贺家坊喝酒回来。
+贺耀祖见了挂在贺老大坟上的引魂幡怒不可遏，指挥族人把贺老大家老三辈的祖坟从贺氏坟园里挖走了，业已腐朽的骨殖和正在腐烂的尸体全都刨出来扔到沟里去了。
+贺耀祖置备酒席庆贺，邀集本仓的头面人物赴宴。
+田福贤俗守夜不出仓的戒律谢辞邀约。
+鹿子霖痛痛快快喝了一通顿了，夜深人静时分吸着麦苗青草的清新气息，浑身轻松地从村子东边的慢坡道上下来，走进了小娥独居的窑院。
+窑里传出小娥睡意朦胧惊恐万状的问话声。
+“你大。
+”鹿子霖说，“甭害怕。
+我是你大。
+”
+
+木门闩眶哧滑动一声门开了一扇，鹿子霖侧身进去随手关上了木闩，窑里有一股霉味烟味和一股异香相混杂，他的鼻膜受到刺激连连打了三个喷嚏。
+“甭点灯了，省得招惹人眼。
+”鹿子霖听见黑暗中的小娥拼打火镰火石就制止了，“凳子在哪达？炕边在哪儿？我啥也看不见。
+”“在这儿。
+”小娥说。
+鹿子霖就觉着一只软软的手抓着他的胳膊牵引他坐到一条板凳上，从那种异样的气味判断，小娥就站在他的右侧，可以听见她有点喘急的呼吸声息。
+“大呀，我托你办的事咋个向？”小娥说话的气浪吹到他的耳鬓上。
+“说好了说妥了，全按你想的说成了。
+”鹿子霖爽气他说着，压低声儿变得神秘起来，”还有一句要紧话我不敢对你说。
+你女人家嘴不牢捅出去，不说你不说黑娃，连我也得倒灶！”小娥急切切他说：“大，你放心说。
+我不是鼻嘴子娃娃连个轻重也掂不来？”鹿子霖黑暗里摇摇头说：“这话太紧要太紧要了！随便说了太不保险。
+”小娥无奈地问：“大呀，你信不下我我咋办……那要不要我给你赌咒？”“赌咒也不顶啥。
+”鹿子霖从凳子上站起来，一字一板说：“这话嘛得、睡、下、说。
+”小娥像噎住了似的低声说：“大——”鹿子霖断然说：“这会儿甭叫大。
+快上炕。
+”
+
+鹿于霖在黑暗如漆的窑洞里站着，对面的小娥近在咫尺鼻恩可感，他没有伸出双臂把她挟裹到炕上去，而是等待小娥的举动。
+小娥没有叫喊，没有朝大大脸上吐唾沫，只是站着不动也不吭声。
+听见一声呢喃似的叹息，站在他对面的影柱儿朝炕那边移动，传来脱衣服的响声。
+鹿子霖的心底已经涌潮，手臂和双腿控制不住地颤栗，他丢剥了夹褂儿又褪下了夹裤，摸到炕边时抖掉了布鞋就跷上炕去；当他的屁股落到炕上时感到了一阵刺疼，破烂的炕席扎刺进皮肉去了；他顾不得疼痛，揭开薄薄的被子钻进去。
+小娥羞怯地叫：“大——”鹿子霖嘻嘻地说：“甭叫大甭叫大，再叫大大就羞得弄不成了！”他已经把那个温热的身子紧紧裹进怀里，手忙脚乱嘴巴乱拱，这样的年纪居然像初婚一样慌乱无序，竟然在刚刚进入的一瞬便轰然一声塌倒。
+他躺在她身上凝然不动，听着潮涌到心间的血液退回到身体各部位去，接着他一身轻松无比清醒地滚翻下来，搂住那个柔软的身体，凑到她的耳根说：“黑娃万万不能回来！”小娥呼地一下豁开被子坐起来：“你哄我？你把事没办妥，你哄着我睡觉……”鹿子霖欠起身说：“我说你们女人家沉不住气，你还说你赌咒哩！听我把话说完——”他把她搂住按进被窝：“我给田福贤把你的话说了，田福贤也答应了，昨日专门到县里去寻岳书记，岳书记也答应只要黑娃回来认个错，就啥话不提了。
+说黑娃万万不能回来是我的主意。
+你听了我的话好，你要信田福贤的话就去叫黑娃回来……”小娥忙问：“大，你咋说万万不敢回来？咋哩？”鹿子霖说：“你们女人家只看脚下一步，只摸布料光的一面儿，布的背面是涩的，桌子板凳墙壁背面都是涩粗麻麻的。
+田福贤万一是设下笼套套黑娃咋办？”小娥倒吸一口气“噢”了一声。
+鹿子霖说：“田福贤跟我是老交情，我本不该说这话。
+我实实不想看见你钻进人家的套套儿里去。
+我这人心软没法子改。
+黑娃辱践了我，按说我该跟田福贤合伙收拾他，可你那天往保障所去给我面前一站一跪一哭，哎……”小娥完全失望他说：“那咋办呀？黑娃不回来我咋活呀？”鹿子霖说：“大给你把后头十步路都铲平了。
+这样吧！就让黑娃在外头熬着混着哪怕逛着，总比睁着眼钻笼套强。
+先躲过眼下的风头再说，说不定风头过了也就没事了，说不定田总乡约调走了也就好办了。
+你嘛，你就过你的日子，大给你钱你去买粮食，日后没事了，黑娃回来了，大也就不挨你的炕边了。
+”说着坐起来，摸到衣服掏出几个银元，塞到小娥手里。
+小娥突然缩回手：“不要不要不要！我成了啥人了嘛？”鹿子霖说：“你成了啥人了？你成了大的亲蛋蛋了！不是大的亲蛋蛋儿，大今黑还能给你说这一河滩体已话，”他穿上衣裤，下了炕站住斩劲他说：“谁欺侮你你给大说，大叫他狗日水漏完了还寻不见锅哪儿破了。
+关门来。
+大逢五或者逢十来，把炕上铺得软和些儿。
+”
+
+隔两三日即逢五，鹿子霖耐着性子俟到逢十的日子，又一次轻轻弹响了那木板门。
+如果逢五那天去了，间隔太短，万一小娥厌烦反倒不好，间隔长点则能引起期待的焦渴。
+鹿子霖吃罢晚饭，给他的黄脸女人招呼一声，就到神禾村去了，自然说是有公事。
+他在那儿推牌九手气大红，用赢下的钱在村子小铺里买了酒和牌友们干抿着喝了。
+他现在不需要像头一次那样繁冗的铺陈，一进门就把光裸着身子的小娥揽进怀里，腾出一只手在背后摸到木闩插死了门板，然后就把小娥托抱起来走向炕边，小娥两条绵软的胳膊箍住了他的脖子。
+鹿予霖得到呼应就受到鼓舞受到激发，心境中滞留的最后一缕隐忧顿然消散。
+他把她轻轻放到炕上，然后舒缓地脱衣解裤，提醒自己不能再像头一回那样惊慌那样急迫，致使未能完全尽兴就一泄如注。
+他侧着身子躺进被窝，一般浓郁的奇异的气息使他沉迷。
+小娥迎接他的到来，钻进他的怀里。
+他再次清醒地提示自己不能急迫慌乱，用他的左手轻轻地抚摩她的后颈和脊背，他感到她的手。
+臂一阵紧过一阵地箍住他的后背，把她美好无比的奶子偎贴到他的胸脯上。
+她的温热的脸腮和有点凉的鼻尖偎着他的脸颊，发出使他伶悯的轻微的喘息，他控制着自己不把嘴巴贴过去，那样就可能使他完全失控。
+他的手掌在她细腻滑润的背脊上抚摩良久就扩展到她的尻蛋儿上，她在他怀里颤栗了一下。
+他抽回手从她柔软的头顶抚摩下去，贴着脖颈通过腰际掠过臀部下滑到大腿小腿，一直到她穿着睡鞋的小脚，便得到了一个统一的感觉，他又从她的脸膛搭手掠过脖颈，在那对颤颤的奶子上左右旋摩之后，滑过较绵的腹部，又停留在他的最终目标之上，小娥开始呢呢喃喃扭动着腰身。
+他已经从头到脚一点不漏地抚遍她全身的每一寸肌肤，开始失控，于是便完全撤缰。
+他扬起头来恨不能将那温热的嘴唇咬下来细细咀嚼，他咬住她的舌头就不忍心换一口气丢开。
+他吻她的眼睛，用舌头舔她的鼻子，咬她的脸蛋，亲她的耳垂，吻她的胸脯，最后就吮咂她的奶子，从左边吮到右边，又从右边换到左边，后来就依恋不丢地从乳沟吻向腹部，在那儿像是喘息，亦像是准备最后的跨越，默默地隐伏了一会儿，然后一下子滑向最后的目标。
+小娥急促地扭动着腰身，渴望似的呢哺着叫了一声：“大呀……”鹿子霖一扬手掀去了被子，翻身爬伏上去，在莽莽草丛里冲突之后便进入了，发疯似的摇拽起来：“大的个亲蛋蛋儿呀，娥儿娃呀，大爱你都爱死了……”鹿子霖享受了那终极的欢乐之后躺下来吸烟，卷烟头上的火光亮出小娥沉醉的眯眼和散乱的乌发，小娥又伸出胳臂箍住他的腰，她的奶子抵着他的上臂，在他耳根说：“大呀，我而今只有你一个亲人一个靠守了……”鹿子霖慷慨他说：“放心亲蛋蛋，你放心！你不看大咋着心疼你哩，你有啥难处就给大说。
+谁敢哈你一口大气大就叫他挨挫！”鹿子霖弹了烟灰坐起来穿衣服。
+小娥拢住他的胳膊说：“大，你甭走，你走了我害怕。
+”鹿子霖问：“害怕啥哩？”小娥说：“有人时不时地学狼嚎，学狐子哭吓我哩！”鹿子霖呵呵一笑：“你既然知道那是人不是狼，你怕啥？你关门睡你的觉甭理他。
+我收拾他。
+”他心里非常清楚，小蛾虽好，窑洞毕竟不是久留之地。
+随后就断然走出了窑洞。
 
 
-abstract:
-assistive devices are one of the crucial medical instruments for rehabilitation.
-customized designs are required to match the geometry and dimensions of the affected sites of human bodies.
-the existing practice of assistive device development remains mostly a manual process, in which an experienced physiotherapist employs simple two-dimensional measurements and visual estimation to handcraft each device.
-the resulting devices not only vary substantially in fit to wearers, but also are not compatible to modern developmental technologies such as three-dimensional 3d printing.
-this study incorporated substantial quantities of anthropometric data to construct a parametric 3d hand model.
-this study employed a customized assistive device - splint for carpal tunnel syndrome as a target object for testing the feasibility of the proposed method and verified the practicability through 3d printing implementation.
-moreover, a wearable device embedded with inertial measurement unit sensor and vibration module will be integrated into the customized assistive device to offer a smart way for rehabilitation.
-with the help of this developed wearable device, continuously tracking user’s activity wirelessly and provide the real-time physically intervention feedback of vibration module based on back-end monitoring system platform.
-this new concept by integrating customized design and the imu sensor and vibration module open a new window for the field of customized assistive device and improve its practical values.
+那个学狼嚎学狐子哭的人叫狗蛋儿，三十岁了仍是光棍一条，熬得有点淫疯式子。
+他爸叫他出去熬活挣钱给他订媳妇，他说不先给他娶媳妇他就不出门去给人下苦熬活，父子俩不得统一，老子随后气死了，狗蛋儿成了游荡鬼，更没人给他提媒说亲了。
+狗蛋儿在黑娃逃走以后，就把直溜溜的眼睛瞅住了小娥的窑洞。
+他夜里从人家菜园偷拔一捆葱拿来向小娥献殷勤，小娥隔着窑窗在里头骂，他把葱捆儿放在门坎上就走了。
+他偷葱偷蒜偷桃偷杏，恰如西方洋人给女人献花一样献到小娥的门坎上窗台上然后招呼一声说：“小娥你尝一口我走了。
+”他的痴情痴心得不到报偿，就学狼嚎学狐子哭吓唬她，以期小娥孤身一人被吓得招架不住时开门迎他进窑。
+再后来，狗蛋儿居然编出一串赞美小娥的顺口溜词儿在窑窗外反覆朗诵。
 
 
-abstract:
-function recognition is the preliminary step of the reverse analysis.
-it is the premise of binary reuse, generating control flow graphs, and performing semantic analysis.
-there are still many shortcomings in the application of current function identification tools, including cross-platform support, efficiency, and resource usage.
-to improve the accuracy and efficiency of function recognition in embedded system firmware, this paper proposes a new function recognition algorithm frwithmba based on the structure information.
-with the help of function call resolve, frwithmba identifies functions by determining the termination position of the function based on branches instruction and termination signatures of the function.
-in the experiment, we evaluated frwithmba against ida pro, radare2, and angr with the router binary cisco ios and found that frwithmba is more effective in identifying functions in the stripped binary under ppc and mips than the other tools.
-in terms of recognition effectiveness, frwithmba performs a little better than ida pro, but the results of radare2 and angr are poor.
-for a 14-mb binary, the parsing time of ida pro is 178 s, radare2 uses 376 s, angr uses 1896 s, and frwithmba uses 25 s.
-when processing 220-mb executable and linkable format files, frwithmba can identify nearly 420 000 functions in about 240 s, ida takes 2754 s, and both radare2 and angr get a fault.
-in the experiment, the recall of frwithmba reached 99.
-99% and the precision reached 99.
-7%.
-it is better than the other tools.
-in other words, frwithmba has more speed, higher accuracy, and less resource occupation.
+鹿子霖这一夜正搂着小娥亲呢抚摩的当儿听到了狗蛋的创造。
+狗蛋在窑窗外一字一板朗诵，还用手掌击打着节拍：“小娥的头发黑油油。
+小娥的脸蛋赛白绸。
+小娥的舌头腊汁肉。
+小娥的脸，我想舔。
+小娥的奶，我想揣。
+我把小娥瞅一跟，三天不吃不喝不端碗，宁吃小娥拉下的，不吃地里打下的；宁喝小娥尿下的，不喝壶里倒下的……”鹿子霖贴着小娥的耳朵说：“你说他唱得好，明晚再来唱。
+”小娥就对着窗口说：“狗蛋哥，你唱得真好听。
+我今黑听够了想瞌睡了。
+你明黑再来唱多唱一阵儿。
+”
+
+狗蛋第二天黑夜又在窑窗外朗诵起来，朗诵一追还要问一句：“小娥，你看我唱得好不好？”小娥就说：“好听好听，你再唱一遍。
+”鹿子霖不失时机地走到窖门口，从背后抓住了狗蛋的后领，一串耳光左右开弓抽得密不透风：“狗蛋你个瞎熊，瞎得没眉眼咧！”狗蛋已经瘫在地上求饶。
+鹿子霖说：“你今日撞到我手里，算你命大。
+你要是给族长知道了，看不扒了你的皮！”狗蛋吓得浑身筛糠连连求饶。
+鹿子霖抓着后领的手一甩，狗蛋爬起来撒腿就跑得没有踪影了。
+鹿子霖仍然遵守五、十的日子到窑里来寻欢。
 
 
-abstract:
-with a growing number of embedded devices that create, transform, and send data autonomously at its core, the internet of things iot is a reality in different sectors, such as manufacturing, healthcare, or transportation.
-with this expansion, the iot is becoming more present in critical environments, where security is paramount.
-infamous attacks, such as mirai, have shown the insecurity of the devices that power the iot, as well as the potential of such large-scale attacks.
-therefore, it is important to secure these embedded systems that form the backbone of the iot.
-however, the particular nature of these devices and their resource constraints mean that the most cost-effective manner of securing these devices is to secure them before they are deployed, by minimizing the number of vulnerabilities they ship.
-to this end, fuzzing has proved itself as a valuable technique for automated vulnerability finding, where specially crafted inputs are fed to programs in order to trigger vulnerabilities and crash the system.
-in this survey, we link the world of embedded iot devices and fuzzing.
-for this end, we list the particularities of the embedded world as far as security is concerned, we perform a literature review on fuzzing techniques and proposals, studying their applicability to embedded iot devices and, finally, we present future research directions by pointing out the gaps identified in the review.
+狗蛋好久不敢再到窑院里去献殷勤，不敢学狼嚎狐子哭更不敢朗诵赞美诗。
+他终于耐不住窑洞的诱惑，这夜又悄悄爬在窑窗窗台上，蹙着鼻子吸闻窗缝里流泄出来的窑洞主人的气味。
+他听到小娥娇声嗲气的一声呢哺，头发噌地一声立起来；又听到小娥哼哼卿卿连声的呻唤，他觉得浑身顿时坠入火海；接着他就准确无误地听到一个熟悉的男人的声音：“你受活不受活？”狗蛋判断出是鹿子霖大叔的声音，一下子狂作起来，啪地一拳砸到窗扇上喊：“好哇，你们日得好受活！小娥你让乡约日不叫我日，我到村里喊叫去呀！你叫我日一回我啥话不说。
+”咣当一声门板响，小娥站在门口朝狗蛋招手。
+狗蛋离开窗子迎着小娥走进窑去。
+鹿子霖猫下腰贴着窑壁溜出门来，吓出一身冷汗，满心的欢愉被那个不速之客破坏殆尽。
 
 
-abstract:
-this paper describes the properties and potential applications of a hybrid device consisting of a varistor diode and its embedded transistor whose origin lies in a magnetically tuned varistor diode.
-it is shown how the output current or voltage of a varistor based on a magnetic oxide semiconductor can be manipulated by the application of a magnetic field to produce an embedded device with characteristics similar to that of a conventional transistor.
-following the tradition of microelectronics, we name it the hfet transistor where h stands for a magnetic field.
-two types of embedded hfet devices are described here; one with the current-voltage i-v characteristics and the other with voltage-current v-i characteristics.
-both i-v and v-i devices exhibit high degree of nonlinearly but only in the v-i mode of the hfet device well-developed saturation regions of output signals are found.
-the room temperature hfet in its v-i mode appears to be also a good electronic switch with well-defined “off” and “on” states.
-saturated regions of output signals and electronic switching are the signature property of these hfet transistors along with the capacity of providing a good level of signal amplification.
-when cooled to 100 k the hfet v-i device appears to lose partially the electronic switching property but gain in signal amplifying potential.
-the hfet device in i-v mode does not display the defining properties of electronic switching but can amplify signals by almost 400%.
+狗蛋慌手慌脚脱光了衣服，抱住小娥的腰往炕边拽。
+他的从未接触过异性肌肤的身体承受不住，在刚刚搂住小娥腰身的一霎之间，就“妈呀”一声蹲下身去，双手攥住下身在脚地上哆索抽搐成一团。
+小娥在黑暗里骂：“滚！吃舍饭打碗的薄命鬼！狗蛋站起来纠缠着不走。
+小娥哄嘴说：“后日黑你来。
+”狗蛋俟过了一夜两天盼到了又一个夜晚，他蹑手蹑脚走进窑院叩响窑门之际，就被黑影里跳出的两个团丁击倒了，挨了一顿饱打。
+团丁是鹿子霖从仓里借来的，打得狗蛋拖着腿爬回他的屋里去了。
 
 
-abstract:
-this paper presents a hardware management technique that enables energy-efficient acceleration of deep neural networks dnns on realtime-constrained embedded edge devices.
-it becomes increasingly common for edge devices to incorporate dedicated hardware accelerators for neural processing.
-the execution of neural accelerators in general follows a host-device model, where cpus offload neural computations e.
-g.
-, matrix and vector calculations to the accelerators for datapath-optimized executions.
-such a serialized execution is simple to implement and manage, but it is wasteful for the resource-limited edge devices to exercise only a single type of processing unit in a discrete execution phase.
-this paper presents a hardware management technique named neuropipe that utilizes heterogeneous processing units in an embedded edge device to accelerate dnns in energy-efficient manner.
-in particular, neuropipe splits a neural network into groups of consecutive layers and pipelines their executions using different types of processing units.
-the proposed technique offers several advantages to accelerate dnn inference in the embedded edge device.
-it enables the embedded processor to operate at lower voltage and frequency to enhance energy efficiency while delivering the same performance as uncontrolled baseline executions, or inversely it can dispatch faster inferences at the same energy consumption.
-our measurement-driven experiments based on nvidia jetson agx xavier with 64 tensor cores and eight-core arm cpu demonstrate that neuropipe reduces energy consumption by 11.
-4% on average without performance degradation, or it can achieve 30.
-5% greater performance for the same energy consumption.
+这件事不消半天，就在白鹿村风传得家喻户晓。
+白嘉轩在事发后的头一天早晨听到了族人的汇报，当即作出毫不含糊而又坚决的反应。
+在修复完备的祠堂正厅和院子里，聚集着白鹿村十六岁以上的男女，女人被破例召来的用意是清楚不过的。
+白孝文主持惩罚一对乱淫男女的仪式显得紧张。
+他发蜡之后接着焚香，领着站在正厅里和院子里的族人叩拜三遭，然后有针对性地选诵了乡约条文和族法条律，最后庄严宣判：“对白狗蛋田小娥用刺刷各打四十。
+”孝文说毕转过头请示父亲。
+白嘉轩挺身如椽，脸若蒙霜，冷峻威严地站在祭桌旁边，摆了摆头对孝文说：“请你子霖叔说话。
+”鹿子霖站在祭桌的另一边，努力挺起腰绷着脸。
+他被孝文请来参加族里的聚会十分勉强，借口推辞本来很容易，他沉思一下却朗然应允了。
+他对孝文轻轻摆摆头，不失风范地表示没有必要说话。
 
 
-abstract:
-an increasing number of embedded devices are connecting to the internet, ranging from cameras, routers to printers, while an adversary can exploit security flaws already known to compromise those devices.
-security patches are usually associated with the device firmware, which relies on the device vendors and products.
-due to compatibility and release-time issues, many embedded devices are still using outdated firmware with known vulnerabilities or flaws.
-in this paper, we conduct a systematic study on device vulnerabilities by leveraging firmware fingerprints.
-specifically, we use a web crawler to gather 9,716 firmware images from official websites of device vendors, and 347,685 security reports scattered across data archives, blogs, and forums.
-we propose to generate fine-grained fingerprints based on the subtle differences between the filesystems of various firmware images.
-furthermore, machine learning algorithms and regex are used to identify device vulnerabilities and corresponding device firmware fingerprints.
-we perform realworld experiments to validate the performance of the firmware fingerprint, which yields high accuracy of 91% precision and 90% recall.
-we reveal that 6,898 reports have the firmware and related vulnerability information, and there are more than 10% of firmware vulnerabilities without any patches or solutions for mitigating underlying security risks.
+小娥被人从东边的厢房推出来，双手系在一根皮绳上，皮绳的另一端绕过槐树上一根粗股，几个人一抽皮绳，小娥的脚就被吊离地面。
+白狗蛋从西边的厢房推出来时一条腿还跛着，吊到槐树的另一根粗股上，被撕开了污脏的对襟汗褂儿露出紫红的皮肉。
+为了遮丑，只给小娥保留着贴身的一件裹肚儿布，两只奶子白皙的根部裸露出来。
+执行惩罚的是四个老年男人，每两个对付一个，每人手里握一把干酸枣棵子捆成的刺刷，侍立在受刑者旁边。
+白嘉轩对鹿子霖一拱手：“你来开刑。
+”鹿子霖还拱一揖：“你是族长。
+”白嘉轩从台阶上下来，众人屏声静息让开一条道，走手田小娥跟前，从执刑具的老人手里接过刺刷，一扬手就抽到小娥的脸上，光洁细嫩的脸颊顿时现出无数条血流。
+小娥撕天裂地地惨叫。
+白嘉轩把刺刷交给执刑者，撩起袍子走到白狗蛋跟前，接过执刑人递来的刺刷，又一扬手，白狗蛋的脸皮和田小娥的脸皮一样被揭了，一样的鲜血模糊。
+白狗蛋叫驴一样干嚎起来。
+白嘉轩撩着袍角重新回到祠堂的台阶上站住，凛然瞅视着那两个在槐树上扭动着的躯体。
+鹿子霖比较轻捷地走到小娥跟前，接过刺刷轮圆胳膊，结结实实抽到小娥穿着夹裤的尻蛋上，然后把刺刷丢到地上转过身去。
+他再次接过刺刷抽到狗蛋的胸脯上，无数条鲜血的小溪从胸脯上流泄下来注进裤腰。
+鹿子霖转身要走的当儿，狗蛋儿哭叫着喊：“你睡了，我没睡你还打我！”整个庭院里变得凝结了一样。
+鹿子霖早已备着这一着，冷笑着说：“我知道你恨着我！团丁抓你那夜，该把你捶死在窑门口！”白嘉轩立即向族人郑重解释：“子霖早察觉了狗蛋的不轨，派团丁收拾过他，他才怀恨在心反咬一口。
+加打四十。
+”孝文先走到狗蛋跟前，推走了鹿子霖，再接过刺刷迎面抽去，狗蛋就再不敢胡咬了。
+他走到小娥跟前瞅了一眼那半露的胸脯，一刷抽去，那晶莹如玉的奶根上就冒出鲜红的血花，迅即弥散了整个胸脯。
+鹿三接过刺刷刚刚扬起来，却像一堵墙似的朝后倒去，跌在地上不省人事。
+鹿三的出现激起了几乎所有做父亲母亲的同情，也激起了对淫乱者的切齿渍恨，男人女人们争着挤着抢夺刺刷，呼叫着“打打打！”“打死这不要脸的姨子！”刺刷在众人的手里传递着飞舞着，小娥的嘶叫和狗蛋的长嚎激起的不是同情而是更高涨的愤怒。
+鹿子霖站在台阶上对身旁的白嘉轩说：“兄弟要去仓上，得先走一步。
+”
+
+狗蛋被人拖回家就再没有起来。
+他先被团丁用枪托砸断了一条腿，接着又被刺刷抽得浑身稀烂。
+时值热天，无以数计的伤口三几天内就肿胀化脓汇溃成脓血，不要说医治，单是一口水也喝不到嘴里，他发高烧烧得喉咙冒火，神智迷糊，狂呼乱叫：“冤枉啊冤枉！狗蛋冤枉……我连个锅底也没刮成就……挨了黑挫……”村里人后来听不到叫声，才走进那幢破烂厦屋去，发现他死在水缸根下”，满屋飞舞的绿头苍蝇像蜂群一样嗡嗡作响。
 
 
-abstract:
-internet of things iot devices play a crucial role in the overall development of iot in providing countless applications in various areas.
-due to the increasing interest and rapid technological growth of sensor technology, which have certainly revolutionized the way we live today, a need to provide a detailed analysis of the embedded platforms and boards is consequential.
-this paper presents a comprehensive survey of the recent and most-widely used commercial and research embedded systems and boards in different classification emphasizing their key attributes including processing and memory capabilities, security features, connectivity and communication interfaces, size, cost and appearance, operating system support, power specifications, and battery life and listing some interesting projects for each device.
-through this exploration and discussion, readers can have an overall understanding on this area and foster more subsequent studies.
+小娥的境况好多了。
+她拖着浑身流血的身体挪回窑洞，鹿子霖当天晚上就来看护她。
+鹿子霖在炕边伏下身刚叫了一声“亲蛋蛋呀”，小娥就猛乍伸出手来抓抠他的脸。
+“甭抠甭抓。
+”鹿子霖抓住她的手腕说，“留下大这一张脸还有用场。
+”小娥挣脱手，还要抓要抠：“我给你害得没脸了，你还想要脸？”鹿子霖镇定他说：“你没脸了大知道。
+大这张脸再抓破了咱们就没有一张脸了，也就没人给你报仇了。
+”小娥冷笑着说：“给我报仇？凭你，你先说说让我听听你咋么着给我报仇？”鹿于霖说：“你先看病养好身子再说。
+君子报仇十年不晚。
+”说罢就伏在小娥脸上哭了：“你挨了刺刷受了疼我知道。
+可你不知道白嘉轩整你只用三成劲，七成的劲儿是对着我……人家把你的尻子当作我的脸抽打哩！”他终于使使小娥安静下来，留下一把银元：“你明日就去看伤。
+甭怕人七长八短咬耳朵。
+人有脸时怕这怕那，既是没脸了啥也都不怕了，倒好！”
+
+小娥第二天一早走过白鹿村村巷又走进白鹿镇的街道。
+她什么人也不瞅，任凭人们在她背后指指戳戳窃窃私语，真的如同鹿子霖大说的没脸了反倒不觉得胆怯了。
+她走进白鹿中医查坐到冷先生的当面。
+冷先生瞅她一眼既不号脉也不察看伤势，开了一个方子递给抓药的相公，又对小娥说：“大包子药煎了内服。
+小包干药熬成汤水洗伤，一天洗三回。
+”
+
+小娥关了窑门脱得精光，用布中蘸着紫黑色的药水往脸上身上涂抹，药水浸得伤口疼痛钻心。
+晚上，鹿子霖虔诚地替她洗刷伤口，她又感激得想哭。
+三天以后，大大小小被刺刷扎破的伤口全都结了痂。
+七天以后，那些疤痂全部脱落。
+半月以后，她的脸颊和身体各部位的皮肤又光洁如初。
+大约是冷先生的药物的神奇效力，她的脸膛更加红润洁净，胸脯更加细白柔腻。
+这一夜，她和鹿子霖倾心抚爱在一起，真有许多患难不移的动情之处。
+鹿子霖双手捧着她的脸说：“记得我说的话吗，白嘉轩把你的尻蛋子当作我的脸蛋子打哩刷哩！你说这仇咋报一”小娥知道他其实已经谋划好了，就静静地听着不语。
+鹿子霖说：“你得想法子把他那个大公子的裤子抹下来。
+那样嘛，就等于你尿到族长脸上了！”
 
 
-abstract:
-recurrent neural networks rnns are a class of machine learning algorithms used for applications with time-series and sequential data.
-recently, there has been a strong interest in executing rnns on embedded devices.
-however, difficulties have arisen because rnn requires high computational capability and a large memory space.
-in this paper, we review existing implementations of rnn models on embedded platforms and discuss the methods adopted to overcome the limitations of embedded systems.
-we will define the objectives of mapping rnn algorithms on embedded platforms and the challenges facing their realization.
-then, we explain the components of rnn models from an implementation perspective.
-we also discuss the optimizations applied to rnns to run efficiently on embedded platforms.
-finally, we compare the defined objectives with the implementations and highlight some open research questions and aspects currently not addressed for embedded rnns.
-overall, applying algorithmic optimizations to rnn models and decreasing the memory access overhead is vital to obtain high efficiency.
-to further increase the implementation efficiency, we point up the more promising optimizations that could be applied in future research.
-additionally, this article observes that high performance has been targeted by many implementations, while flexibility has, as yet, been attempted less often.
-thus, the article provides some guidelines for rnn hardware designers to support flexibility in a better manner.
+
+第十六章
+
+麦子收罢新粮归仓以后，原上各个村庄的“忙罢会”便接踵而来，每个村子都有自己过会的日子。
+太阳冒红时，白鹿原的官道小路上，庄稼汉男女穿着浆捶得平展硬峥的家织布白衫青裤，臂弯里挎着装有用新麦子面蒸成的各色花馍的竹提盒笼儿，乐颠颠地去走亲访友，吃了喝了谝了，于日落时散散悠悠回家去，今年的“忙罢会”过得尤其隆重尤其红火，稍微大点的村庄都搭台子演大戏，小村小寨再不行也要演灯影耍木偶。
+形成这种盛况空前的热闹景象的原因不言而喻，除了传统的庆贺丰收的原意，便是平息了黑娃的农协搅起的动乱，各个村庄的大户绅士们借机张扬一番欢庆升平的心绪。
 
 
-abstract:
-as the need for on-device machine learning is increasing recently, embedded devices tend to be equipped with heterogeneous processors that include a multi-core cpu, a gpu, and/or a dnn accelerator called a neural processing unit npu.
-in the scheduling of multiple deep learning dl applications in such embedded devices, there are several technical challenges.
-first, a task can be mapped onto a single core or any number of available cores.
-so we need to consider various possible configurations of cpu cores.
-second, embedded devices usually apply dynamic voltage and frequency scaling dvfs to reduce energy consumption at run-time.
-we need to consider the effect of dvfs in the profiling of task execution times.
-third, to avoid overheat condition, it is recommended to limit the core utilization.
-lastly, some cores will be shut-down at run-time if core utilization is not high enough, in case the hot-plugging option is turned on.
-in this paper, we propose a scheduling technique based on genetic algorithm to run dl applications on heterogeneous processors, considering all those issues.
-first, we aim to optimize the throughput of a single deep learning application.
-next, we aim to find the pareto optimal scheduling of multiple dl applications in terms of the response time of each dl application and overall energy consumption under the given throughput constraints of dl applications.
-the proposed technique is verified with real dl networks running on two embedded devices, galaxy s9 and hikey970.
+俟到贺家坊的“忙罢会”日，贺耀祖主持请来了南原上久负盛名的麻子红戏班连演三天三夜，把在贺家坊之前演过戏的大村大户压倒了苫住了，也把原上已经形成的欢乐气氛推到高潮。
+这是一年里除开过年的又一个轻松欢乐的时月，即使像白嘉轩这样严谨治家的大庄稼主户，也表现得十分通达贤明的态度。
+日头还未落下原去，白嘉轩站院庭里宣布：“今个喝汤喝早些。
+喝了汤都去贺家坊看戏。
+我在屋看门。
+”他又走出大门走进牲畜圈场，对刚刚背着一笼苜蓿回来的鹿三说：“三哥今黑你去看戏，我来经管牲口。
+麻子红今黑出台唱的是拿手戏《葫芦峪》。
+”鹿三推让说：“你去你去，人也爱看戏喀！”白嘉轩说：“我跟麻子已经说妥，给贺家坊唱毕接着到咱村唱，咱白鹿村的会日眼看也就到了嘛！咱村唱起戏来我再看。
+”鹿三把掇着一串串紫色花絮的苜蓿从笼里掏出来，码齐摞堆在铡墩跟前。
+白嘉轩揭起铡刀刃子，鹿三跪匐下一条腿，把一撮撮苜蓿拢起来喂到铡刀口里去。
+白嘉轩双手压下铡刀，咔哧一声，切断的苜蓿齐刷刷扑落到脚面上，散发出一股清香的气味，从土打围墙上斜泄过来的一抹夕阳的红光照在主仆二人的身上，鹿三接着给水缸里挑满了水，然后推了几车晒干的黄土垫了圈，再把牲口牵回圈里，拌下一槽苜蓿，拍打了肩头前襟后背上的土屑到前院屋里去喝汤。
+鹿三是个戏迷，逢着哪个村子唱戏，甚或某户人家办理丧事有吹鼓手为死人安堂下葬唱乱弹，他都要赶去看一场听一回过一过戏瘾。
+牛犊念书不开窍，整日价跟鹿三犁地种庄稼务弄牲畜，也就跟着瘸三染上了戏瘾。
+喝毕汤以后，暮色苍茫里鹿三咂着烟袋，胯骨旁边跟着牛犊走出白鹿村看戏去了。
 
 
-abstract:
-as embedded systems become more prominent in society, the technologies that run on them must be used efficiently.
-one such technology is the neural network nn.
-nn's, combined with the internet of things iot, can utilize the massive amounts of data produced to optimize, control, and automate embedded systems, giving them more functionality than ever before.
-however, the status quo of offloading all nn functionality onto external devices has many flaws.
-it forces the embedded system to entirely rely on networks that may have high latency or connection issues.
-networks may also expose them to security risks.
-to reduce the reliance of iot devices on networks, we examined several solutions, such as delegating some nn's to run solely on the iot device or splitting the nn and distributing the subnetworks into different devices.
-it was found that, for shallow nn's, the iot device itself could run the nn at a rate faster than offloading it to an external device, but the iot device needed to offload its inputs once the nn's started to increase in layers and complexity.
-when splitting the nn, it was found that the number of messages sent between devices could be reduced by up to 97% while only reducing the accuracy of the nn by 3%.
+白孝文也是个戏迷。
+白鹿原上百分之九十以上的男人无论贫富贵贱都是秦腔戏的崇拜爱好者。
+看戏是白孝文唯一的喜好唯一的娱乐。
+白孝文已经被确立为白鹿两姓族长的继任人，他主持修复祠堂领诵乡约族规惩罚田小娥私通的几件大事树立起威望，父亲白嘉轩只是站在后台为他撑腰仗胆。
+孝文出得门来从街巷里端直走过来，那些在荫凉下裸着胸膛给娃娃喂奶的女人，慌忙拉扯下衣襟来捂住了奶子躲回屋去；那些在碾道里围观公狗母狗交配的小伙子，远远瞧见孝文走过来就立即散开。
+白孝文开始替代族长父亲到那些弟兄们闹得不可开交的家庭里去主持分家事宜，到那些为地畔为墙根为猪拱鸡刨打得头破血流的族人家里去调解纠纷。
+他居中裁判力主公道敢于抑恶扬善，决不两面光溜更下会恃弱凌弱。
+他说话不多却总是一句两句击中要害，把那些企图在弟兄伙里捞便宜的奸诡之徒或者在隔壁邻居之间耍弄心术的不义之人戳得翻肠倒肚无言以对。
+他比老族长文墨深奥看事看人更加尖锐，在族人中的威信威望如同刚刚出山的太阳。
+他的形象截然区别于鹿兆鹏，更不可与黑娃同日而语。
+他不摸牌九不掷骰子，连十分普及的纠方狼吃娃媳妇跳井下棋等类乡村游戏也不染指，唯一的娱乐形式就是看戏。
+白孝文喝毕汤先礼让父亲去看戏，声言由自己看门兼侍弄牲口；白嘉轩朗然说：“你去看去。
+你叫你屋里人也去，天热睡不下喀！”白孝文再到上房问奶奶去不去，然后又问母亲去不去，奶奶和母亲既然都不去，他就再没有去问自己的屋里人。
+他拿了一把竹皮扇子出门上路了。
 
 
-abstract:
-in view of the current situation, that physiological parameter monitoring systems can only achieve local monitoring, and the multi-physiological parameter monitors are large, expensive, and disadvantageous to remote monitoring.
-this paper combines embedded and mobile communication technologies to develop a new type of multi-physiological parameter medical monitoring system with remote data transmission function.
-first, through the analysis of embedded system principles, an embedded computer system based on arm is designed.
-secondly, the human-computer interaction interface, data acquisition, and analysis module are designed.
-finally, by connecting to the internet network to communicate with the medical center server, the remote transmission of local detection data and the issuance of alarm signals when dangerous situations occur are realized.
-the system can collect and display multiple physiological parameters such as heart rate, blood pressure, blood oxygen saturation, and body temperature in real time.
-the simulation experiment results show that the system's monitoring function and remote data transmission function meet the design requirements, can quickly and accurately find out-of-standard data, and perform remote alarm.
-the system is small, easy to expand, stable in data transmission, high in reliability, convenient for remote monitoring and data sharing, and is an ideal monitoring device for hospitals and community medical centers.
+贺家坊的戏楼前人山人海，浓烈的旱烟气儿和着汗酸味儿在戏台下形成一个庞大的气团，令人窒息。
+戏楼两边的台柱上挂着两个盛满清油的大碗，碗沿上搭着一条粗捻上冒着滚滚油烟，炽红的灯火把台子上的演员照得忽明忽暗。
+本戏《葫芦峪》之前加演折子戏《走南阳》，被王莽追赶着的刘秀慌不择路饥渴交困，遇见一位到田里送饭村姑，戏剧便在刘秀与这位村姑之间展开。
+刘秀此时没有了皇帝的架势纯粹是一个死皮赖娃，不仅哄唆得村姑向他奉献出篮子里的蒸馍和瓦罐里的麦仁汤，而且在吃饱喝胀有了精神之后便耍骚使拐调戏起村姑来了：“今日里吃了你半个馍，我封你昭阳坐正官。
+”刘秀唱着许诺着就伸手去摸村姑的脸蛋儿。
+“今日里吃了你两个半个馍，我封你昭阳坐正宫。
+”刘秀唱着许诺着又撩起腰带摔打到村姑的前档里。
+麻子红出演村姑，天生的娇嫩甜润的女人嗓音特富魅力，人们已经忘渴了他厚厚的脂粉下打着摞儿的大小麻窝儿，被他的表演倾倒了。
+村姑对刘秀死乞白赖打诨骂俏动手动脚的骚情举动明着恼暗着喜噘嘴拒斜眼让半推半就实际上好的那个调调儿，麻子红把个村姑演得又稚又骚。
+台下一阵阵起哄叫好打唿哨，小伙子们故意拥挤着朝女人身上蹭。
+白孝文站在台子靠后人群稍微疏松的地方，瞧着刘秀和村姑两个活宝在戏台上打情骂俏吊膀子，觉得这样的酸戏未免有碍观瞻伤风败俗教唆学坏，到白鹿村过会时绝对不能点演这出《走南阳》。
+他心里这样想着，却止不住下身那东西被挑逗被撩拨的疯胀起来，做梦也意料不到的事突然发生了，黑暗里有一只手抓住了他的那个东西，白孝文恼羞成怒转过头一看，田小娥正贴着他的左臂站在旁侧，斜溜着眼睛瞅着他，那眼神准确无误明明白白告示他：“你要是敢吭声我也就大喊大叫说你在女人身上耍骚！白孝文完全清楚那样的后果不言而喻，聚集在台下的男人们当即会把他捶成肉坨子，一个在戏台下趁黑耍骚的瞎熊不会得到任何同情。
+白孝文恐慌无主，心在胸膛里突突狂跳双腿颤抖胸子里一片昏黑，喊不敢喊动不敢动，伸着脖子僵硬地站着佯装看戏。
+戏台上的刘秀和村姑愈来愈不像话的调情狎呢。
+那只攥着他下身的手暗暗示意他离开戏场。
+白孝文屈从于那只手固执坚定的暗示，装作不堪沤热从人窝里挤出去，好在黑咕隆咯的戏场上没有谁认出他来。
+那只手牵着他离开戏场走过村边的一片树林，斜插过一畛尚未翻耕的麦茬地，便进入一个破旧废弃的砖瓦窑里。
 
 
-abstract:
-embedded systems that make up the internet of things iot, supervisory control and data acquisition scada networks, and smart grid applications are coming under increasing scrutiny in the security field.
-remote attestation ra is a security mechanism that allows a trusted device, the verifier, to determine the trustworthiness of an untrusted device, the prover.
-ra has become an area of high interest in academia and industry and many research works on ra have been published in recent years.
-this paper reviewed the published ra research works from 2003-2020.
-our contributions are fourfold.
-first, we have re-framed the problem of ra into 5 smaller problems: root of trust, evidence type, evidence gathering, packaging and verification, and scalability.
-we have provided a holistic review of ra by discussing the relationships between these problems and the various solutions that exist in modern ra research.
-second, we have presented an enhanced threat model that allows for a greater understanding of the security benefits of a given ra scheme.
-third, we have proposed a taxonomy to classify and analyze ra research works and use it to categorize 58 ra schemes reported in literature.
-fourth, we have provided cost benefit analysis details of each ra scheme surveyed such that security professionals may perform a cost benefit analysis in the context of their own challenges.
-our classification and analysis has revealed areas of future research that have not been addressed by researchers rigorously.
+钻进破烂的砖瓦窑白孝文才感到真正的恐惧，砖瓦窑，大土壕，猪狗猫。
+他和他惩罚过的白鹿村最烂脏的女人竟然钻进猪狗猫交配的龌龊角落里来了，一旦被某个拉屎尿尿的人察觉了就不堪设想其后果。
+他很自然地想到逃跑，逃离破砖窑一踏上大路就万事大吉了，和这个女人多在一会儿都潜伏着毁灭的危机。
+他转过身抬肢就跑，脑门碰撞到低矮的窑门上也顾不得疼了，刚跑出窑外几步，田小娥就后边大叫起来：“来人哟，救命呀，白孝文糟蹋我哩跑了……”白孝文吓得腿发软急忙收住脚，立时听不见她喊叫了。
+跑不了了！这狗东西把人缠死了！白孝文猛地转过身又走进破砖窑的门洞，抡开胳膊抽了田小娥一记耳光。
+田小娥却顺势抱住他的胳膊，不还手也不反抗扬起头瞅着他的脸，低声嗔气地说：“哥呀你打，你打死妹子妹子也不恼。
+”瓦罐似的砖窑顶口泄下朦朦的星光，田小娥的眼里透出两束亮晶晶的光点柔媚动人，一缕奇异的气息刺激他的鼻膜，凝聚在胳膊上拳头上的力量悄悄消溶，两条胳膊轻轻地垂落下来。
+田小娥说：“哥呀，你看我活到这地步还活啥哩？我不活了我心绝了我死呀：我跳涝池我不想在人世栽了，我要你亲妹子一下妹子死了也心甘了！”白孝文的心开始颤抖，斥责道：“你胡吣乱呔些啥！”田小娥说：“哥呀你正经啥哩！你不看看皇帝吃了人家女人的馍喝了人家的麦仁汤还逗人家女子哩！”说着扬起胳膊钩住孝文的脖子，把她丰盈的胸脯紧紧贴压到他的胸膛上，踮起脚尖往起一纵，准确无误地把嘴唇对住他的嘴唇，白孝文的胸间潮起一阵强大的热流。
+这个女人身上那种奇异的气味愈加浓郁，那温热的乳房把他胸脯上坚硬的肋条熔化了，他被强烈的欲望和无法摆脱的恐惧交织得十分痛苦。
+在他痛苦不堪犹豫不决的短暂僵持中，感觉到她的舌尖毫不迟疑地进入他的口中。
+那一刻里，白孝文听到胸腔里的筋条如铁笼的铁条折断的脆响，听见了被囚禁着的狼冲出铁笼时的一声酣畅淋漓的吼叫。
+白孝文咂住那美好无比的舌头，双手揽住了田小娥的后腰，几乎晕昏了。
 
 
-abstract:
-further to china's plan that was introduced in 2017 for attracting more students into engineering, many chinese universities have started to explore new teaching methods that can be adopted into their programs.
-this shift was geared towards developing student-centred teaching materials rather than traditional teacher centred instruction.
-in this manuscript, we compare two different methods of instruction for a course on energy harvesting using embedded systems.
-we describe the learning materials and showcase the impact that project-based learning has had on a cohort of chinese students that were enrolled in a joint master's program between the university of electronic science and technology of china uestc and the royal institute of technology kth.
-kth has made remarkable progress in the teaching of embedded systems technology for energy harvesting applications, with great emphasis on active as well as collaborative learning.
-we demonstrate two examples of projects that chinese students have completed in kth and present evaluative data regarding their experiences.
-our results show that kth's approach in teaching this module has had a positive impact on student learning, with an average of 80% of students think that teaching in kth is conducive to students' independent exploration.
+白孝文忘情地吮吻着，觉察到她的手在摸索着解开他衣襟上的布圪塔纽扣，她又抓住他的右手而且导引到她的腋下，示意他解开她腋下斜襟上的纽扣。
+他摸住一个绾结的布纽圪塔解脱续环儿，顺手揭开大襟，把她裸开的奶子搂到他同样裸开的胸膛上，几乎迷醉而跌倒下去，他已经无法控制浑身涌动着的春情，第一次主动出击伸手去解她的布条裤带，慌乱中把她拴着的活扣儿拉成了死结，干脆从裤带下把裤腰拉下去，小娥光着身子把砖窑里未燃烧的麦秸扒拢到一起，再铺垫上自己的衫子，便躺下去。
+星光从砖窑顶口泄到她的身上，她静静地躺着等待他。
+白孝文急忙解开裤带抹脱裤子，刚趴到她的身上就从心底透过一缕悲哀；他的那东西软瘫下来。
+小娥问：“哥你咋咧？咋是这样子？孝文丧气他说：“我也不知道。
+”他无奈爬起来重新穿上裤子，小娥也坐起来摸衣服穿。
+白孝文挡住小娥穿衣服的手兴奋他说：“好咧好咧又好咧！”小娥摸了一把就再躺下去，白孝文刚刚解下裤带抹下裤子，就更加悲哀他说：“咋搞的咋闹着哩？又不行了？”连着反覆穿了脱了三四次裤子，都是勒上裤子就好了解开裤子又不行了。
+小娥问：“哥呀你有毛病？”白孝文说：“没有没有，向来也没出过这情况儿。
+”到他再次不甘就此失败趴上她的身时却轰然一声泄了。
+田小娥却柔声安慰他说：“哥呀你甭难受。
+你逢七到我窑里来我等你。
+”
+
+白孝文重新来到贺家坊戏台下。
+《葫芦峪》正演到热闹处，台下一片静默。
+白孝文小心翼翼地插进人窝里，却怎么也听不进看不进去，眶眶啷啷的梆子声锣钹声失去了魅力令人心烦。
+他心不在焉地站了一会儿又退出人窝，干脆回家去了。
+清爽的夜风抚拂着他的脸，脑子里浮现着田小娥那光亮的胸脯和大腿，鼻腔里残留着那身体里散出的奇异的气味儿，相比之下，自己那个婆娘简直就是一堆粗糙无味的豆腐渣了。
+甭看都是女人，可女人跟女人大不一样。
+他走进白鹿村村口时开始懊悔，离家门愈近愈觉心底发虚。
+他硬着头皮走进街门时感到一种异样的气氛，他的豆腐渣似的女人急慌慌走到院中，看见他失声叫道：“哎呀你才回来……土匪打抢了……”白孝文像当头挨了一棍差点栽倒，立即奔进上房，父亲白嘉轩躺在奶奶的炕上呼吸微弱，连呻唤都很艰难，冷先生正在桌子上的油灯下配制药膏。
+孝文像从火的的热炕上跌入冰窖，眼前一黑栽倒在脚地上不醒人事了。
 
 
-abstract:
-scratchpad memory spm is widely utilized in many embedded systems as a software- controlled on-chip memory to replace the traditional cache.
-new non-volatile memory nvm has emerged as a promising candidate to replace sram in spm, due to its significant benefits, such as low-power consumption and high performance.
-in particular, several representative nvms, such as pcm, reram, and stt-ram can build multiple-level cells mlc to achieve even higher density.
-nevertheless, this triggers off higher energy overhead and longer access latency compared with its single-level cell slc counterpart.
-to address this issue, this paper first proposes a specific spm with morphable nvm, in which the memory cell can be dynamically programmed to the mlc mode or slc mode.
-considering the benefits of high-density mlc and low-energy slc, a simple and novel optimization technique, named theory of thermal expansion and contraction, is presented to minimize the energy consumption and access latency in embedded systems.
-the basic idea is to dynamically adjust the size configure of slc/mlc in spm according to the different workloads of program and allocate the optimal storage medium for each data.
-therefore, an integer linear programming formulation is first built to produce an optimal slc/mlc spm partition and data allocation.
-in addition, a corresponding approximation algorithm is proposed to achieve near-optimal results in polynomial time.
-finally, the experimental results show that the proposed technique can effectively improve the system performance and reduce the energy consumption.
+这声洗幼干得十分干净利落，时机的选择再好不过，村子里十室九空，男人女人引着孩子看戏去了。
+白嘉轩给牛马拌了第二槽草料，一个人坐在圈场上摇着扇子乘凉。
+今年收成不错，老天爷许是看到黑娃们搅动的动乱而有意赐惠庄稼人连下了两场好雨，麦子豌豆在农协狂妄的喧嚣中蓬蓬冒起来孕穗结英。
+牛马吞嚼草料的优雅的声音从敞开的窗孔传出来，比戏台上弦索声美妙悦耳。
+堆积在铡墩前铡碎的苜蓿散发的清香在夜风中弥漫。
+村子里十分静谧。
+仙草走来了，一手端着一盘鸡蛋一手提着酒壶，放到鹿三夜晚露宿乘凉的木板上。
+白嘉轩舒悦地笑笑，善知人意的妻子恰到好处地送来他想吃想喝的东西，贤淑地斟上一杯酒就走出圈场去了。
+白嘉轩喝一杯酒浑身都活络起来，吱儿吱儿咂得酒盅响着。
+这当儿从背后伸过一双手卡住他的脖子把他从木板上拽翻到地上，另一双手扭住他的双手，一块烂布塞住了嘴巴。
+他的双手被捆在背后，随之就被人提起来，才看见他面前站着三个人。
+他们拽着他走出圈场进入街门，他看见院子里还站着两三个人；他被推推搡搡拉到上房正厅，看见一根明柱上绑着妻子仙草，母亲白赵氏被一个土匪扭着手压着头按在祭祖的方桌边上，两个桌腿上绑着他的两个儿媳。
+他们把他的双腿捆到一起让他站着，然后就把一把明晃晃的鬼头刀横到他的脖子前，问他银元在哪儿藏着，白嘉轩揣摩对方是纯粹要钱还是既要钱又要命？如果是前者不是后者，那他就准备折财保命，如果是后者不是前者，那么他就准备折命保财，不至于人财两空。
+在他准备进一步猜测土匪们的真实目的时，一个土匪用刀尖挖掉他口里的烂布又挑破他的裤裆：“你说话我先把你阉了！”白嘉轩怒骂道：“老子老命都不要了还要老二？割了拿回去敬你祖宗去！”土匪却不恼，转过身用刀尖挑破仙草的裤子，仙草羞怯地喊：“他爸……”白嘉轩骂：“小人才欺侮女人！”白赵氏在方桌边上招供了：“在南墙上你们挖去！”土匪进入里间，钦器挖凿土坯墙壁和土块跌落的杂乱的响声使白嘉轩不忍卒听就闭上了眼睛。
+土匪们得手以后大摇大摆从后门出去了。
+他们告别之前没有忘记留给他一个永久性的纪念，用那根顶后门用的榆木杠子在他的腰上抽击了一下，他顿时眼前金星迸溅栽倒了。
 
 
-abstract:
-as computers continue to advance, they are becoming more capable of sensing, interacting, and communicating with the physical and cyber world.
-medical devices, electronic braking systems in automotive applications, and industrial control systems are examples of the many cyber-physical systems cps that utilize these computing capabilities.
-given the potential consequences of software related failures in such systems, a high degree of safety, security, and reliability is often required.
-programming languages are important tools used by programmers to develop cps.
-they provide a programmer with the ability to transform designs into machine code.
-of equal importance is their ability to detect and avoid programming mistakes.
-the development of cps has predominantly been accomplished using the c programming language.
-although c is a powerful language, it lacks features present in other languages that facilitate the development of reliable systems.
-this has prompted research into language-based alternatives for improving program quality through the use of programming languages.
-this paper presents an overview of the characteristics of embedded and cyber-physical systems and the associated requirements imposed on programming languages.
-this is followed by a survey of relevant research into language-based methods for creating safe, reliable, and robust software for cps.
+同时遭到抢劫的还有鹿家，劫难发生的过程大同小异。
+那阵鹿子霖被贺耀祖邀去坐在戏楼的礼宾席上观赏麻子红的精彩表演，不无担心地算计着白孝文钻进圈套的过程。
+鹿子霖女人娘家在贺家坊，午饭后跟着前来叫她的侄儿回娘家看戏去了。
+屋里只剩下鹿泰恒以及常年守着活寡心灰意冷的兆鹏媳妇。
+土匪们把鹿泰恒背缚着用皮绳绕过大梁吊到空中，却对兆鹏媳妇十分客气他说：“嫂子，你睡你的觉，甭害怕没有你的事。
+”他们用刀尖在鹿泰恒脸上划一道口子，再逼问银元藏在哪里。
+鹿泰恒叫着喊着骂着却终不说银元的藏处，直到老汉脸膛胳膊胸脯脊背大腿被刀尖拉成像碎布条一样稀烂。
+土匪们把所有墙壁都挖得坑坑洼洼，把箱子柜子都翻得乱七八糟，把铺地的方砖揭起来挖下去，仍然没有找到银元。
+土匪们仿效田福贤鹿子霖整死贺老大的弄法，把鹿泰恒从屋梁上敦下来，再拉皮绳吊起来又松开皮绳敦下来，反覆敦了几次，直到敦得鹿泰恒骨头断裂，尻子里涌出一堆鲜血搅和粪便，又在当胸戳了一刀。
 
 
-abstract:
-affordance detection in computer vision allows segmenting an object into parts according to functions that those parts afford.
-most solutions for affordance detection are developed in robotics using deep learning architectures that require substantial computing power.
-therefore, these approaches are not convenient for application in embedded systems with limited resources.
-for instance, computer vision is used in smart prosthetic limbs, and in this context, affordance detection could be employed to determine the graspable segments of an object, which is a critical information for selecting a grasping strategy.
-this work proposes an affordance detection strategy based on hardware-aware deep learning solutions.
-experimental results confirmed that the proposed solution achieves comparable accuracy with respect to the state-of-the-art approaches.
-in addition, the model was implemented on real-time embedded devices obtaining a high fps rate, with limited power consumption.
-finally, the experimental assessment in realistic conditions demonstrated that the developed method is robust and reliable.
-as a major outcome, the paper proposes and characterizes the first complete embedded solution for affordance detection in embedded devices.
-such a solution could be used to substantially improve computer vision based prosthesis control but it is also highly relevant for other applications e.
-g.
-, resource-constrained robotic systems.
+白鹿原刚刚潮起“忙罢会”的庆贺气氛和升平景象一下子低落了，一些准备演戏的村庄纷纷改变了主意，没有心思和兴趣组织唱戏的事了。
+“忙罢会”开始笼罩上恐怖的气氛。
+白狼的传闻再度神秘地流传。
+遭幼后的第二天早晨，鹿家和白家的街门上都发现了土匪留下的手迹：“白狼到此。
+”新老亲戚见面以后没有多少兴致交谈收成，白狼的种种传闻在酒席茶桌上成为热门话题。
+抢劫白鹿两家的白狼和烧毁白腿乌鸦兵粮台的白狼有及只吮血不食肉的白狼被连结在一起，有人说在峪道里看见过一对脱皮掉毛的老白狼引着一大群狼子狼孙，骚扰抢劫时像两腿的人，遇到抵抗打击时全现出四条腿逃窜了。
 
 
-abstract:
-this paper proposes a proof-of-concept device to continuously assess the usage of hand-held power tools and detect construction working tasks e.
-g.
-different drilling works along with potential misusages, e.
-g.
-drops, with an energy efficient architecture design.
-the designed device is based on bluetooth low energy ble and nfc connectivity.
-ble is used to exchange data with a gateway, whereas nfc has been chosen as an energy-efficient wake-up mechanism.
-a temperature and humidity sensor is embedded to monitor storage conditions; an accelerometer for tool usage monitoring.
-the arm cortex-m4f core embedded in the ble module is exploited to process the information at the edge.
-a tiny machine learning tinyml algorithm is proposed to process the data directly on board and achieve low latency and high energy efficiency.
-the tinyml algorithm has been developed embedded in the proposed device to detect 4 different usage classes tool transportation, no-load, metal and wood drilling.
-a dataset containing more than 280 minutes of three-axis accelerations during different activities has been acquired with the device attached to a construction rotary hammer drill, and used to train and validate the algorithm.
-a network architecture search nas has been performed to optimize the trade-off between accuracy and complexity, achieving an accuracy of 90.
-6% with a model size of roughly 30kb.
-experimental results showed an ultra-low power consumption in sleep mode of 550 na and a peak power consumption of 4ma while running the tinyml on the edge.
-this results in a balanced combination of edge processing capabilities and low power consumption, enabling to obtain a smart internet of things iot device in the field with a long lifetime of up to 4 years in operation and 17 years in shelf mode with a standard 250mah coin battery.
-this work enables a long battery lifetime operation of on device degradation and utility analysis, further closing the gap between edge processing and fine granularity data evaluation.
+漩涡的中心反倒是平静的，白嘉轩已经清醒过来，接受冷先生的悉心治疗。
+治疗分两套措施同步进行，每天早晨空腹时和睡觉前煎服汤药，间隔一天由冷先生亲自给腰部伤位上裹缠膏药。
+白嘉轩不能翻身转腰，死死地仰躺在炕上接待前来看望他的亲戚好友和乡邻族人，他没有愤恨没有伤感甚至连剧烈的痛楚也不呻唤出来，平静淡漠地接受热切意诚的问候和安慰。
+七八天以后，腰伤刚见明显好转，背上和臀部压出的褥疮红肿化脓引起高烧，白嘉轩几次烧得昏迷。
+仙草整天侍候在炕边端屎端尿擦洗身子，仍然没有能够阻止褥疮的发生。
+冷先生重新开了药方主治高烧，给褥疮配制了外敷药面儿，白嘉轩终于从又一次危机里缓活下来，显然变得十分虚弱了。
+他微微喘着气对孝文说：“你整天立在炕跟前做啥？该死的话你立在这儿也不顶啥喀！你该弄啥快弄啥。
+”孝文显得忧愁而又西惶，那个破烂砖瓦窑的景像克化不开的积食整得他心虚神移痛苦不堪。
+白嘉轩以为儿子为自己煎熬操心，就问：“咱村过会的日子快到咧。
+给戏班子磨面买菜的事安顿停当了没？”白孝文说：“现在还演啥戏哩！我跟麻子红把戏退咧：”白嘉轩瞪着眼问：“谁叫你退戏？”孝文解释说：“咱家遭了难，子霖叔家刚刚过罢丧事，谁还有心演戏凑热闹？我跟子霖叔商量了就说算咧不演戏咧。
+”白嘉轩摆一下头嘲弄地笑了：“说定要演的戏就要演不能退。
+你把你子霖叔叫来我跟他说。
+”
+
+鹿子霖头上绾着守孝的白布圈来了。
+白嘉轩说：“子霖，你听我一句话，这戏一定要演，底里嘛缓后我再给你说。
+”鹿子霖还陷在深沉的悲痛和仇恨里，对演戏仍然提不起兴趣。
+白嘉轩说：“土匪正是想看你我的哭丧脸儿哩！明白吧？偏给他个不在乎的笑脸。
+明白吗？”
+
+所有亲朋好友包括田福贤前来看望的时候，白嘉轩都保持着一种不失体面的大家风范，惟有姐夫朱先生走进来时他显得难以抑制的动情。
+他不顾朱先生和家人的百般劝阻，硬是要坐起来，疼得他渗出一头虚汗，才在妻子仙草垫给他的被子上斜倚起来。
+白嘉轩开门见山地说：“哥呀，你甭听人说白狼长白狼短的混话！不是白狼是黑狼——”朱先生虽然明智，却一时解不开白狼黑狼的隐喻。
+白嘉轩就一语道破：“这是黑娃做的活！”朱先生不由一惊。
 
 
-abstract:
-today's embedded systems operate under increasingly dynamic conditions.
-first, computational workloads can be either variable by nature or adjustable.
-moreover, as many devices are battery-powered, it is common to have runtime power management technique, which results in dynamic power budget.
-this paper presents a design methodology for multi-core systems, based on dataflow specification, that can deal with various contexts.
-we optimize the original dataflow considering various working conditions, then, autonomously adapt it to a pre-defined optimal form in response to context changes.
-such context changes at runtime might cause non-negligible delay or power budget violation.
-in order to overcome them, an efficient mode switching method is proposed.
-we show the effectiveness of the proposed technique with a real-life case study, stereo-vision, and synthetic benchmarks.
+白嘉轩清清白白记得，土匪得手后大摇大摆走出后门时，一个土匪像记起一件未办完的事一样返身又走进后门，顺手从后门背后捞起了那榆木杠子走到他的跟前，在抡起杠子之前，那个土匪说：“你的腰挺得太硬太直了！”对这句似乎耳熟的话来不及回忆对证，他腰里就挨了致命的一击昏死了。
+白嘉轩经冷先生抢救活来后的第一个反应，就是那个土匪拦腰抽击之前的那句话，他努力追寻关于这句话的记忆，终于想到了鹿三。
+等到在他炕前只有鹿三一个人的时机里，白嘉轩像聊闲话那样不经意地问：“三哥，你记得不记得有这回事？黑娃逃学，我给他买了笔墨纸砚叫他念书，他给你说了一句‘我嫌嘉轩叔的腰挺的太硬太直’。
+有这活没这话？”“有有有，那驴日说过不止一回哩！”鹿三说：“我叫他来给牛割草他说过这话。
+我叫他替我来顶工，他硬要跟嘉道到渭北去熬活就是不上这儿来，还是那句话：‘我嫌嘉轩叔腰挺的大硬太直我害怕。
+”你这会儿咋想起这话了？”白嘉轩闭上眼睛似乎很疲惫地说：“我躺在炕上脑子闲了乱想哩！”……白嘉轩向姐夫朱先生详细说了他的确凿无疑的证据：“土匪白狼就是黑娃！”
+
+“噢！这下是三家子争着一个鏊啦！”朱先生超然他说：“原先两家子争一个鏊子，已经煎得满原都是人肉味儿；而今再添一家子来煎，这鏊子成了抢手货忙不过来了。
+”
+
+白嘉轩听着姐夫的话，又想起朱先生说的“白鹿原这下变成鏊子啦”的话。
+那是在黑娃在农协倒台以后，田福贤回到原上开始报复行动不久，白嘉轩去看望姐夫企图听一听朱先生对乡村局势的判断。
+朱先生在农协潮起和潮落的整个过程中保持缄默，在岳维山回滋水田福贤回白鹿原以后仍然保持不介入不评说的超然态度，在被妻弟追问再三的情况下就撂出来那句：“白鹿原这个成了鏊子啦”的话。
+白嘉轩后来对田福贤说这话时演绎成“白鹿村的戏楼变成鏊子啦”。
+白嘉轩侧身倚在被子上瞧着姐夫，琢磨着他的隐隐晦晦的妙语，两家子自然是指这家子国民党和那家子共产党，三家子不用说是指添上黑娃土匪一家子。
+白嘉轩说：“黑娃当了土匪，我开头料想不到，其实这是自自然然的事。
+”
+
+黑娃确已成了上匪。
 
 
-abstract:
-recently, as interest in electrocardiogram monitoring has increased, research on real-time ecg signal analysis in daily life using lightweight embedded devices has increased.
-abnormal beat detections in ecg signal analysis are an important research area to reduce processing time and cost for cardiac arrhythmia diagnosis.
-abnormal beat detections can be divided into feature-based detection and shape-based detection.
-feature-based detection finds it difficult to detect reliable fiducial points, and shape-based detection has difficulty detecting abnormal beats that are similar to normal beats.
-in this paper, we propose template cluster generation and abnormal beat detection using both detection methods.
-the proposed method shows robust detection of distorted normal beats by generating a template cluster rather than a single template.
-moreover, abnormal beats that have normal shape can be detected using the rr interval, which is a highly reliable feature.
-experiment results using the mit-bih arrhythmia database, provided by physionet, showed the average processing times to generate a template cluster and detect abnormal beats for the 30-minute signal length were 1.
-21 seconds and 0.
-14 seconds, respectively.
-with manually adjusted thresholds, the specificity and accuracy achieved 93.
-00% and 97.
-94%, respectively.
-in the case of group 1 records obtained relatively stably, the specificity and accuracy achieved 99.
-27% and 99.
-44%.
+习旅从古关道口转移时做了周密的部署和最坏的打算：队伍一直沿着山根行进，在遭到围击时万不得已可以进山周旋。
+在开赴预定集结地点之前，习旅长在战前动员中讲述了“七步诗”的历史故事。
+他说：“老掌柜的死了，大哥要拿家事了。
+大哥想到六七岁的小兄弟现时虽则撞不动他的壮腿粗腰，可小兄弟总是一年一年往大的长哩，长大了即使不跟他争掌柜的权力，也得平分一半家业呀！大哥痛恨他妈为啥要多生这个祸害……”台下的士兵腾起一片笑声，黑娃也笑了。
+习旅长接着说：“大哥就想，干脆趁他还没长大把他掐死算了！同志们，中国现在就是这个样子。
+我们就是那个要被黑心的哥哥掐死的小兄弟，他的手已经掐到我们的脖子了。
+我们能像曹植那样唱一诗乖乖儿地送死？”
+
+这支队伍到达一个原上就驻扎待命。
+那原和白鹿原十分相像，那里的几十个村子同样闹过农协而且现在还挂着农协白地绿字的牌子，许多村子的农协头儿领着农协会员给部队送来了米面猪肉蒸熟的馍馍压好的面条。
+三天后的一个夜晚，中国北方最大的一次共产党领导的军事暴动发生了。
+那是一场从一开始就注定失败的战争，开头的小小的胜利和接连着的彻底溃灭都是无法改易的。
+从打响第一枪到枪声在整个战场冷寂下来，习旅长的指挥部不断向战争的前沿推进，黑娃从只听得枪响到看见战壕，枪弹曳出的火交交织成一幅美丽的网，像阳春三月母亲在地上绷着经线，看着倒地扬花孕穗的麦田里的各种姿势的尸体和一张张扭曲得面目全非的脸孔，黑娃没有愤怒没有悲伤也没有一丝害怕，战争原来就是这个样子，战争不过就是这个样子。
+直到习旅长下令让他把全部警卫一个不留带上去进入战壕时，黑娃似乎才有了知觉才感到某种难过：“习旅长，你跟前不能一个不留啊！”“我现在已经不重要了，重要的是这场仗。
+”习旅长吼起来，“同志们，把你的能耐用到前沿上去，黑娃你不是有三只眼吗？把三只眼都盯紧大哥的黑心窝打！打不死他也要砸断他一条腿！”黑娃就决定不再争辩，决定服从命令率领警卫排进入人手稀少的战壕。
+习旅长挥了挥手说：“同志们，把能耐可甭用到唱“七小诗”上去哇！”那一刻黑娃看见习旅长眼中有一缕绝望的柔情和一缕绝望的悲哀掺和着的动人的神光；这是他最后看见习旅长的一眼，那神光就永久地留在他的记忆里。
 
 
-abstract:
-in this paper we present spikeonchip, a custom embedded platform for neuronal activity recording and online analysis.
-the spikeonchip platform was developed in the context of automated drug testing and toxicology assessments on neural tissue made from human induced pluripotent stem cells.
-the system was developed with the following goals: to be small, autonomous and low power, to handle micro-electrode arrays with up to 256 electrodes, to reduce the amount of data generated from the recording, to be able to do computation during acquisition, and to be customizable.
-this led to the choice of a field programmable gate array system-on-chip platform.
-this paper focuses on the embedded system for acquisition and processing with key features being the ability to record electrophysiological signals from multiple electrodes, detect biological activity on all channels online for recording, and do frequency domain spectral energy analysis online on all channels during acquisition.
-development methodologies are also presented.
-the platform is finally illustrated in a concrete experiment with bicuculline being administered to grown human neural tissue through microfluidics, resulting in measurable effects in the spike recordings and activity.
-the presented platform provides a valuable new experimental instrument that can be further extended thanks to the programmable hardware and software.
+进入战壕里头的战斗远不及他的逃亡印象深刻。
+进攻和溃败时都没有害怕而逃亡时却如惊弓之鸟，那原因是端枪瞄准大哥的士兵时他已经豁出去了，而逃亡时他不想豁出去了，他率领的警卫排谁死了谁活着谁伤了谁跑了习旅长死了活了撤走了到哪里去了一概不明，黑娃被露水激醒时看见满天星光，先意识到右手里擦着的折腰子短枪，随之意识到左手抓着一把湿漉漉粘糊糊的麦穗，最后才意识到肩膀挨了枪子儿受了伤，伤口正好与上次习旅长被黑枪子射的相吻合。
+他站起来摇摇手臂似乎还不要紧，就绕过一个个横竖摆列着的尸体朝东南方逃去，脚下是绵茸茸的被攘践倒他的麦子的青秆绿穗儿，辨不清大哥的士兵和战友的尸体，反正都像夏收时割倒捆束的麦个子摆在田野里。
+他走着跑着直到看不见尸体直到站立着的麦子挡阻脚步时才又放缓下来，从黑夜终于走到黎明。
+齐腰高的麦田小路上走来一位拉牛扛犁的老汉，在甜润润的晨风里唱着乱弹，兴致很好嗓门也很好，黑娃跳到老汉当面，者汉一句乱弹卡在肚子里扔了肩上的犁杖软软地瘫倒了，紫红色的大犍牛扬起尾巴跑进麦田里去了。
+黑娃这才看到自己被血浆红了的衣裤。
+他从老汉身上剥下一件蓝衫留下底下的白衫，脱下老汉的青色夹裤留下里边套着的单裤，把自己的衣裤脱下来揉成一圪塔塞到麦地里，再把老汉的蓝衫青裤穿起来，把短枪掖进裤腰，一下子变成他在渭北熬活时的长工装束了。
+临走时，他从腰里摸出一块银元，塞进老汉僵硬的手心就匆匆走掉了。
 
 
-abstract:
-deep learning is a state-of-the-art approach that provides highly accurate inference for many cyber-physical systems cps such as autonomous cars and robots.
-deep learning inference often needs to be performed locally on mobile and embedded devices, rather than in the cloud, to address concerns such as latency, power consumption, and limited bandwidth.
-however, existing approaches have focused on delivering “best-effort” performance to resource-constrained mobile embedded devices, resulting in unpredictable performance under highly variable environments of cps.
-in this paper, we propose a novel deep learning inference runtime, called deeprt, that supports multiple qos objectives simultaneously against unpredictable workloads.
-in deeprt, the multiple inputs/multiple outputs mimo modeling and control methodology is proposed as a primary tool to support multiple qos goals including the inference latency and power consumption.
-deeprt’s mimo controller coordinates multiple computing resources, such as cpus and gpus, by capturing their close interactions and effects on multiple qos objectives.
-we demonstrate the viability of deeprt’s qos management architecture by implementing a prototype of deeprt.
-the evaluation results demonstrate that, compared with baseline approaches, deeprt can support the desired inference latency as well as power consumption for various deep learning models in a highly robust manner.
+涉过一条河沟时，黑娃脱光衣裤洗刷了凝结在身上的血痕，晌午时分走进一个叫做候家铺的村子，问到一户正在场上碾大麦的人家雇不雇工，主人留下他顺手把一把木杈交给他翻搅碾过的大麦秆子，午饭算是有着落了。
+他和主人刚刚端起麻食饭碗，两个背着枪的士兵从大门走进来，追问黑娃的来路，而且一口咬定他是暴乱的逃亡分子。
+黑娃装作傻愣贝崩的神气说：”老总你的话我连听都听不懂。
+我屋里青黄不接出来混口饭吃倒惹下麻达了”你们不信我也没法，我跟你们走，那也得叫吃一碗麻食，我干了一晌活饿得……”主人是个厚道人也说起情来：“二位老总就让小伙吃一碗饭，反正他又跑不了嘛！”那当儿黑娃一只手端着自己的碗另一手端起主人搁在桌子上的碗，准确无误地把两碗刚出锅的热烫麻食扣到两个老总脸上，转身从后门逃走了，出后门的时候他感到了极度的恐惧和害怕。
 
 
-abstract:
-a low-inductive half-bridge and gate driver package with on-package gate and dc-link capacitors is realized by printed circuit board pcb embedding of two gan-on-si ics.
-while monolithic half-bridge and driver integration reduces on-chip parasitics, it does not solve the interconnection challenge to external capacitors.
-this letter solves this issue through advantageous combination of pcb embedding and monolithic circuit integration.
-this letter uses gan-on-si power circuits with integrated gate drivers, freewheeling diodes, and temperature and current sensors.
-gan ics are fabricated with thick copper on both sides, which makes them applicable to commercial pcb-embedding technologies.
-thermal aspects are discussed and electromagnetic simulations used to compare the pcb-embedded package to a bond wire based package.
-a pcb-embedded dc-dc converter is operated up to 350 v and 450 w with up to 98.
-7% efficiency.
-380 v hard-switching transitions show below 8% over- and undershoot despite over 120 v/ns slew rates.
-parallel platelike placement of silicon flip-chip capacitors above the gate driver final stage transistors and separated only by a thin pcb layer increased the gate-loop parasitic inductance by only 40 ph.
+天老黑时黑娃走进秦岭峪口浅山的一个镇子，十数家人家全都关死了店门，只有两家小栈门板虚淹，门上方吊着一个油纸糊的灯笼。
+黑娃在镇子上溜了一遭踏查了进山出山的路径，就走进一家小栈，青石垒的柜台上铺着一块黑色光亮的生漆漆过的木板，柜台里头有幽微的烧酒的香气儿。
+一个佝偻着腰的瘦老汉问他吃哩还是住哩？黑娃说想吃也想住。
+佝偻老汉说你先住下再消停吃，随之领他走进里间，一排大炕，炕洞里的火呼呼啦啦燃烧着，屋里一股很浓的松烟气味。
+炕上坐着躺着的几个人，全是山民们烟熏火燎得乌秋秋的脸。
+佝偻栈主向他介绍有野猪肉獾肉野鸡肉，征询他的意愿要吃碗子还是吃大块子。
+黑娃问啥叫碗子啥又叫块子，才得知下一块蘸盐面吃叫块子，烩了汤的叫碗子。
+黑娃又饥又渴自然要了碗子，一只大如小盆的粗瓷碗里盛着满满一碗野猪肉，其实不过四五块，筷子挟不起来就动手抓起来撕咬，又吃了四个在炕洞里烤得焦黄酥脆的黄包谷馍，便觉得浑身困惫不堪躺到在炕上，佝偻店主赶过来说：“客官付了账再睡，臭行道的臭礼行。
+”黑娃摸了摸没有零钱就交给他一枚银元。
+夜半时分，黑娃醒过来时已被捆死了手脚，听见有人在黑间里说：“客官甭惊，我认得你。
+你去年到咱寨上叫咱改号换旗你记得不？”
+
+“兄弟你演了一出‘二进宫’。
+”土匪头子说。
+黑娃被放开手脚解去蒙在眼上的裤子，强烈的灯光耀得他睁不开眼睛。
+土匪头子说：“亏得我没跟你挂上共产党的牌号，要不咱俩而今都没有个落脚之地了。
+”黑娃这时才看清上匪头子的脸，比一年前没有多大变化。
+去年鹿兆鹏差他来这山寨企图说服这股土匪转成共产党游击队失败了，现在自己流落到此，自然心境全非了。
+他站在灯火通明的大厅里，咧了咧嘴角说不出话。
+土匪头子说：“兄弟你放心住下，没人敢碰你一指头。
+你好好吃好好睡先把伤养好，要革命了你下山再去革命，革命成功了穷人坐天下了我也就下山务农去呀！革命成不了功你遇难了就往老哥这儿来，路你也熟了喀！”土匪头子唤人来给黑娃肩头的伤口敷了药面，就摆了几碗菜和一坛酒。
+黑娃喝得脸红耳赤，伏在桌边放声大哭起来。
+他痛痛快快哭了几声，猛地站起来嘲笑说：“堂堂白鹿村出下我一个土匪罗！”
+
+上匪头子拔刀在手上刺出血滴人酒碗里，黑娃接过刀也割破中指，俩人喝了血酒，又在香案前焚香叩拜，黑娃抬头一看香案后的崖壁上画着一只涂成白色的狼。
+拜叩完毕，黑娃说：“白鹿原没见出个白鹿，倒是真个出了个白狼。
+”土匪头子喝道：“拿宝罐子来。
+”有人立即送上一只半大的青釉瓷罐，土匪头子把罐儿翻过来，倒出两朵一模一样的木刻黑白牡丹花，要黑娃用手摸出一个来。
+黑娃问其用意，上匪头子说：“你先摸了再说。
+”黑娃伸手到瓷罐子里随例拈出一朵来，正是白的。
+土匪头子笑道：“兄弟有福。
+”接着告诉，山寨里养着两朵牡丹，由弟兄们抓闸儿平等享用。
+这个白牡丹用重金从城里开园寺买来的人是绝了。
+那个黑牡丹的来历向一切人保密而且不许打听，只管享用就是了。
+黑娃皱皱眉头嘴里罗罗嗦嗦说自己还不习惯弄这号事。
+土匪头子笑着大声说：“兄弟呀，土匪就是土匪，土匪就享这号福，想享旁的啥福享不上。
+你顾虑啥哩？”
+
+黑娃和白牡丹睡了，后来也和黑牡丹睡了；白牡丹白得好看，黑牡丹黑得漂亮。
+肩伤掉痴以后黑娃参与了第一次抢劫活动。
+他手脚利索抢法特好脾气随伙儿，三五次抢劫后就深得弟兄们拥戴，土匪头子给他加冕为二拇指。
+土匪们的组织五花八门称谓也别出心裁，土匪头子被尊称为大拇指，二头目黑娃自然就是二拇指了。
+有一次抢劫令黑娃难忘，那是在盘龙镇抢劫一家药村收购店铺时，他从装着中药的麻包垛子里揪出年轻的掌柜，竟是白嘉轩的老二白孝武。
+他掖着他的领口拘得他直翻白眼儿，随手就压到地上面朝脚地，紧接着交给一个弟兄，自己就退到店铺门口来，对守在门口的一个弟兄说：“你进去我来守门，我蹬到一条裤子里了。
+”抢劫碰见熟人是土匪的忌讳，叫做蹬一条裤腿或者说撞到舅家门板了。
+黑娃在癯口听见孝武挨打时的惨叫，忽然想起和他以及他哥哥孝文坐他家方桌念书的情景。
+
+
+洗劫白鹿村白嘉轩和鹿子霖两家的具体行动方案是黑娃一手设计的，纯粹是为了报复白嘉轩在词堂用刺刷惩治小娥的事。
+黑娃作了区别对待，要求他的弟兄务必处死鹿子霖，如果时间充足就敦死他，不料鹿子霖命大侥幸逃脱了，让那个老棺材瓤子当替身；黑娃对打劫白家的那一路弟兄说：“那人的毛病出在腰里，腰杆儿挺处太硬大直。
+我自小看见他的腰就难受。
+”弟兄们一个个情绪高涨，这是替二拇指报仇雪恨的机会。
+黑娃向弟兄们最后叮嘱一句“弟兄们活儿做得干净点！”
+
+黑娃随后就到贺家坊看戏去了。
+他戴着一顶破草帽遮住了半个脸挤在窝里，瞧见贺耀祖和鹿子霖体体面面坐在戏楼上。
+他在戏楼下瞥见好多熟悉的面孔，却没有发现白孝文和田小娥。
+那阵儿田小娥大约正牵着白孝文走进破烂砖瓦窑，黑娃重新口到白鹿村，走进他的窑院，门板上挂着铁锁，他在鸡窝里看看鸡没有了，猪圈的栅栏门儿撇在地上没有猪了；他坐在窑院里一块石头上陷入柔情似手的回味，从腰里摸出一把银元从门道底下塞进去；最后在窑院接村路处站住脚，回头再瞥一眼破旧的窑洞的门板和窗户，踏上慢坡的小路离去了。
+
+
+白鹿村的“忙罢会”弥散着浓厚的悲怆气氛。
+农历七月初三是会日，麻子红的戏班初二晚上就敲响了锣鼓家伙，白孝文通前到后主持着这场非同寻常的演出，忙得奔来颠去。
+鹿子霖端坐在戏台前角，侧着身子对着台下，头上绾着的那一圈白色孝布，向聚集在台下来自十里八村的男人女人显示着悲怆也显示着强硬。
+初三的午场戏开锣以后，白嘉轩来到戏台下，掀起了一阵喧哗，白嘉轩拒不听从家里任何人的劝阻要到戏场上来，显然不是戏瘤发了而是要到乡民聚集的场合去显示一下。
+孝文用独轮叫蚂炸车推着父亲走进戏场，屁股下垫着一方麦秸秆编织的蒲团儿。
+男人女人们围追着车子，想亲睹一眼从匪劫中逃生的德高望重的族长，认识的和不认识的人都向他抛出最诚挚的问候：“白先生好咧？”白嘉轩平静地坐在蒲团上，双手扶在小车车头的木格上，脸色平和慈祥，眼神里漾出刚强的光彩。
+他不回答追逐着他的热诚的问候，端直坐着被孝文推到戏台底下，完全是想来过一过戏瘾的样子。
+他坐到戏台下看戏这个举动本身，已经充分显示了他的存在和他的性气，脸色和言语上再不需要任何做派了。
+白嘉轩看见田福贤走上戏楼坐在鹿子霖旁边，和鹿子霖说了两句什么话，俩人一起走到台口向他伸出了了共产党就得下不守信义的毛病了！”兆鹏说：“你刚刚揣上国民党证就口大气租起来了？告诉你，她担心你不会改变才没来。
+他说她来了要是俩人都不改变怎么收场？她珍惜与你的感情才不来，她要我来劝你，盼着再见到你时是一个皆大欢喜的结局。
+好兄弟，你有啥话跟哥说吧！”兆海痛苦地叹口气：“完了。
+到此为止。
+”兆鹏说：“兄弟，没有完。
+在我看，一切尚未开始，怎么就完了？你大悲观！”兆海说：“我已无法改变。
+我指望她作改变。
+她委托你来，就证明她不会改变了。
+她要是会改变，你也不必来找我了，你肯定是她的领导吧？”兆鹏说：“你们两个都指望对方改变，可以坐下来好好谈谈，心平气和地谈谈，不要一见面先逼对方改变自己的信仰，暂且谈不到一块也不要紧，等三年两年也未尝不可，三两年里大家都经见得更多了，判断和认识是非的能力也提高了，也许就会发生变化。
+”兆海说：“那好吧！你告诉她，我后天想回乡下看看父母，只能待一天。
+回来后部队就要开拔了。
+”兆鹏说：“白灵一定要见你一面，让我跟你约定时间。
+既然你后日要回原上，你们明晚会面吧？你说在哪儿方便些？”兆海说：“算了不见了。
+既然谁也改变不了谁，见了也没个好结果，反倒叫人难受。
+你告诉她，我等待她的话。
+”
+
+兆海从原上探视口到城里，改变了和白灵不再见面的打算，当晚又一次找到皮匠的铺子。
+白灵以为兆海有了转机而欣喜，当即和兆海走出二姑的铺店，俩人又转到那个抛掷铜元的园子里。
+白灵动情他说：“我以为再见不到你了哩！兆海哥，你也太倔了，一回谈不拢二回连面也不见了？真有点国民党翻脸不认人的通病！”兆海却火起来：“算了吧白灵！我不说远处的事，你回咱原上走走看吧！共产党在原上搞了一场啥样的革命你去看看吧！兆鹏用下一杆子啥人你打听打听一下吧！鹿黑娃贺老大白兴儿田小娥之流尽是一帮死猫赖狗，凭这些人能完成国民革命？他们懂得革命的一分意思吗？他们趁着革命的凤潮胡成乱整，充其量不过是荒年灾月饥民‘吃大户’的盲动……”白灵的那一缕温情顿然冷寂，忽闪闪蹿上一股火气，她的强盛的气性迅速恢复，迅即作出反应：“兆海哥，一年多不见，你长了身体长了知识，也长了不少的贵族口气啊！”兆海说：“你用列宁的理论判我为贵族并不过分。
+列宁就是把穷人煽动起来打倒富人消灭富人，结果是富人被消灭了穷人仍然受穷。
+光鹏学苏俄在白鹿原上煽动穷汉打倒财东，结果呢？堂堂的农协主任鹿黑娃堕落成了上匪，领着土匪抢银元，刀劈了俺爷又砸断了嘉轩叔的腰杆子……作为农协主任没有达到目的的，当了上匪却轻而易举地达到了。
+你叫我还能信还能再入共产党吗？黑娃们干不成共产党的革命可以当土匪，我可不行呀！”白灵说：“你听没听到贺老大怎么死的？你听过你见过把人从高空敦下来的施刑吗？共产党就要发动被压迫者推翻压迫者，建立一个没有剥削没有压迫的自由平等的世界。
+”兆海说：“我们走着瞧吧！看看谁的主义真正救中国。
+”俩人不欢而散。
+思想上的尖锐对立，减轻了他和她感情上的依恋，分手的时候远不及第一次那样沉重如焚。
+
+
+鹿兆海紧走几步又停住脚，回过头去，看见白灵也站在那儿仁立不动。
+他走过去对她说：“我明天就要开拔了……”她已忍不住滚下泪珠来：“兆海哥……我还是等着你回来……”——
+
+
+
+第十七章
+
+白嘉轩重新出现在白鹿村的街巷里，村民们差点认不出他来了，那挺直如椽的腰杆儿佝偻下去，从尾骨那儿折成了一个九十度的弯角，屁股高高地撅了起来；他手里拄着一根截短了的拐杖，和人说话的时候就仰起脸来，活像一只狗的形体；抬头仰脸跟人说话时，那双眼睛就尽力往上翻睁，原来鼓出的眼球愈加显得突出，眼白也更加大得耀眼；两个嘴角相反地朝下扯拉，阔大的嘴巴撇一张弯弓，更显出执著不移近乎倔拗的神气。
+他在街巷里用简短的语言回答着一个个关切问询着的男女，仅作短暂地驻足，几站不停步地移动拐杖，跟着拉牛扛犁的鹿三走出村巷。
+
+
+已是秋末冬初，白日短促到巧媳妇难做三顿饭的季节。
+太阳坠入白鹿原西部的原坡，一片羞怯的霞光腾起在西原的上空。
+白嘉轩双手拄着拐杖站在地头，瞅着鹿三一手捉着犁杖一手扬着鞭子悠悠地耕翻留作棉田的地块，黄褐色的泥土在犁铧上翻卷着；鹿三和牛的背影渐渐融入西边的霞光里迎面奔到他眼前来了。
+白嘉轩手心痒痒喉咙也痒痒了，想攥一攥犁杖光滑的扶把儿，想踩踏踩踏那翻卷着的泥土，想放开喉咙吆喝吆喝牲畜了。
+当鹿三再犁过一遭在地头回犁勒调犍牛的时候，白嘉轩扔了拐杖，一把抓住犁把儿一手夺过鞭子，说：“三哥，你抽袋烟去！”鹿三嘴里大声憨气地嘀嗒着：“天短求得转不了几个来回就黑咧！”最后还是无奈放了鞭子和犁杖，很不情愿地蹲下来摸烟包。
+他瞧着嘉轩把犁尖插进垄沟一声吆喝，连忙奔上前抓住犁杖：“嘉轩，你不该犁地，你的腰……”白嘉轩拨开他的手，又一声吆喝：“得儿起！”犍牛拖着犁铧趄前走了。
+白嘉轩转过脸对鹿三大声说：“我想试火一下！”鹿三手里攥着上尚未装进烟末的烟袋跟着嘉轩并排儿走着担心万一有个闪失。
+白嘉轩很不喜悦地说：“你跟在我旁边我不舒服，你走开你去抽你的烟！”鹿三无奈停住脚步，眼睛紧紧瞅着渐渐融进霞光里的白嘉轩，还是攥着空烟袋记不起来装烟。
+
+
+白嘉轩只顾瞅着犁头前进的地皮，黄褐色的泥土在脚下翻卷，新鲜的湿土气息从犁铧底下泛漫潮溢起来。
+滋润着空乏焦灼的胸膛，他听见自己胳膊腿上的骨节咯吧咯吧扭响的声音。
+他悠然吆喝着简洁的调遣犍牛的词令倒像是一种舒心的悦意的抒情。
+他一直到棉田的尽头掉过犁头，背着霞光朝东头翻耕过来的时候，吼起了秦腔：“汉苏武在北海……”三个来回犁下来，白嘉轩已经大汗淋漓气喘吁吁，身体毕竟是虚了，可那卧睡炕上三个月的枯燥郁闷的生活也终于结束了。
+这天后晌收工回去，白嘉轩一扬手把那根拐杖扔进储备柴禾的草棚子里去，站在院庭里接过仙草端来的洗脸铜盆说：“我后晌试火了一下，我还行！”
+
+晚饭后在万房东屋老娘的住室里，白嘉轩临时决定召集一次家庭成员的聚会，孝文和三儿子孝义是他叫来的，老二的媳妇由仙草告知，作为这个家庭非正式的却是不可或缺的成员鹿三，是他亲自到马号里去请来的，而且被礼让到桌子那边的一张简易太师椅上，两个媳妇规规矩矩坐在婆的已经开始煨火的炕边上。
+白嘉轩说：“我的腰好了。
+”他侧转头瞅着两个媳妇说：“我在炕上窝蜷了整整一百零七天，你俩——大姐二姐都受了苦尽了孝心都好。
+”两个儿媳得到了家庭长者的夸奖却感到惶恐，争相表白这完全是做晚辈的应尽的孝道等等。
+白嘉轩摆摆头就打断她俩的话：“你们还不知道我一辈子最怯着啥？我不怯歪人恶人也不怯土匪贼娃子，我不怯吃苦不怯出力也不怯迟睡早起，我最怯最怕的事……就是死僵僵躺在炕上，让人侍候熬汤煎药端吃端喝倒屎倒尿。
+”一家人默然，只有老母亲白赵氏在炕头动了感情：“你是罪人！”白嘉轩接口说：“我是个罪人我也没法儿，我爱受罪我由不得出力下苦是生就的，我干着活儿浑身都痛快；我要是两天手不捉把儿不干活儿，胳膊软了腿也软了心好瞀知烦焦了……”白嘉轩说到这里停顿一下，然后郑重地说出想告诉每一个家庭成员的话：“我说前头这些话的意思，就是说，从明天开始，你们再也不用围着我转了。
+你们各人该做啥就去做啥，屋里人该纺线的纺线，该织布的织布，该缝棉衣的缝棉衣，外边人该做的地里活就尽着去做。
+孝文你跟你三叔犁完花（棉）田接着翻稻地。
+牛犊你喂槽上留下的牲口，叼空儿推土晒土，把冬天的垫圈土攒够，小心捂一场雪。
+地一下冻就赶紧套车送粪，把这些活儿开销利索，轧花机就要响动了。
+一句话，原先的日子咋过从明昌开始还咋过。
+我嘛——好咧！”
+
+白嘉轩被土匪咂断腰杆以后笼罩在庭院里的悲凄慌乱的气氛已经廓清，劫难发生以前的严谨勤奋的生活和生产秩序完全恢复。
+不单单恢复，家里所有成年人惊异地发现，自信“我还行”的家长发生了重大变化，他比驼背以前起得更早了，天争薄明时庭院里就响起威严的咳嗽声，常常使晚他一步开门端着尿盆倒尿的儿媳尴尬失措；他的脚步不显艰难反倒更显得敏捷，驼着背甩摆着手迈着腿脚，前院后院马号牛棚猪圈以及后院的茅厕，他都有事无事的转悠查看，除过推车挑担必需用双肩或单肩的活路以外，凡是用双手和腿脚操作的农活他都不忌讳，耕棉田翻稻地铡谷草旋子筛掌簸箕送粪吆牛车踩踏轧花机等秋冬季农活，他和儿子孝文和攻工鹿三一起搭手干着；他的话语更少更简练也更准确，无用的废话虚意的应酬彻底干净地从他的口里省略了。
+孝文和鹿三总是担心他累出毛病，迭声劝他干一干也该歇一歇，最好也是一天干一晌歇息两晌，顶多每天早晚干两晌午间歇息；象这样一天三晌跟着他俩撑着干下去，迟早会出乱子的。
+白嘉轩充耳不闻只顾干着手里或脚下的活儿，被他们咄咄得烦了也就急躁了：“你俩都悄着，再甭说那号话了。
+我不爱听。
+人只有闲坏了的没有忙坏了的。
+”
+
+整个四合院犹如那架置了一个夏天的秋天的轧花机，到了冬天就就折折折地运转起来了。
+这时候，一个致命的打击接踵而来，白嘉轩发觉了孝文的隐秘。
+这个打击几乎是摧毁性的。
+
+
+那是入冬后第一场大雪降落的夜晚，白嘉轩踩了半晌轧花机，孝文硬把他拖下来。
+他揩了揩额头的汗珠儿，穿上棉衣棉裤，走出了饲养牛马的圈场，没有走进斜对门的四合院，折转方向沿着西巷走过来。
+大雪随下随化，巷道里一片泥泞。
+白嘉轩背抄着双手走进连着村巷的白鹿镇的街道，推开了冷先生中医堂虚掩着门板。
+冷先生给他斟上一盅金黄色的茶水，再把一包用乳黄色油纸裹着的卷烟叶解开，摊放在小桌上，指着一个茶杯说：“你赶巧了，这茶叶是刚刚接下的雪花水冲泡的，尝尝。
+”白嘉轩呷一口茶，清香扑鼻，热流咕噜噜响着滚下喉咙，顿觉回肠荡气浑身通畅，嘴里却故意冷淡地说：“雪水还不就是水嘛！我喝着没啥两样儿。
+”说着捏出一段儿，剪得十分规矩的烟片优雅自如地撒开，铺展到膝头的棉裤上，再取来一段一节短的碎的烟片均匀地夹进去，然后包卷起来，在两只粗大的手掌之间反覆捻搓，用舌尖给开口的烟片抿一点口水粘住，就制造出一支漂亮的雪茄。
+他从桌边拈起那根从早起到晚默默燃烧着的散发着香气的火苗儿，对着雪茄头儿燃了，悠悠喷出一口浓重的蓝色烟雾来。
+
+
+二儿子孝武的媳妇正月里过门以后，他和冷先生的关系发生了深刻的变化，由爷们爹们的世代认交发展为儿女亲家。
+感激不尽亲家翻心至诚的疗治，终于使他百日之后重新走到白鹿村的街巷里，而没有变成一个死僵僵瘫痪炕头的废物。
+他原先从不串门现在更不串了，只是在隔过一些日子或阴雨绵绵的憋闷时日，到亲家冷先生的中医堂来坐坐聊聊。
+冷先生的中医堂，成为罗锅嘉轩了知白鹿原动态的一个通风口。
+求医抓药的人每天都把各个村子发生的异常事件及时传递到中医堂里来，冷先生对纷繁的大小事变经过筛选，拣出那些值得－说的事说给白嘉轩，俩人接着就对此事议论评说一番。
+有时候俩人对坐着喝茶吸烟，夏天一人一把竹皮扇子，冬天守一盆木炭火，冷先生话语不多，白嘉轩也不好弹舌，俩人就那么坐着甚至不说一闲话。
+俩人心里都明白，其实只有真正信赖无虞的关系才能达到这种去伪情而存的真实的境地。
+白嘉轩怀着平和愉悦的心态呷着雪水冲下的茶水，发现冷先生给他格外殷切地添茶，稍微一点过分的客套反而引起不适和别扭；他留心瞄瞅着冷先生，终于发觉那双平素总透着冷气的眼睛躲躲闪闪，浮泛着一缕虚光。
+他直言说：“冷大哥你甭瞎张罗了“你坐下抽你的烟吧。
+茶我会倒，烟我会卷喀！你象是心里有事？我在这儿不便我就走。
+”冷先生看到自己弄巧成拙，急忙拉住白嘉轩的手，就再也转不过弯儿了：“兄弟你坐下，我有话跟你说……”
+
+“咱弟兄们说话，还这么拐弯抹角呀？”
+
+“我听到一句闲话，——”
+
+“……”
+
+“虽则是一句闲话，可不是一般的闲话。
+”
+
+“呃呀几天不见，你的直筒肠子扭成麻花了！算了你甭说了。
+我回去睡觉呀！”
+
+“我怕你招不住这个闲话。
+兄弟你听到这闲话先不要生气。
+这闲话给你说行不行，说了又怕你招架不住……”
+
+“我的黄货白货给上匪打抢了，又砸断了我的腰，我不象人样儿象条狗，我连一句气活也没骂还是踏我的轧花机；我不信世上还有啥‘闲话’能把我气死，能把我扳倒？顶大不过是想算我的伙食帐（处死）罢咧！”
+
+“嘉轩兄弟……我听人说孝文的闲话……”
+
+“孝文？孝文能有啥闲话？”。
+
+
+“说是跟村口烂窑那个货……”
+
+“呃……”
+
+冷先生看见白嘉轩泛红的脸色顿然变得如同一张黄表纸，佝偻的躯体猛烈地抖颤了一下，反夹在指间的卷烟挤成了弯儿，在那一霎间眼睛睁大到失神的程度。
+这一切都没有超过冷先生的预料，白嘉轩没有热血冲顶当下闭气已属万幸，他终于说出了这个难以启齿的闲话，白嘉轩很快恢复过来，冷着脸问：“大哥依你看，这是果有实事，还是有人给我脸上抹屎？”冷先生说：“我看都不是。
+闲话嘛你就只当闲话听。
+”白嘉轩又问：“你听谁说的？这话是怎么嘈出来的？冷先生轻描淡写他说：“俗话说‘露水没籽儿闲话没影儿’。
+白嘉轩摇摇头说：“凡是闲话都有影儿！”
+
+七月末尾一个褥热蒸闷的晚上，鹿子霖头上裹着一匝守孝的白布走进冷先生的中医堂，腋下夹着一瓶太白酒。
+进屋后鹿子霖把酒瓶往桌上一蹲，顺手从头上扯下孝布挂到土墙的木撅上，大声憨气地慨叹起来：“先生哥，你看邪不邪？老先生一入土，我那个院子一下就空了！空得我一进街门就栖惶得坐不住。
+仿黑咱弟兄们喝一盅。
+”冷先生很能体味鹿子霖的心情当即让相公尽快弄出三四样下酒菜来，一盘凉黄瓜，一盘炒鸡蛋，一盘炒莴笋，一盘油炸花生米，冷先生喝酒就跟喝凉水的感觉和效果一样，喝任何名酒尝不出香味，喝再多也从来不见脸红脸黄更不会见醉，他看着旁人喝得那么有滋味醉得丑态百出往往觉得莫名其妙。
+鹿子霖嗜酒成性，高兴时喝郁闷时喝冷甚了喝热过了喝，干好事要喝干坏事要喝，进小娥的窑洞之前必须喝酒以壮行；他喝酒不悦意独个品饮，必须得有一伙酒起码得有一个人陪着，一边偏着笑着喊着，顶痛快的是猜拳行令吵得人仰马翻，渐渐进入苦不觉乐的飘飘摇摇的轻松境界。
+“先生哥啊，我有一句为难的话……”鹿子霖眼睛里开始泛出酒的气韵，“思来想去还是跟你说了好！”冷先生没有说话，从桌上捉住酒杯邀酒，鼓励鹿子霖尽快说出他想说的话。
+鹿子霖仰脖灌下一盅酒，口腔里大声嘘叹着说：“我听到一句闲话，说是孝文跟窑里那个货这这了那了……”冷先生不由一惊，原想鹿子霖可能要谈及他们之间的事，鹿兆鹏拒不归家的抗婚行动早已掩盖不住，处境最为尴尬的其实是这桩婚事双方的父亲，他和他。
+鹿子霖多次向他表示过深深的歉意，一次又一次给他表示将要采取的制服儿子的举措……是不是又要采取新的手段了？万万料想不到，却是孝文和黑娃女人间发生了什么纠葛。
+冷先生断然地说：“兄弟你这话说给鬼鬼都不信。
+”鹿子霖大幅度地连连点着头：“对对对！我刚听到这话不仅不信，顺手就煽了给我报告这件事人的一个嘴巴！我说‘孝文要跟她有这号事，那庙里的泥神神也会跟她有这件事了。
+那人挨了嘴巴跑了，可接着又有俩人来报告，说得有鼻子有眼，全说是他们亲眼撞见孝文进出那货的窑，一个说他晚上寻猪撞见孝文进窑，一个说他半夜从亲戚家回来瞅见孝文溜出窑来，俩人不是一天晚上见的。
+你说信下信不下？我还能再煽这俩人的嘴巴子吗？”冷先生说：“这事若是属实，那比土匪砸断腰还要厉害，这是要嘉轩的命哩！”鹿子霖说：“我打发那俩人报告的人出门时，一人还是给了一嘴巴先封住口：不准胡说！我想我给嘉轩不好说这话，嘉轩哥心里头不见得我清白：可这事不告知嘉轩哥又不行，日后事情烂包了嘉轩哥又怨我对他瞒瞒盖盖；我思来想去只有你来说这话，咱们谁都不想看着白家出丑……他跟你是亲我跟你更早就是了，盼着大家都光光堂堂……”
+
+冷先生第二天照旧去给嘉轩敷药，看着忍着痛仍然做出平静神态的亲家，又想起前一晚自己的判断：嘉轩能挨得起土匪拦腰一击，绝对招架不住那个传言的打击。
+冷先生心里十分难过十分痛苦，脸上依然着永不改易的冷色调，象往昔一样连安慰的话也不说一句只顾精心治疗。
+过了难耐的三伏又过了淫雨绵绵的秋天，当白嘉轩腰伤治愈重新出现在白鹿村街巷里的时候，埋在他心底的那句可怕的传言等到了出世的时日．他为如何把这句话传给嘉轩而伤透了脑子。
+似乎从来也没有过为说一句话而如此费心的情况……
+
+冷先生瞅着佝偻在椅子的上白嘉轩说：“兄弟，我看人到世上来没有享福的尽是受苦的，穷汉有穷汉的苦楚，富汉有富汉的苦楚，皇帝贵人也是有难言的苦楚。
+这是人出世时带来的。
+你看，个个人都是哇哇大哭着来这世上，没听说哪个人落地头一声不是哭是笑。
+咋哩？人都不愿意到世上来，世上大苦情了，不及在天上清静悠闲，天爷就一脚把人蹬下来……既是人到世上来注定要受苦，明白人不论遇见啥样的灾苦都能想得开……”冷先生一次说下这么多连他自己也颇惊诧。
+白嘉轩说：“得先把事情弄清白。
+不管是真是假，都不能当闲话听。
+这是啥闲话？杀人的闲话！”
+
+白嘉轩佝偻着腰走过白鹿镇的街道，又转折上进入白鹿村的丁字路，脚下已经积下一层厚厚的雪，嚓嚓嚓响着，背抄着腰上的手和脖子感到雪花融化的冰冷，天上的雪还在下着。
+进入四合院的街门时，他对如何对待冷先生透露给他的闲话已经纲目明晰，处置这事并不复杂，不需要向任何人打听讯问，要是没有结果可能更糟。
+他相信只要若无其事而暗里留心观察一下孝文的举动就会一目了然。
+他做出什么事也不曾发生的随意的样子问：“孝文睡了？”仙草也不在意他说：“给老六家说和去了。
+”
+
+白嘉轩胸膛里怦然心动，觉得有一股滚烫的东西冲上脑顶，得悉这件事非同小可的闲话所激起的震惊和愤怒，现在才变得不可压仰，归来时想好了的处置这件事的纲目和步骤全部作废了。
+他把解开的第一只裤脚带儿重新扎好，从门背后抓起仙草由柴火棚子里拣回的拐杖，强烈地预知到拐杖的重要用场。
+出门时，他没有忘记掩盖此时出门的真实目的：“老六的那几个后人难说话。
+老六让我去镇镇邪，我差点忘了……”他跷出门坎就跨出通向又一次灾难的一步。
+
+
+白嘉轩来到白老六家的门口就僵住了。
+老六家狭窄的庄基上撑立着一排四间破旧的厦屋，没有围墙没有栅栏是个敞风院子，一切全都一目了然，四间厦屋安着的四合门板全都关死了，不见灯火不见响动，白老六滚雪一样的鼾声从南边那间厦屋冲出来，在敞风院子里起伏。
+白嘉轩在那一刻浑身有一种瘫软的感觉。
+他走出老六家的敞风院子，似乎有一千双手推着他疾步走上村子东头的慢坡，瞅见了那孔平时连正眼瞧一眼的兴致也没有的窑洞：想到把他逼到这个龌龊角落来干捉奸这种龌龊事的儿子，胸膛里的愤怒和悲哀搅和得他痛苦不堪；他从慢道跨上窑院的平场，两条腿失控地抖颤起来；他走到糊着一层黑麻纸的窑窗跟前，就听见了里头悄声低语着的狎呢声息；白嘉轩在那一瞬间走到了生命的未日走到终点猛然狗似的朝前一纵，一脚踏到窗洞的门板上，咣当一声，自己同时也栽倒了。
+咣当的响声无异于一声雪夜的雪鸣，把温暖的窑洞里火炕上的柔情蜜意震荡殆尽。
+孝文完全瘫痪，躺在炕上动弹不了，全身的筋骨裂碎断折，只剩一身撑不起杆子的皮肉。
+那一声炸雪响过便复归静寂。
+小娥从炕上溜下来，撅着光光的尻子贴着门缝往外瞧，朦胧的雪光里不见异常，眼睛朝下一勾才瞅见门口雪地上倒卧着一团黑圪塔。
+她松了一口气折回头扶住炕边，俯下身贴着孝文的耳朵说：“瓜蛋儿放心！一个要饭的冻硬栽倒到门口咧！”孝文忽地一声跃起拨开被子，慌忙穿衣蹬裤，溜下炕来钩上棉窝窝，一把拉开门闩，从那个倒卧门口的人身上跳过去；下了窑院的平声跷上慢道又进入村巷，他的心似才重新跳荡起来。
+
+
+小娥穿好衣裳走出窑门，看看倒在门口的那个倒霉鬼死了还是活着：她蹲下身摸摸那人的鼻口，刚刚触到冷硬如铁的鼻梁，突然吓得倒吸一口气跌坐在地上；从倒地者整齐的穿着和佝偻的身腰上，她辩认出族长来，哪里是那个可怜栖惶的要饭老汉！小娥爬起来退回窑里才感到了恐惧，急得在窑里打转转。
+她听到窑院里的一声咳嗽，立即跳出窑门奔过窑院挡住了从慢道上走下来的鹿子霖。
+小娥说：“糟了糟了！族长气死……”鹿子霖朝着小娥手指的窑门口一瞅，折身跷上窑院，站在倒地的白嘉轩身旁久久不语，象欣赏被自己射中落地的一只猎物。
+小娥急得在他腰里戳了一下：“咋办哩咋办哩？死了人咋办呀？你还斯斯文文盯啥哩！”鹿子霖弯下腰，伸手摸一下白嘉轩的鼻口，直起腰来对小娥说：“放心放心放你一百二十条心。
+死不了，这人命长。
+”小娥急哮哮他说：“死不了也不得了！他倒在这儿咋办哩？”鹿子霖说：“按说我把他背上送回去就完了，这样一背反倒叫他叫我都转不过弯子……好了，你去叫冷先生让他想办法，我应该装成不知道这码事。
+快去，小心时间长了真的死了就麻烦了。
+”小娥转身跑出场院在去打冷先生，刚跑到慢坡下，鹿子霖又喊住她：“算了算了，还是我顺路捎着背回去。
+”小娥又奔回窑院。
+鹿子霖咬咬牙在心里说“就是要叫你转不开身躲不开脸，一丁点掩瞒的余地都不留。
+看你下来怎么办？我非把你逼上‘辕门’不结。
+”他背起白嘉轩，告别小娥说：“还记着我给你说的那句话吗？你干得在行。
+”小娥知道那句话指的什么：你能把孝文拉进怀里，就是尿到他爷脸上了。
+她现在达到报复的目的却没有产生报复后的欢悦，被预料不及的严重后果吓住了。
+她瞅着鹿子霖背着白嘉轩移脚转身，走出窑院，跷进窑去关死了窑门，突然扑倒在炕上。
+
+
+鹿子霖背着白嘉轩走过白雪覆地的村巷，用脚踢响了白家的街门，对惊慌失措的仙草说：“先甭问……我也不晓得咋回事。
+先救人！”仙草的一针扎进人中，白嘉轩喉咙里咕咕响了一阵终于睁开眼睛，长叹一声又把眼睛问上了。
+鹿子霖装作啥也不晓的憨相：“咋弄着哩嘉轩哥？咋着倒在黑娃的窑门口？”随之就告辞了。
+
+
+白嘉轩被妻子仙草一针扎活过来长叹一声又闭上了眼睛。
+他固执地挥一挥手，制止了家中老少一片乱纷纷的嘘寒问暖心诚意至关切，“你们都回去睡觉，让我歇下。
+”说话时仍然闭着眼睛，屋里只剩下仙草一个清静下来，白嘉轩依然闭眼不睁静静的躺着。
+一切既已无法补救，必须采取最果断最斩劲的手段，洗刷孝文给他和祖宗以及整个家族所涂抹的耻辱。
+他相信家人围在炕前只能防碍他的决断只能乱中添乱，因此毫不留情地挥手把他们赶开了。
+他就这么躺着想着一丝不动，听着公鸡叫过一遍又叫过一遍，才咳嗽一声坐了起来，对仙草说：“你把三哥叫来。
+”
+
+鹿三在马号里十分纳闷，嘉轩怎么会倒在那个窑院里？他咂着旱烟袋坐在炕边，一只脚踏在地上另一只脚跷踏在炕边上，胳膊时支在膝头上吸着烟迷惑莫解。
+孝文低头耷脑走进去，怯怯地靠在那面的槽帮上，他以为孝文和他一样替嘉轩担忧却不知道孝文心里有鬼。
+他很诚恳地劝孝文说：“甭伤心。
+你爸缓歇缓歇就好了。
+许是雪地里走迷了。
+”孝文靠在槽帮上低垂着头，他从小娥的窑洞溜回家中时万分庆幸自己不该倒霉，摸着黑钻进被窝，才觉得堵在喉咙眼上的心回到原处；当他听到敲门声又看见鹿子霖背着父亲走进院里时，双膝一软就跌坐在地上；这一切全都被父亲的病势暂掩盖着。
+他除了死再无路可走，已经没有力量活到天明，甚至连活到再见父亲一面的时间也挨不下来。
+他觉得有必要向鹿三留下最后一句悔恨的话，于是就走进马号来了。
+他抬起低垂到胸膛上的下巴说：“三叔，我要走呀！你日后给他说一句话，就说我说了‘我不是人’……”鹿三猛乍转过头拨出嘴里的烟袋：“你说啥？”孝文说：“我做下丢脸事没脸活人了！”鹿三于是就得到了嘉轩倒在窑洞门口的疑问的注释。
+他从炕边上挪下腿来，一步一步走到孝文跟前，铁青着脸瞅着孝文耷拉着的脑袋，猛然抡开胳膊抽了两只掌，哆嗦着嘴唇“羞了先人……啥叫羞了先人？这就叫羞了先人了！黑娃羞了先人你也羞了先人……”这儿仙草走了进来。
+鹿三盛怒未消跟仙草走进上房西屋，看见嘉轩就忍不住慨叹：“嘉轩哇你好苦啊！”白嘉轩忍住了泛在眼眶里的泪珠，说：“你知道发生啥事了？知道了我就不用再说了。
+你现在收拾一下就起身，进山叫孝武回来，叫他立马回来，就说我得下急症要咽气……”
+
+惩罚孝文的举动又一次震撼了白鹿原。
+惩罚的方式和格局如同前次，施刑之前重温乡约族规的程序由孝文的弟弟孝武来执行。
+
+
+白孝武的出现恰当其时。
+他穿一件青色棉袍，挺直的腰板和他爸腰折以前一样笔挺，体魄雄壮魁伟，肩膀宽厚臀部丰满，比瘦削细俏的孝文气派得多沉稳多了。
+白嘉轩仍然在台阶上安一把椅子坐着，孝武归来及时替代了不争气的孝文的位置，也及时填充了他心中的虚空。
+孝武领涌完乡约和族规的有关条款，走到父亲跟前请示开始执行族规。
+白嘉轩从椅子上下来，跷下台阶，从族人让出的夹道里走过去，双手背抄在佝偻着的腰背上。
+白嘉轩谁也不瞅，端直走到槐树下，从地上抓起扎捆成束的一把酸枣棵子刺刷，这当儿有三四个人在他面前扑通扑通跪倒了，白嘉轩知道他们跪下想弄啥，毫不理睬，转过身就把刺刷扬起来抽过去。
+孝文一声惨叫接一声惨叫，鲜血顿时漫染了脸颊。
+白嘉轩下手特狠，比上次抽打小娥和狗蛋还要狠过几成。
+这个儿子丢了他的脸亏了他的心辜负了他对他的期望，他为他丧气败兴的程度远远超过了被土匪打断腰杆的劫难，他用刺刷抽击这个孽种是泄恨是真打而不是在族人面前摆摆架式。
+白嘉轩咬着牙再次扬起刺刷，忘记了每人只能打一下的戒律，他的胳膊被人捉住了，一看竟是鹿子霖。
+
+
+鹿子霖是那三四个下跪求情者中的一个。
+这个向族长跪谏的行动其实就是鹿子霖策划的。
+他听到孝武给他传述的白嘉轩要惩罚孝文的决定以后，郑重其事地找到白家，大声吵着要白嘉轩取消这次施刑的举动：“我敢说这根本不怪孝文！你也招不住这个折腾喀！”白嘉轩冷着脸心决如铁：“锣都敲了你还说这话做啥！你后晌能到祠堂来，就算给老哥赏光了。
+”鹿子霖后晌去祠堂里在村巷里痛心狠气地抱怨几个老汉：“你几个老者难道都是石头心恨？嘉轩要整孝文你们能忍心叫他整？为啥不劝他不阻挡他？这孝文比不得旁人咋能随便用刷子打？”那几个老汉被他热诚的斥责弄得感动又愧悔，便策划了这出跪谏的插曲。
+
+
+鹿子霖从白嘉轩手里夺下刺刷又扑通跪下了，说：“嘉轩哥！你不饶孝文我不起来！”白嘉轩冷着脸说：“我不受你的跪拜。
+谁的跪拜我今日都不受。
+谁爱跪谁就跪。
+孝武，往下行——”说罢，用手撩着袍杈儿走过人窝儿，重新在祠堂台阶的椅子上坐下来。
+白孝武从执刑具者手里接过刺刷，照哥哥孝文赤裸的胸脯抽击了一下，血流顺着胸脯一条条拉下来……
+
+如同祠堂院子里的争执在白家庭院里也刚刚发生过。
+老娘白赵氏白吴氏以及两个媳妇结成同盟，坚决反对白嘉轩惩罚孝文的毒刑，白赵氏劝不下儿子就骂起来：“你害死孝文你哪象个老子？你要把孝文捆到树上我就脱光站到孝文前头，你先用刺刷刷死我再刷死孝文！”仙草则用哭谏，两个儿媳一齐求情。
+白嘉轩对谁也不松口，连一句话也不说，一任她们骂呀哭呀乞求呀绝不动心。
+直到第三天孝武和鹿三从山里回来，白嘉轩把全体家庭成员叫到上房正厅，在祭桌前发焚香，然后征求大家的意见：“有话对着先人的面说。
+”白赵氏白吴氏和孝文孝武的媳妇陈述了早已表明的态度，轮到至关重要的一个人白孝武了。
+白孝武站在祭桌前一字一板他说：“按族规办。
+”奶奶白赵氏正愣着神儿，母亲白吴氏的耳光已经抽到他脸上了。
+孝武瞅了一眼母亲不恼也不愧。
+仍然面色不改。
+白嘉轩用恼怒的眼色制止了妻子白吴氏的轻举妄动，转过脸问孝武：“为啥？你说为啥？”白孝武沉稳他说：“这是白家的立身纲纪。
+爸你说的我不敢忘……”白嘉轩迫急地一拳砸在桌子上，说：”着！忘了立家立身的纲纪，毁的不是一个孝文，白家都要毁了——”
+
+白嘉轩从父亲手里继承下来的，有原上原下的田地，有槽头的牛马，有庄基地上的房屋，有隐藏在上墙里和脚地下的用瓦罐装着的黄货和白货，还有一个看不见摸不着的财富，就是孝武复述给他的那个立家立身的纲纪。
+即使白嘉轩自己，对于家族最早的记忆也只能凭借传说，这个村庄和白氏家族的历史太漫长太古老了，漫长古老得令它的后代无法弄清无法记忆。
+由白嘉轩上溯五辈，大约是白家家道中兴的一个纪元的开始，那位先人在贫困冻馁中读书自饬考得文举，重整家业重修族规，是一个对白家近人家史族史具有决定性影响的人物，族人至今还常提起他的名字白修身。
+族史和家史虽然漫长，对本族和家庭具有重大影响的先人的名字还是留传下来，湮没的只是那些业绩平平的名字。
+好几代人以来，白家自己的家道则像棉衣里的棉花套子，装进棉衣里缩了瓷了，拆开来弹一回又胀了发了；家业发时没有发得田连阡陌屋瓦连片，家业衰时也没弄到无立锥之地；有限的记忆不可怀疑的是，地里没断过庄稼，槽头没断过畜牲，囤里没断过粮食，庄基地没扩大也没缩小。
+白嘉轩在孝文事发的短暂几天里除了思索这个意料不及的事件，更多地却是追思家族的历史和前贤，形成家庭这种没有大起也没有大落基本稳定状态的原因，除了天灾匪祸瘟疫以及父母官的贪廉诸种因素之外，根本的原由在于文举人老爷爷创立的族规纲纪。
+他的立纲立身的纲纪似乎限制着家业的洪暴，也抑止预防了事业的破败。
+无论家业上升或下滑，白家的族长地位没有动摇过，白家作为族长身体力行族规所建树的威望是贯穿始今的。
+一位族长在大旱之年领着族人打井累得吐血死，井台上至今还可以看到被风化了的白克勤模糊的字迹。
+一位族长领着族人在打杀贼人中被刀劈成两截，成为白鹿原一举廓清异族壮举的英雄。
+并非所有的族长都有伟迹，悄无声息地平庸之辈也为数不少，甚至每隔一代两代就会出一个败家子族长，这是殃祸家族的大害必须尽早诛除不能手软。
+……
+
+白嘉轩听到孝武的话，心里卷起一汪热流，激动得热泪盈眶，此时此地正需要听到这个话。
+白赵氏不甘心地反诘：“先人们都是通人性的好先人，谁也没有你这样心硬！”白嘉轩沉静地说：“先人们里头没出过这号瞎事。
+”孝文无可挽回地被推进祠堂捆到槐树上了。
+
+
+白嘉轩采取的第二个断然措施是分家。
+白嘉轩决定只请大姐夫朱先生一个人监督分家，作为这种场合必不可缺的孩子的舅舅没有被邀请，山里距这儿太远了。
+如果连自己的家事都处置不妥，还怎么给族人们门人村人说和了事？一切都经过周密的算计和精细的调配，分给孝文好地次地的搭配比例与全部土地优次的比例相一致，按说长子应占厅房东屋，但那需得双亲谢世以后，白嘉轩健在白赵氏也健在，白嘉轩尚不能住进厅房东屋而只能居住西屋。
+再考虑到生产生活的方便，白嘉轩决定把门房的东屋和西屋分给孝文，当中明间作为甬道属家庭公有。
+储存的黄货白货白嘉轩闭口不提，那是家庭积蓄，除非异常重大的情变不能挪动，这些蓄存的交待当在他蹬腿咽气之前，现在谁也不得过问。
+白孝文的脸面被药布包扎着不露真相，只是点头，伸出结着血痴的右手在契约上按下了指印。
+朱先生笑着重复了一句：“房是招牌地是累，攒下银钱是催命鬼。
+房要小，地要少，养个黄牛慢慢搞。
+”这几句广为流传的朱先生名言，白嘉轩和儿子们其实才头一次从创造者本人口中听到。
+朱先生对孝文的过失没有严词斥训，悬笔写下两个字的条幅：慎独。
+
+
+鹿子霖在惩罚孝文那天晚上到神禾村喝了酒。
+他跪在地上为孝文求情的行动虽然失败，却获得了许多人的钦敬，也把这件花案的制造者隐蔽得更严密了。
+为了显示真诚，他就那么一直跪下去直到行刑结束。
+白嘉轩从祠堂台上慌慌匆匆扭动着狗一样的腰身走过来，双手扶起他，又扶起一同跪着的三个老者说：“你们的宽恩厚德我领了！”鹿子霖演完这场戏就去神禾村找几个相好喝酒去了，这一晚喝得酣畅淋漓，于午夜时分走回白鹿村，从村子东头的慢道上下来，扑腾扑腾走到窖洞口拍响了门板，小娥问谁敲门。
+鹿子霖大声说：“问啥哩还问啥哩？你哥你叔你大大我嘛！“他喝得太多有点失控，阴谋的完全实施所产生的欢欣得意也有点难以控制，该是他和同谋者小娥一起品味这出精彩戏曲儿的时候了。
+门闩滑动一声，鹿子霖迫不及待撒着酒狂推门而入，把正趴到炕边上的小娥揽住。
+小娥一抖一甩钻进被窝。
+鹿子霖笑笑才意识到小娥棉袄是披在肩上的。
+鹿子霖倚在炕边上解衣脱袜，一边说：大的亲蛋蛋呀！你给你出了气也给大饰了脸，咱俩的气儿出了，仇报了，该受活受活啦！今黑大大全部依你，你说咋着大就咋着，你要咋样儿就咋样儿，你要骑马大就驮上你游，你要大当王八大就给你趴下旋磨……”说着剥脱了衣裳钻进被窝。
+小娥却问：“吃着屙下的喝我尿下的你愿意不愿意？”鹿子霖笑嘻嘻地念起狗蛋创作的赞美诗：“宁吃小娥屙下的不吃地里打下的，宁喝小娥尿下的不喝壶里倒下的……大愿意。
+”鹿子霖的手被挡住了。
+小娥说：“你刚才说今黑依我，我还没说咋样哩，你就胡骚情起来？你先安安生生睡着，我有话问你，孝文挨得重不重？”
+
+“重。
+”
+
+“头一刷子谁打的？”
+
+“他爸嘛！还能有谁？族长嘛！”
+
+“听说老二回来了？”
+
+“回来了。
+这货看去还是个硬家伙。
+”
+
+“孝文伤势咋样？”
+
+“还用问！脸上没皮儿了。
+”
+
+“孝文寻冷先生看了没看？”
+
+“你操这些闲心开啥？”
+
+小娥不吭声。
+惩罚孝文的那天后晌，小娥听到村巷里头的锣声和吃喝声，浑身抽筋头皮发麻双腿绵软，在窑洞里坐不住了。
+她达到了报复的目的却享受不到报复的快活。
+在她怀着恶毒的目的把孝文拖进砖瓦窑以后惊奇地发现世上竟有孝文这种奇怪男人，勒上裤子行了解开裤带儿又不行了，当时她觉得奇异也觉得好笑，后来孝文遵照她规示的日程钻进她的窑洞来过多回，仍然是那个样子；她看着他每一次兴冲冲地又显得贼偷鬼气儿来到窑洞，回回都是败兴地离去，就忍不住同情这个可怜人儿说：“算你干脆甭来了。
+”孝文苦笑着说：“我也想咱们本事算了甭去了，可又忍不住就来咧！”直到白嘉轩气昏死在窑洞门外雪地的那一晚，孝文尚未直入过她的已经不再贵重的身体……她在窑洞里坐不住也立不住，装作扯柴禾走到窑院边沿的麦秸垛跟前，耳朵逮着本村中的动静，偶尔可以听见人们涌向祠堂路上的一句对话。
+她现在想到孝文在她窑里炕上的那种慌乱不再觉得可笑。
+反而意识到他确实是个干不了坏事的好人。
+她努力回想孝文领着族人把她打的血肉模糊的情景，以期重新燃起仇恨，用这种一报还一报的复仇行为的合理性来稳定心态。
+其结果却一次又一次地在心里呻吟着，我这是真正地害了一回人啦！
+
+鹿子霖不耐烦他说：“还提孝文孝文做啥？该受的罪让他受去吧！咱们今黑热热火弄一场！”小娥说：“好呀——对呀！”说着就跃上鹿子霖的腰腹往下一蹲。
+鹿子霖嘻嘻笑着呻吟一声：“唉哟哟！亲蛋蛋你轻一点……差点把大大的肠子肝花蹲烂了！”小娥又纵蹲到他的胸脯上。
+鹿子霖嘘唤着：“亲蛋蛋你把大的肋条儿蹲断了！”鹿子霖正陶醉在欢愉之中，感到脸上一阵湿热，小娥把尿尿到他脸上了。
+鹿子霖翻身坐起，一巴掌煽到小娥脸上：“婊子！你……”小娥问：“你刚才不是说了今黑由我想咋样就忘了自个姓啥为老几了？给你根麦草就当拐棍拄哩！婊子！跟我说话弄事看向着！我跟你不在一杆秤杆儿上排着！”小娥跳起来：“你在佛爷殿里供着我在土地堂地蜷着；你在天上飞着我在涝池青泥里头钻着；你在保障所人五人六我在烂窑里开婊子店窑子院！你是佛爷你是天神你是人五人六的乡约，你钻到我婊子窑里来做做啥！你逛窑子还想成神成佛？你厉害咱俩现在就这么光溜溜到白鹿镇街道上走一回，看看人唾我还是唾你？”鹿子霖慌忙穿起衣裤连连禁斥着：“你疯了你疯了咧！你再喊我杀了你！”却不见小娥收敛就慌匆匆跳下炕夺门出窑。
+小娥在窑门口跟踪骂着：“鹿乡约你记着我也记着，我尿到你脸上咧，我给乡约尿下一脸！”
+
+
+
+第十八章
+
+一场异常的年馑临到白鹿原上。
+饥馑是由旱灾酿成。
+干旱自古就是原上最常见最普通的灾情，或轻重几乎年年都在发生，不足为奇。
+通常的旱象多发生在五六七三个月，一般到八月秋雨连绵就结束了，主要是伏旱，对于秋末播种夏初收获的青稞大麦扁豆小麦危害不大，凭着夏季这一料稳妥的收成，白鹿原才繁衍着一个个稠密的村庄和熙熙攘攘的人群。
+这年的干旱来得早，实际是从春末夏初就开始的，麦子上场以后，依然是一天接一天一月连一月的炸红的天气，割过麦子的麦茬地里，土地被暴烈的日晒得炸开镢把儿宽的口子，谷子包谷黑豆红豆种不下去。
+有人怀着侥幸心理在干燥的黄土里撒下谷种，迟早一场雨，谷苗就冒出来了，早稻迟谷，谷子又耐旱；然而他们押的老宝落空了，扒开犁沟儿，捡起谷粒在手心捻搓一下，全成了酥酥的灰色粉末儿。
+田野里满都是被晒得闪闪发亮的麦茬子，犁铧插不进铁板似的地皮，钢刃铁锨也踏扎不下去，强性人狠着心聚着劲扎翻土地，却撬断了锨把儿。
+旱象一直延续下去，持续不降的高温热得人日夜汗流不止喘息难定。
+村里的涝池只剩下池心的一洼墨绿色的臭水，孩子们仍然在泥水里浆洗，不几天就完全干涸了，旱象一直僵持到八月十五中秋节日。
+这是播种冬小麦的节令。
+人们无心赏月无心吃团圆饼全都陷入慌恐之中。
+白鹿原的官路上，频频轰响着伐神取水的火铳，涌过披蓑着衣戴柳条的雨帽的人流。
+白鹿村的乡民纷嚷嚷起来，白嘉轩心里也急了毛躁了，让二儿子孝武在村巷里敲锣告示：伐神取水，每户一升。
+
+
+白鹿村西头有一座关帝庙俗称老爷庙，敬奉着关公关老爷。
+关羽升天后主动请求司管从间风雨为民赐福，村村寨寨无论大小都修建着一座关帝庙；原上自古顺应西风雨，因之关帝庙一律坐落在村子的西首。
+白鹿村的老爷庙是一座五间宽的高大宽敞的大殿，东西两面墙壁上彩绘着关羽戎马倥偬光明磊落一生中的几个光辉篇章；桃园结义单刀赴会刮骨疗毒出五关斩六将等；而正殿上坐着的司管风雨的关老爷的雕塑，面颜红润黑鬤如漆明目皓齿神态安祥慈善如佛了。
+庙宇四周是三亩地的一片空园，一株株合抱粗的柏树标志着庙宇的历史。
+庙前的那棵槐树才是村庄的历史标志，经过无数人的手臂的度量，无论手臂长短，量出的结果都是七楼八作零三指头。
+槐树早已空心，里头可以同时藏住三个躲避暴雨袭击的行路人；枝叶却依然郁郁葱葱，粗大的树股伸出几十步远，巨大的树冠浓密的树荫笼罩着整个庙宇的屋脊，形成一派凝聚不散的仙气神韵。
+
+
+白嘉轩跪在槐树下，眼前是常年支的槐树下废弃的青古碾盘，蜡架上插着拳头的大红蜡烛蹿起半尺高的火苗儿，香炉里的紫香稠如谷苗，专司烧纸的人把一张张金黄的黄表纸连连不断扔进瓦盆里，香蜡纸表燃烧的呛人的气味弥漫在燥热的庙场上；他的身后，跪倒着白鹿村十二岁往上的全部男人，有的头戴柳条雨帽身披蓑衣，有的赤裸着膀子，木雕塑似的跪伏在大太阳下一动不动。
+碾盘的一侧置放着一张方桌，别一侧临时盘起一个大火炉，三个精壮小伙子穿着一件短裤，轮流扯拉着一只半人高的特大号风箱，火焰在阳光里像万千欢舞的精灵，火炉烘烧着三只铁铧和几支钢钎儿。
+锣鼓家伙在大殿里头敲着。
+一个伐马角的小伙子从庙门里奔跃而出，跃上方桌。
+锣鼓家伙班子也跟随出来，在方桌周围继续上劲地敲着。
+侍守火炉的人用铁钳夹住一只烧成金黄色的铁铧送到方桌跟前，伐马角的小伙拈来一张黄表纸衬在手心去接铁铧，那黄表纸呼啦一下子就变成灰白的纸灰，小伙尖叫一声从方桌上跌滚下来，被接应人搀扶走了。
+第二个马角从庙里奔到槐树下，一只脚刚跨上方桌沿儿就仰面栽倒下来。
+第三个马角和头一个如出一辙，刚抓住铁铧就从方桌上跌翻下去。
+锣鼓家伙班子第四次从庙里送到祭台上来的马角是鹿子霖，他跳上方桌时浑身扭着，双臂也扭舞着，大口吹出很响的气浪；他一把抓住递到脸前的铁铧，手心里的黄表纸完好无损；当他再去接一只筷子粗细的钢钎时，从桌上落马跳下了。
+白嘉轩霍地一声从地上站起来，膝头上沾着两坨黄土佝偻着腰趟进了老爷庙的大门。
+
+
+白孝武监守在大殿里，看见父亲走进门来，迎上前企图劝他出去。
+白嘉轩一甩手走到关公神像跟前，点燃三支香插进香炉，作揖长拜之后，就跪伏下去一动不动。
+他的周围跪倒了一大片男人，等待神灵通传自己。
+锣鼓家伙更加来劲地爆响起来，在庙堂里嗡成一片，香蜡纸表的气味令人窒息。
+白嘉轩起初觉得鼻膜涩疼，随之就得清香扑鼻，再后来就嗅不出任何气味了；锣鼓家伙的喧嚣充耳不闻，只见那些鼓手锣手家伙手使劲地挥动着胳膊，却敲不出一丝声响来。
+大殿里就得异常清静；他觉得手足和身躯渐渐变得轻如一张黄表纸，脑子里一片空白，只是胸腔里残留着凡人浊气，需要张大嘴巴连续吐出去；那一瞬间似乎是最后一口污浊的胸气喷吐出来，他就从关公坐象坐前的砖地上轻轻地弹了起来，弹出了庙门。
+人们看见，佝偻着腰的族长从正殿大门奔跃出来时，象一只追袭兔子的狗；他奔到槐树下，双掌往桌面上一按就跳上了方桌，大吼一声：“吾乃西海黑乌梢！”他拈起一张黄表纸，一把抓住递上来的刚出炉的淡黄透亮的铁烨，紧紧攥在掌心，在头顶从左向右舞摆三匝，又从右到左摆舞三匝，掷下地去，那黄表纸呼啦一下烧成粉灰。
+他用左手再接住一根红亮亮的钢钎儿，“啊”地大吼一声，扑哧一响。
+从左腮穿到右腮，冒起一股皮肉焦的的黑烟，狗似的佝偻着的腰杆端戳戳直立起来。
+槐树下的庙场上锣鼓家伙敲得震天价响，九杆火药铳子（九月）连连爆炸，跪伏在庙场上地上的男人们一起舞扭起来，疯癫般反覆吼诵着：“关老爷，菩萨心；黑乌梢，现真身，清风细雨救黎民……”侍候守护马角的人，连忙取出备当的一根两头系着小环的皮带，把两只小环套住穿通两腮的钢钎儿，吊套在头顶，恰如骡马口中的嚼铁。
+白嘉轩被众人扶上抬架，八个人抬着，绕在他头上身上的黄绸飘飘扬扬。
+火铳先导，锣鼓垫后，浩浩荡荡朝西南部的山岭奔去。
+所过村庄，鸣炮接应，敲锣打鼓以壮声威，腾起威武悲壮的气势。
+
+
+走进秦岭峪口，沿着一条越走越窄的山路绕着山梁行进，路边的青草被络绎不绝的取水的人马踩踏倒地，拓宽了道路。
+天麻黑时，白嘉轩和他的族人村民终于走到黑龙潭了。
+潭约一丈见方，深不可测，蓝幽幽的潭水平静不兴，上无来水，下不泄流，黑龙潭是从地下连通东海西海南海北海的一只海眼，四海龙王每年都通过这条通道到山里来聚会。
+潭的四周全部是石崖青石，西边凸出前扑的石崖上，稳稳当当蹲踞着一座铁铸的独庙，铁顶铁墙浑然一体，没有谁能解释这铁庙是在崖上就地铸成的，还是在平原上铸成以后抬上崖顶的。
+锣鼓家伙围着潭沿敲着，火铳子又是九声连响，人们择地而跪，一律面对铁庙。
+白嘉轩早从架上下来走到潭边，口咬嚼钎把住上边抖下来的绳索，脚踩石壁上的凹窝爬上崖头，一步一拜一个长揖一个响头，一直磕进铁庙，点蜡烧香梵表。
+四面铁壁上铸塑着四条龙，白嘉轩面对西边铁壁叩拜在地：“弟子黑乌梢拜见求水。
+”就连叩三个响头，从腰里解下一只细脖儿瓷罐，在燃烧着的香蜡表里绕过三匝，退出铁庙，用细绳吊放到潭里飘着。
+白嘉轩背对铁庙，其余的人了都一律改换拜跪方向背向水潭，锣鼓家伙也收了场，不准说话不准咳嗽不准放屁，一片屏声敛息的肃穆气氛，等待西海龙王赐舍给西海黑乌梢珍贵的水，星全以后，交过夜半，山里梢林掀起一阵骚啸，静跪在地的人全都冻得抖抖嗦嗦牙齿磕碰，猛然听得潭里传出“咕咚”一声水响。
+白嘉轩朗声诵道：“龙王爷恩德恩德恩德！”跪伏在地的人一齐跳起来，丢弃了头上的柳条雨帽和蓑衣，把身上的衣裤鞋袜全部剥光，表示他们全都是海中水族是龙王爷的兵勇，围着龙潭足起来蹦起来唱起来：“龙王爷，菩萨心；舍下水，救黎民……”铳声撼震静寂的山谷，铁铸独庙发出铮铮嗡嗡的回声，锣鼓家伙再次敲起来。
+白嘉轩抽动绳子从潭里吊起瓷罐，抱在怀中，众人把摆在铁庙里的供品，用细面做成的各种水果和油炸的麻花做子一齐抛进潭中。
+
+
+取水的人回到白鹿村已经是第二天早饭时间。
+白嘉轩走进关帝庙，把盛满清水的瓷罐儿双手敬献到关老爷足下，刚作完揖拜跪下一条腿扑倒在地人事不省。
+众人慌忙从他腮帮上抽下钢纤儿，用香灰和黄表灰塞住穿透的两个窟窿，抬回四合院里去，用刚刚吊上来的井水擦洗了手心脚心心窝和后心，又给灌下一碗凉丝丝儿的井水，白嘉轩呼喇一下睁开眼睛，奇怪地瞅着围在炉上炕下的家人和族人，似乎刚刚从西海龙王那里归来而不晓尘世发生过什么。
+白嘉轩猛然瞅见站在他身子后首的鹿三：“三哥！你把牲口喂饱了没？”
+
+直到取回来的那只细脖瓷罐里的潭水在关老爷的脚下完全干涸，雨却仍然没有下。
+人们再也无法忍受等待的焦虑，怀着最后的希望把麦子撒进干裂的土地，犁铧翻起干裂的上层，蹿起一股股黄色法烟。
+麦粒比谷粒更快的粉化了，真正出现了一亩一苗的奇观，那一棵希罕的麦苗是在牛尿里侥幸出土的，干旱延续到腊月，落下一场多年不见的大雪，冻死了白鹿原上的柿子树，老树新树几乎无一幸免。
+原坡楞上和庄稼院里的柿子，有的个大如碟，有的人四棱突起，更有给皇帝进贡久盛名的火晶柿子，现在全都在一个冬天里绝杀断种了。
+大雪后接着是持续的冬旱的奇寒，积雪不经融化而逐渐风干了。
+当春天到来的时候，原野上一片精赤，不见麦禾也不见青草，满眼是枯死的柿树枝干。
+想种点萝卜也不进籽儿，柿可当食，萝卜亦可救生，老天爷连一丝儿生存的机缘都不给白鹿原上的乡民。
+干旱僵持过春天又延续过夏天，当一场隔年不见的透雨降下的时候，人们已经不大关心或者无心操持秋田播种的事了，种籽没有了，耕牛也没有了。
+旷年持久空前未遇的大旱造成了闻所未闻旷日持久的年经，野菜野草刚挖出地皮被人们连根挖去煮食了，树叶刚绽开来也被捋去下锅了。
+先是柳树杨树，接着是榆树构树椿树，随后就把一切树叶都煮食净光了，出一茬捋一茬。
+榆树叶是所有树族中的佼佼者，捋了树叶又扒了树皮，剔掉粗皮留下内瓤，剁成细未儿和水熬煮，就变成又粘又稠的绝佳的糊糊。
+白鹿原上的榆树是继柿树之后来的又一个家族。
+饿死人已不会引起惊慌诧异，先是老人后是孩子，老人和孩子似乎更经不住饥饿。
+饿死老人不仅不会悲哀倒会庆幸，可以节约一份吃食延续更有用的人的生命。
+只有莫名其妙的流言才会引起淡弱的兴趣，一个过门一年的媳妇饿得半夜醒来，再也无法人睡，撞摸身旁已不见丈夫的踪影，怀疑丈夫和阿公阿婆在背过她偷吃，就蹑手蹑脚溜到阿婆的窗根下偷听墙根儿，听见阿公阿婆和丈夫正商量着要杀她煮食。
+阿公说：“你放心度过馑爸再给你娶一房，要不咱爷儿们都得饿死，别说媳妇，连香火都断了！”新媳妇吓得软瘫，连夜逃回娘家告知父母。
+被母亲哄慰睡下，又从梦中惊醒，听见父亲和母亲正在说话：“与其让人家杀了，不胜咱自家杀了吃！”这女人吓得从炕上跳下来就疯了……危言流语象乌鸦的叫声一样令人毛骨悚然。
+
+
+当这场年馑刚刚注定要来的先一年初冬，白鹿村在渭北以及在当地邻村熬活儿的长工汉们纷纷回到自家屋里来，即使不大仁义的主家也都提前付给他们全年的工价，让他们在离年终之前的二个多月就下工回家了，起码可以省下一个人的口粮。
+鹿三在街巷里看见这些提前下工回归的兄弟哥们就想到自己。
+在麦子断定不能出苗以后，瞧着牲畜市场日渐下跌的行情，白嘉轩果决地卖掉了青骡和犍牛，只留下一匹骒马。
+这不算是多么聪明的举措，谁也能谋划得出来，一头牛或一匹骡子一年间吃下的精料——豌豆和夫皮，也许可以换回五头牛和五匹骡子。
+除了粮食集集冒涨，其余百物牲畜棉花木料布匹杂货以及土地天天往下跌价，女子订亲的聘金也跌过大半。
+在可怕的饥荒年刚刚露出暴虐先兆的时候，各色粮食一下就被推到至高无上的权威地位，任何东西包括人本身都不得不俯首臣不得不跌价再跌价了。
+小麦无苗，冬天不用上粪了；棉花旱死了，轧花机也甭招徕弹花主顾了；牲畜卖掉了，剩下一匹马浮不住一个人专门喂养；整个一个冬天和春天都将闲适无活儿，自己闲吃静坐在人家屋里怎么好意思呢？他深信白嘉轩绝不会象村中那些长工的主家那样打发他提早下工，需得自己说话辞别而不能赖着主家来撵出门去。
+晚饭后，鹿三抹了抹嘴巴点燃旱烟袋，爽声朗气他说：“嘉轩，我今黑回去呀。
+”白嘉轩平和地说：“回你回喀！有啥事你尽管办。
+今年冬里没啥紧活路喀！”鹿三料定主家理会错了自己的原意，就挑明了说：“我明日再不来咧！”白嘉轩依然平和地说：“我刚才说了嘛！何止明日？三天五天你尽管走。
+”鹿三更透彻他说：“从明日往后，我再不来了我下工咧！”白嘉轩这才从椅背上欠起身子：“那咋么了？半路上你就走了不来了？离过年还远着哩嘛！”仙草听见了也凑到桌边问：“三哥你犯了俺屋谁的心病咧？你倒是明说怎么能走哩？”鹿三连忙解释：“地里也没啥活儿屋里也没啥活儿了，我白吃闲坐着不自在喀！”白嘉轩说：“你走了倒是自在了，可把不自在丢给我了！”鹿三愣怔一下。
+臼嘉轩接着说：“为了省一份口粮撵你出门，人会说我啥话哩？我心里能不自在吗？”鹿三忙说：“不是这话！是没活干了闲下，这谁都看得见的事，不会胡说的。
+明年春上要是落下透雨地里活儿开场了，我不用你叫就来了。
+”白嘉轩冷下脸说：“三哥你听着，从今往后你再甭提这个话！有我吃的就有你吃的，我吃稠的你吃稠，我吃稀的你吃稀；万一有一天断顿了揭不开锅了，咱弟兄们出门要饭搭个伙结伴儿——”鹿三咽了一口唾液，粗大的喉圪节猛烈地滑动了两下，没有话说了。
+白嘉轩随之轻俏地说：“没活儿干了你就歇着睡着，歇够了睡腻了你就逛去浪去！逢集了逛集没集时到人多的地方去说，耍纠方耍狼吃娃耍媳妇跳井，说了耍了再歇再睡……你甭瞪眼！兄弟我不是给你撇凉腔是说正经话：天杀人人不能自杀。
+年馑大心也就要放大。
+年馑大心要小了就更遭罪了。
+”鹿三觉得眼里快要忍不住流泪，没有说话就转身出了院子进了马号。
+直到新年春节前的祭灶日到来时，他又一次下定决心，这回下了工明年再不来了，实在不能再进白家门白吃闲坐了。
+
+
+鹿三离开白家的前一晚，孝文硬着头皮向父亲提出借粮，白嘉轩拒绝了。
+这件事更深地刺激着鹿三。
+正月十五一过，不见鹿三来上工，白嘉轩走进鹿三矮凌乱的两问厦屋：“跟我走，三哥。
+甭说我，自你过年走了红马日夜叫唏，要你喂它哩！旁人添草拌料它不悦意吃喀！”鹿三的喉圪塔又猛烈的滑动了两下，跟着白嘉轩回到马号。
+
+
+孝文硬着头皮进上房东屋，罗罗嗦嗦向奶奶白赵氏诉说，分家时父亲分给他的粮食可以接上秋收，可是秋天绝收了，来年的麦子也没指望了，整个一个冬天喝稀糁子凑合到腊月，年是实在过不去了……他哀告奶奶给父亲说一句：“借些粮。
+”白赵氏正想趁机教训一下孙子，你看看你弄成啥光景了？白嘉轩从对面的西屋已经听见，大声说：“你就甭开这个口！”白孝文再没说话就从奶奶的屋里退出来回到前头门房。
+白赵氏对着西屋说：“你的心不是肉长的是滋水河里的石头！”白嘉轩走进门来：“妈，你明日把那俩碎崽娃了引到后头来。
+”
+
+孝文向父亲借粮伤脸以后就把两亩水地卖掉了。
+白嘉轩得知这个消息后气得吃不下饭，指令孝武把孝文叫到后院正厅来。
+孝武走进前院门房东屋说：“哥！咱爸叫你。
+”孝文仰躺在炕上只扭了一下头：“我不去。
+”孝武端直站着：“咱爸叫你你也不去？”孝文说：“后院厅房我不去，再不去了。
+”孝武威胁说：“那让老人求到你的门下？”孝文猛然从炕上翻起身来跳到炕下：“你甭跟我耍威风！谁爱来不来我不稀罕！我也没拿你啥没借你啥没欠着你的啥！”孝武不动声色他说：“哥你看你成了什么样子？说话处事还象不象个兄长的？”孝文正想说出更辛辣的话，泄一泄没借着粮食的怒气，也杀一杀弟弟的神气。
+不料父亲在院子里喝斥：“孝文你出来！”孝文趿拉上棉窝走到院子，就看见漆黑的院庭里站着父亲的佝偻的形体。
+白嘉轩劈头问：
+
+“你把水地卖了？”
+
+“卖了。
+”
+
+“卖给谁了？”
+
+“谁给钱多就卖给谁。
+”
+
+“我听说卖给鹿子霖了？”
+
+“子霖叔有钱也有粮食，旁人买不起。
+”
+
+“这地是在你爷手时置下的，你不能卖！”
+
+“眼下这地分给我是我的。
+我想活命就得换一把粮食。
+”
+
+“这二亩水地你卖了多少钱？”
+
+“正说着哩！价官还没说死撂倒哩！”
+
+“你甭说了，这地你卖给我，我给你双价。
+”
+
+“那不行，大丈夫出言驷马难追。
+你给我钱再多也不能收回我的话了。
+”
+
+黑暗里一声啸响，白孝文应声一个趔趄跌倒在地，父亲手中的拐杖抽击到他的脸上，继之又砸到他的大腿上，白孝文却感到了一种报复的舒畅，从地上缓缓悠悠爬起来走进屋去，咣一声插上门闩，把父亲和孝武冷晾在院子里。
+孝武挽扶劝慰着父亲，走回后院厅房去了。
+孝文继续恢复仰躺在炕上的睡姿，一条腿架在另一条腿上，对女人说：“好咧好咧！从今往后再没有谁来管我了！”
+
+这一年的春节新年是孝文所能记得的最暗淡无趣的一个新年，白鹿原上远远近近的大村小寨，听不到锣鼓听不见喧闹只零三碎四的几声炮响。
+正月初一的晌午，孝文到白鹿镇的馍铺里买了五个白生生的罐罐儿馍，蹲在馍铺的台阶上吃了向馍铺掌柜讨了一壶茶喝，算是自己给自己过了个年。
+孝文吃罢又挑了五个揣进怀里，绕道白鹿村后巷朝村子东头走去。
+村巷里男男女女拖着孩子往祠堂汇集，饥荒之年也不能少了给祖宗点一柱香叩三个响头。
+孝文走进小娥的窑门嘘声嗔气地说：“妹子年好，哥给你拜年来了！”小娥正在案板上揉面团回过头说：“你心里想妹子了，嘴里可说是给妹子拜年拜年，拿的啥礼物？“你把哥的好心冤屈咧！”孝文从怀里掏出一个又一个点着红花的罐罐馍，摆到案板上说，“人家到饲堂拜祖宗哩！全村就剩下咱舍娃子天不收地不管，咱俩你拜我拜你过个团圆年！”“这么说哥你坐火炕上等着——”小娥笑了，“妹子给你擀面浇臊子。
+臊子面香着哩等一会儿再吃。
+”孝文说：“我已经吃饱了。
+你先吃馍压压饥。
+咱先弄一回哥想死你咧！”“不成不成我手上沾着面！”小娥摇头。
+“又不用手……”孝文把小娥抱离案板走向火炕……
+
+孝文对第一次在小娥身上能够做到得心应手的事记忆难泯。
+那是要他挨过刺刷抽打之后一个半月的一天后晌，第一次走出街门就端直走进田小娥的窑洞。
+小娥一惊一愣：“你大白天到我这儿来不怕人看见？”白孝文说：“过去怕人看见现在不怕了，谁爱看就看。
+”小娥这时候才回过神儿来问他伤势好了没有，捋起袖子看他胳膊解开胸口儿看他的胸膊。
+孝文揽着她的腰凌空把她托起来放在炕上。
+动手解她的偏襟纽扣儿：“哥在炕上躺了半个月啥不想，就一门心思想着你这一对白鹁鸽儿。
+”小娥象蛇一样紧紧缠抱着孝文，泪花婆娑口齿喃喃着：“好哥哩你到底伤得咋个象况……我不得见又不得问……妹子心疼你都快要疯了………小娥说着，突然翻起身来，双手捧着孝文的脸颊，惊诧地问：“哥也你今日……行了？”孝文得意地抹一抹脖子上的细汗：“这下你再不笑话我是蜡做了矛子了吧！”俩人被这个奇异的变化鼓舞着走向欢乐的峰巅。
+自从破烂瓦窑开始一直到被捆到祠堂槐树上示众，他都无法克服解开裤带不行了勒上裤子又得行了的奇怪的痼疾，今天才第一回在小娥面前显示了自己的强大和雄健。
+小娥仍然解不开好奇：“过去到底咋么着是那个怪样子？今日个咋着一下子就行了好了？”孝文嘲笑说：“过去要脸就是那个怪样子，而今不要脸了就是这个样子，不要脸了就象男人的样子了！”太阳光从窑土坎上移到树稍上，直到窑里完全黑暗下来，俩人都没有离开火炕，一次又一次走向欢愉的峰巅，一次又一次从峰巅跌下舒悦折谷底，随之又酝酿着再一次登峰造极……那时候白嘉轩正领着取水的村民走进峪口朝龙潭进行悲壮的进军……
+
+小娥从炕上下来勒好棉裤，在瓦盆里洗着手，回眸对躺在火炕上的孝文说：“哥也今日个过年，你没忘妹子也没忘你，你给妹子送了五个罐罐儿馍，你猜妹子给你留着啥好的？”孝文不在乎他说：“肉包子肉九子躁子面不是？不稀罕！我就稀罕捉你那一对儿白鹁鸽儿！”小娥说：“保你稀罕！搁平常我不给你，今日个过年才叫你享一回福……你等着，等我擀好面，咱俩吃了长寿面再给你。
+”孝文一骨碌从炕上跳下来，精光着身子抱住小娥，冻得直抖：“你倒说得我躺不住了，快拿出来让我看是啥好玩艺儿？”小娥无奈又爬上炕，从窑窝里摸出一杆烟枪来说：“你今日个尝一口，保准过个好年。
+”孝文看见油光油亮的烟枪不禁一愣，接过那滑腻的紫黑色的烟管指尖上感到冰凉，脑子忽然浮出姑父朱先生授课时慷慨陈词的面孔，那个永远保持着平和敦厚仪容的朱先生讲到禁烟时就失了常态。
+小娥在他面前半倚躺着，撕开一层油纸，用细铁钎挑起一块膏状鸦片在三个指头间揉搓，然后就按到烟枪眼儿上说：“等等，我给你点灯。
+妹子今日个服侍你过了好年。
+”连着让孝文吸了三个泡儿，小娥象哄孩子一样拍着孝文的肩膀：“好好睡，妹子给你擀面去。
+”
+
+孝文躺着，渐渐开始幻化，手臂舒展了腿脚轻捷如燕了，心头似有一缕不尽的柔风漫过去再指过来，头脑里除去了一切生活的负累，似有无数的鲜花绿叶露珠滚动。
+案板上咯噔咯噔擀面杖的响声节奏明朗，小娥伸出胳膊推着擀杖前进又弯着手臂把擀杖拉回案边的动作象是舞蹈。
+他轻轻一纵就坐起来穿好衣裤，自告奋勇地坐到灶下的柴墩上拉起风箱，快活地说：“妹子，你擀面我烧锅，咱俩今日个过个夫妻年。
+”小娥欢蹦蹦地在案板上玩着擀杖，偌大须叶一会儿卷到饼杖上，一会儿又象挥舞一面旗字似的从擀杖上摊开到案板上，她勒着围裙的腰即使穿着棉裤也不显臃肿，丰满的胸脯随着擀面的动作微微颤着，浑圆的臀部也微微颤着。
+孝文忍不住嘻嘻他说：“哎呀妹子我又想了……”小娥说：“你是瓜娃子得了哪一窃？不看我正切面哩！”说着，把切好的细面拢到木盘里托起来，放到锅台上，看看锅里气儿上来了，就推出锅盖，哗啦一声把面条撤进滚水里，又伸过胳膊拉上锅盖。
+这当儿，她的优美干练的动作撩得孝文忍俊不住，一只手拉风箱杆儿，左手从下边揪住裤脚猛力往下一抻，棉裤哗地一下褪过膝盖，伸手抱住她按倒在灶下的麦秸上。
+小娥急了：“哎呀面闷糊到锅里咧！”孝文说：“让它糊去！”小娥说：“而今粮食敢糟踏？”孝文说：“一碗面不算个啥！”小娥无意损伤孝文的兴致，仰躺在灶间麦秸上，一手抚着孝文的脸，另一只手拉着风箱杆儿……
+
+孝文分得的三亩半水地和五亩旱地，前后分三次转卖到鹿子霖名下，那八亩半水旱地里有二亩天字地一亩半时字地三亩利字地二亩人字地。
+八亩半地所卖的银元，充其量抵得上正常年景下二亩天字地的所得，临到最后卖那二亩人字地的时候，孝文已经慌急到连中人也来不及请，直接走进白鹿镇鹿子霖的保障所，开门见山地说：“子霖叔，那二亩人字地也给你吧，你就甭再推倭了！你凭良心给几个（银元）就是几个我不说二话。
+”鹿子霖诚恳他说：“孝文你看，叔实在不好再要你的地了。
+我跟你爸一辈子仁仁义义的，你一而再再而三的箍住我要卖地，日后我实在跟你爸都不好见面说话咧！”孝文急不可待他说：“俺爸是俺爸我是我。
+你不要的话，咱村再没谁买得起，外村人嫌不方便也不要嘛，好叔哩我瘾发了简直活不下去了，你先借给俩银元让我上烟馆子……”鹿子霖从腰里摸出两枚银元来，看着孝文急不可待地转过身，脚下打着绊腿走出保障所大门，沉吟说：“完了！这人完了！”
+
+鹿子霖走出保障所大门的镇子上溜达，尽管年馑可怕，镇上的粮食并不少，只是价高得吓人。
+他装作关心粮市上价钱的跌浮，很有耐心的和卖粮的主家交谈着，用深陷在长睫毛丛中的眼仁儿扫瞅人头攒动的粮市，寻找白嘉轩。
+根据他的判断，孝文不久就会向他提出卖房的事，于此之前必须和嘉轩打个照面，为将来的下一步扫清障碍。
+穷人和富人现在都关心粮价的跌浮。
+白嘉轩丑陋的驼背进入他的眼睛，他做出完全无心而是碰巧撞见的神态先开了口：“呃呀嘉轩哥！碰见你了正好，我有句话想给你说——”白嘉轩扬起脸：“街道上能说不能说？”鹿子霖说：“能能能。
+也不是啥是非话嘛！我想劝你一句，你把粮食给孝文接济上些儿嘛！总是爷儿们嘛！甭让他三番五次缠住我要卖地，我不买他缠住不丢手，我买了又觉得对不住你……”白嘉轩咬着腮帮，完全用一种事不关已的腔调说：“这没啥对不住我的。
+你尽管放心买地，他要踢地你要置地是你的跟他的事，跟我没啥交涉。
+”鹿子霖更诚心地劝：“嘉轩哥你甭倔，亲亲的爷儿们，你不能撒手不管……”自嘉轩冷笑一声反问：“管？你怎么不管兆鹏？”鹿子霖噎得反不上话来。
+白嘉轩转过驼背就把手伸进一条粮食口袋里抓摸着麦子看起成色来了，鹿子霖不露声色地在想，你顶我顶得美顶得好；你不管了好！我就要你这句话！
+
+孝文头一回卖了地，和小娥在窑洞里过了个好年，临走时把一撂银元码到炕席上：“妹子你给咱拿着。
+”把一小半留在身上回到家里。
+媳妇向他要卖地的银元：“你装在身上不保险，我给咱锁到柜里，接不上顿儿了买点粮，日子长着哩！”孝文说：“放心放心放一百二十条心！银元我装着你甭管。
+你日后啥事都甭问甭管。
+”两个孩子由白赵氏引去吃饭，孝文成天不沾家浪逛着摸不清影踪，只有她一个人在屋里忍饥挨饿，婆婆仙草时不时背过公公塞给一碗半勺，她饥肠辘辘却难过得吃不下去。
+有一晚，她鼓足勇气向孝文抗争：“地卖下的银元不论多少，不见你买一升一斗，你把钱弄了啥了？”白孝文眼睛一翻：“你倒凶了？倒管起我来了？”媳妇说：“我凶啥哩我管你啥来？我眼看饿死了，还不能问你买不买粮？”白孝文冷着脸说：“不买。
+你要死就快点死。
+你不知道死的路途我指给你：要跳井往马号院子去，要跳河跳崖出了村子往北走，要吊死绳子你知道在哪儿挂着……”媳妇急了：“我知道你盼我死、逼我死、往死里饿我。
+我偏不死偏不给你腾炕，你跟那婊子钻瓦窑滚麦秸窝儿，反正甭想进我的门上我的炕！”白孝文涎下脸说：“你管不着。
+你不死我也睁眼不盯你。
+”说罢就抽身出门去了。
+随后有一夜，孝文和小娥在窑里炕上一人一口交口抽着大烟，他的媳妇找到窑门外头，跳着骂着。
+孝文拉开窑门，一个耳光抽得媳妇跌翻在门坎上。
+媳妇拼死扑进窑去，一把抓到小娥挡里，抓下一把皮毛来。
+孝文揪着媳妇的头发髻儿，两个嘴巴抽得她再不吼叫喊骂了，迅即象拖死猪似的拖回家去。
+
+
+孝文媳妇在白家的称呼是大姐儿。
+大姐儿独自一人躺在四合院门房东屋的炕上，家徒四壁，装粮食的瓷缸和板柜，早在踢地之前被孝文搬到镇上贱卖了，屋里只剩下炕上的两条被子和炕下脚地上的一条长凳。
+她的通身已经黄肿发亮，隐隐能看见皮下充溢着的清亮的水，腿上和胳膊上用指头一按就陷下一个坑凹，老半天弹不起不来。
+她的脸上留着一圪圪乌青紫黑的伤痕，那是孝文的拳头，砸击的结果。
+她已经没有饥饿的感觉，阿婆让孝武媳妇二姐儿端来的饭冷凝在碗里。
+她想跟阿公说一句话，却揣度阿公肯定不会进入她屋子，于是就打定主意去找他，她准确地预感到自己即将完结。
+西斜的日头把后窗照明亮如烛。
+大姐儿听见阿公熟悉的脚步走过门房明间走到庭院就消失了，她的心里激起一股力量，溜下炕来在镜子前胧梳一番散乱的发髻，居然不需攀扶就走到了厅房，站在阿公面前：“爸，我到咱屋多年了，勤咧懒咧瞎咧好咧你都看见。
+我想过这想过那，独独没想过我会饿死……”白嘉轩似乎震颤了一下，从椅子上抬起头拨出嘴里的水烟袋，说：“我跟你妈说过了，你和娃娃都到后院来吃饭，”大姐儿说：“那算啥事儿呢？再说我也用不着了。
+”说罢就转身退出门来，在跷过门坎时后脚绊在木门坎上摔倒了，从此就再没有爬起来。
+自嘉轩驼着背颠过去，把儿媳的肩头扶起来，抱在臂弯里。
+大姐儿的眼睛转了半轮就凝滞不动，嘴角扯了下露出一缕羞怯。
+白赵氏仙草和二姐儿全都闻声奔过来。
+孝武四处奔走，找不见孝文。
+
+
+孝文刚刚办完卖房的手续，三间门房全部卖给鹿子霖，把所得的银元顺路撂在小娥的炕头上，直到半夜回来，看见停放在烛光里的媳妇的僵尸，猛然站住脚跨不动腿了。
+他根本没有想到她真的会死。
+她结实有劲没有生过大病。
+她胳膊上的肌肉象男人一样结块儿，大腿和小腿和瓷实梆硬。
+他忽然想到她曾经教他做床第上的事的情景，心里一软，这个他已经不喜欢的人现在死了。
+弟弟孝武走到跟前说：“哥！你作孽了！”孝文没有动。
+弟弟又说：“明日个人殓时她娘家人来闹事的话，你出面跟人家回话。
+”孝文仍然没有动。
+孝武忍不住恨声说：“扎你一锥子都扎不出血了！”
+
+持久的饥饿的大气把包括死人这样至为重大的事都压迫得淡化了。
+死人早已不再引起特别的惊诧和家人的过分悲痛，而白嘉轩家里也饿死了人，在村中还是造成大哗，所幸的是大姐儿娘家的人似乎对出门多年的姑娘感情淡漠，只派大姐儿最小的弟弟前来吊孝人殓。
+那个被饿得东摇西晃的弟弟干嚎过几声之后，就抓起大碗到锅里捞面浇躁子蹲在台阶上大吃起来。
+为了顾全影响，白嘉轩让孝武出面帮助孝文完成了丧葬之事，着眼点在乡亲族人的口声本不在孝文，埋葬大姐儿之后，孝文真正成了天不收地不揽的游民，早晚都泡在小娥的窑洞里，俩人吃饱了抽大烟抽过瘾了就在炕上玩开心，使这孔孤窑成为饥荒压迫着的白鹿原上的一方乐上。
+
+
+“给我帚个忙。
+”鹿子霖邀请来了鹿姓本门十多个年轻后生，向他们吩咐了到白家去拆房的事，用软绵的馍馍的和煮成糊涂的面条招待他们饱吃一顿，然后叮咛说：“你们去只管拆房甭说二话。
+白家没人出来阻挡你们就尽管拆，要是有人出面拦挡，满仓倒儿你回来叫我。
+”十多个小伙梦想不到今天有机缘给肚子里填满了正正的粮食，精神顿然焕发，甭说拆房，叫他们前去杀人也无不可。
+满仓领着他们出门了。
+鹿子霖最后叮嘱一句：“不准起哄闹事。
+”
+
+鹿子霖坐在祭旁的椅子上抽水烟，得意中不无紧张，期待着满仓飞奔回来请他出面。
+可是连着抽完三袋水烟，仍不见满仓回来，难道白嘉轩父于对拆房这种面皮的事也无动于衷？直到街门口咚一声木料着地的响声，他按捺不住急急走到街门口，把两个抬一根木料的侄儿叫进门来问：“有没啥响动？”一个侄儿说：“没没没，孝武蹦出来挡将，满仓哥刚下梯子准备回来叫你，他爸出来把孝武拉回去了。
+满仓哥又上了梯子……”另一个侄儿补说：“孝武张头张脑的挺凶，他爸出来还笑着说：“快拆快拆，拆了这房就零干了，咱一家该着谢承你子霖叔哩……”随后才拉着孝武进后院去了。
+”鹿子霖从街门口踱回厅房祭桌跟前，重新装上一袋水烟，吹燃火纸的时候，绷紧的心里有点泄气，难道我没尿到他的脸上尿到空沟里去了？
+
+白嘉轩家的反区实际很难揣摩，白嘉轩的厅房上屋里聚着白赵氏白吴氏以及孝武和他媳妇二姐儿．更多的是本族近门的弟兄和侄儿们，他们义愤填气恨难平，众口一词再三反覆强调着同一个意思：鹿子霖不是买房是揭族长的脸皮！鹿于霖揭掉的不单是族长的脸皮是在白姓人脸上尿尿！白嘉轩只顾咂着水烟袋。
+白赵氏说：“孝文使唤了他多少钱咱还多少，房子不能拆。
+”仙草悲愤他说：“我咋么要下这个踢地卖房的败家子！”孝武说：“爸我实在咽不下这口气？族人侄儿们随着孝武哄哄起来：挡了他看他要咋？叫鹿乡约出来说话看他咋说？砸断他的腿拐儿再说！白嘉轩赐住众人：“你们生的哪路子气煽的哪门子火？子霖买房掏了钱立了契约合理合法：再说是孝文箍住人家要卖房你们怪人家子霖的啥错儿呢？回去回去快都回去。
+”他毫不留情地斥退下众人，只留下自家人在周围时才说：“我难道连这事的轻重也掂不来吗？揭我脸皮我还不知道疼不觉得羞吗？”大家都不言语了。
+白嘉轩问孝武：“除了拦挡除了打架，你看还有啥好办法呢？”孝武闷头不语半响，猜摸父亲的心意，说：“爸爸！他今日拆房，我明日个搭手准备盖房，把门房再盖起来，还要盖得更体面，”白嘉轩在桌于上拍了一巴掌：“这就对了！一拆一盖，人就分清了谁是孝文谁是孝武，祖宗神灵也看见谁是白家的孽子谁是顶梁柱！”白嘉轩扫视一眼白赵氏仙草二姐儿最后盯住孝武说：“人说宰相肚里能行船。
+我说嘛……要想在咱原上活人，心上就得插得住刀！”
+
+陡到满仓领着人把木料砖头瓦片全部拆光送走，又挖下了木格窗子和门板，白嘉轩恰当此时走到前院，瞅一眼残垣断壁和满地狼藉的土坯碎砖，把正在殿后查巡的满仓叫住，客客气气朗声问着“满仓你们拆完了？”满仓不好意思地笑答：“完了完了……伯。
+”白嘉轩说：“你再看看还有啥东西没拿完？”满仓依然笑容可掬地答：“没咧没咧啥也没咧……伯。
+”白喜轩却认真地说：“有哩！你细看看。
+”满仓干笑起来：“伯你耍笑侄儿哩！不用细看……”白嘉轩加重声色喝住转身欲走的满仓：“你甭走。
+你把东西没有拿完不能走。
+你蹲下仔细想想，啥时候想起来再走。
+”说着双手拄着拐杖，紧紧盯住满仓。
+满仓怯着族长伯伯真的蹲下来不敢走了。
+街巷里不一会使聚集起来一伙儿看蹊跷的事。
+白嘉轩心里却道：“我看你鹿子霖还不闪面儿？”
+
+鹿子霖来了。
+听到满仓被白嘉轩扣留的消息就赶来了，双手打着躬抱歉的说：“嘉轩哥我本该早来说给你说一声，保障所来了上头的我脱不开身……满仓你咋搞的？说啥冲撞你伯的话啦？还不赶快赂礼……”白嘉轩把拐杖靠在肩头，腾出手来抱拳还礼：“子霖呀我真该谢承你哩！这三间门房撑在院子楦着我的眼，人早都想一脚把它踢倒。
+这下好了你替我把眼里的楦头挖了，把那个败家子撵出去了，算是取掉了我心里的圪塔！”鹿子霖原以为白嘉轩抓满仓的什么把柄儿寻隙闹事，完全料想不及白嘉轩这一番话，悻悻地笑笑说：“孝文实在箍得我没……”白嘉轩打断他的话：“孝文箍住你踢地卖房我知道……我叫满仓甭走，是他给你把事没办完哩！”鹿子霖说：“还有啥事你跟我说，兄弟我来办。
+”白嘉轩说：“你把木料砖瓦都拿走了，这四都墙还没拆哩！你买房也就买了墙嘛！你的墙你得拆下来运走，我不要一块土坯。
+”鹿子霖心里一沉，拆除搬走四面墙比不得揭椽溜瓦，这十来个人少说也得干三天，这些饿臭虫似的侄儿们三天得吃多少粮食？他瞅一眼街巷里看热闹的人，强撑着脸说：“那当然当然……”白嘉轩仍然豁朗他说，“你明天甭停，接着就拆墙，越早越快弄完越好！咋哩！门户不紧沉喀！再说……我也搭手想重盖房哩！”
+
+
+
+第十九章
+
+鹿子霖刚走进保障所的小院，白鹿中医堂抓药的相公就跟进来说：“先生请你过去有话，甭耽搁。
+”鹿子霖在走向中医堂的街道上盘算着如何向冷先生解释买来拆掉白家门房的举动，除了这件事，他想不到还有什么紧要事会促使冷先生一大早就着人来叫他。
+走进中医堂，冷先生把他引到后边的寝室，开口时一脸的惊慌：“你知道不知道？兆鹏给田总乡约逮往！”鹿子霖大惊：“你听谁说的？啥时候出的事？我一点儿也不知晓！”冷先生说：“早起一开门来了南原上一个病人，说是昨晚夕在学校里给逮住的，”鹿子霖惊诧不已：“他还在原上？我的天老爷！通缉告示贴得满原上都是，他居然还没离原……”冷先生说：“听说他刚刚从城里回到原上，想煽动饥民起来闹事，倒没料想他的一个共产党兄弟儿给田总乡约告密了。
+再问旁的我也说不仔细，事倒是实事，田总乡约连夜押送到县上去了……你说咋办？”鹿子霖说：“活该！死得！把这孽子拗种处治了，我倒好说话好活人了！”冷先生说：“你说的是气。
+你我现在这年岁，还有多少话好说还有多少人好活呢？没有多少了，你我而今都活儿女的人哩！”鹿子霖咳了一声竟落泪了，泣不成声地说：“我一家好端端的日子全坏在这龟孙子身上。
+他参加共产党跟着背亏带灾且莫说起，单是婚事……教我总也觉得对不住你老哥哥呀！我说的不是气话是实心话，把他龟孙处治了倒好！仓里县里再不疑心我鹿子霖通共的事了；家里的事也好办了。
+让人家名正言顺再嫁去，我在你老哥面前不就好说话好活人啦吗？”冷先生说：“我今日叫你来可不是说这话的。
+我知道你想救他说不出口。
+”鹿子霖仍然坚持说：“我不救。
+”冷先生说：“你不救我救。
+我的女婿呀！”鹿子霖说：“你救也是白救。
+他把田总乡约押到铡刀下你也知道，田总能饶他？上边现在对共产党是‘宁错杀一千决不轻放一个’。
+他完了他兆鹏龟孙这回完了！你也甭劳神了，白劳神又折财……”冷先生说：“我准备倾家荡产，只要能救回我的女婿！”鹿子霖连忙接上说：“你是真个把他救下了，他就不敢再拧拗了。
+他也明白他的命是你给拾回来的。
+”冷先生说：“你今日个留神一下，田总乡约一回来你就给我说一声。
+事不宜迟。
+听说对共产党现时是快刀斩乱麻，审也不审就填了井了！”
+
+西安当权的国民革命政府对共产党整治的手段简截了当，不作正经审讯也不屑张罗声势示众游街也很少公开枪崩，逮住后先打后问问不出什么就装进麻袋扔进废弃的苦水井里，打得问出了什么而又觉得此人不宜存留于世也同样干脆地扔进井去。
+鹿子霖装作若无其事的样子一日去了三次白鹿仓，直到晚夕才看见田福贤骑着马从县上回来，他抢在田福贤前头说：“我已经听说了。
+逮住那个龟孙为国家除了害，也为我挖了眼中钉！总乡约你知道我的脾性，我不在乎心平时吃四个馍现在还吃两双。
+”田福贤却更富人情味儿他说：“再咋说总是你的儿嘛！他要是共党的小毛猴分子好办，让他写一张悔过自新书，我再给岳书记说说情也就算了；你知道他属大案要犯，甭说我，岳书记也不敢擅自处治，在县上只打个过身就直接送城里了……”鹿子霖表白了一番于兆鹏被捕乃至被镣都闭眼不理的话，回来却急忙告诉冷先生：“田总乡约回来了。
+”
+
+冷先生立即实施营救女婿兆鹏的谋略。
+他吩咐鹿子霖回家去把大车套好吆来，和相公一起动手把十只装中草药的麻包抬上大车，声言要把这些积压的药材送到城里去卖掉，饥荒年月人命如纸没有来看病抓药了。
+他辞退了刘谋儿要鹿子霖亲自掌鞭吆车。
+他吩咐鹿子霖绕道走过白鹿仓门口“子霖你去叫一下田总乡约，他女人病了让他跟我一路走，顺路给他女人看看病。
+”田福贤失急慌忙跑出仓门，深信不疑地爬上大车，连声询问他女人得啥病要紧不要紧。
+冷先生一如往常的简洁：“早起你的一个亲戚来叫我我抽不开身去，大体问了一下病情给抓了两服药拿走了，你甭急也甭问，问多了我也说不上来，咱们顺路去看看，我还到城里送药哩！”青骡拉着大车在乡村间的官路上咯吱咯吱叫着，一直西进，终于停在一幢高大的门楼下，冷先生打了个哈欠从车上下来。
+
+
+进入田家的深宅大院，田福贤把睡意正酣的女人间得莫名其妙，自己也莫名其妙地问冷先生：“内人没有病呀！也没有让谁去请先生呀？”冷先生却说：“我又给人骗了，那人冒充总乡约的亲戚，骗了我两服药……小事一桩……”说着就往门外走，鹿子霖从大车轮下钻出来丧气地说：“糟了糟了！轴颠断了走不了了！”于是十只捆扎严密的麻包从车上卸下来送进屋里，田福贤爽气地说：“明日让车木匠换外轴就是了。
+倒好倒好！咱兄弟仨难得聚在一起喝一盅。
+”酒过三巡之后，冷先生解开了堆在台阶上的麻包，又擎着灯台让田福贤看他的“宝药”。
+田福贤看了看麻包瞪起眼来，鹿子霖惊诧得差点叫出来，伪装药包的麻袋心里包裹着一堆硬洋，十只麻包一个不空。
+田福贤说：“先生你这算做啥？”转过身厉声斥责鹿子霖，“你这样弄法儿，你得跟兆鹏同罪！”鹿子霖吓得面如黄表：“田大哥我真的不晓得先生葫芦里装啥药……”冷先生说：“你想法子放人。
+我救兆鹏只认得他是我的女婿。
+我的女子从一而终这是门风。
+我再没办法就逼你想办法。
+”田福贤急头慌脑摊开双手：“好我的先生哥哩！你这是逼着兄弟跳华山嘛！”冷先生说：“你想想办法，你能想下办法。
+我知道你有办法可想。
+“田福贤苦笑：“我一个小小白鹿仓总乡约，还不就是占着一道缝的臭虱！我能有个屁办法！”冷先生说：“实在没法子了也就算了嘛！这点子银货扔到你这儿，咱们得空儿来喝酒就是了。
+”田福贤坚持不允：“你把麻包封严装到车上拉回去，我尽量想办法；你不拉走我就不管了！”冷先住说：“我一辈子还没弄过二回头的事。
+”
+
+重新上路驶出村庄以后，鹿子霖大声嘘叹起来：“啊呀呀先生哥你真是个冷先生！你事先也该给我亮个底儿嘛！吓我一跳……先生哥，麻包里装了多少硬洋？”冷先生坐在车厢里淡淡他说：“我没点数儿。
+我向来不数钱。
+这几年攒的货全端出来了。
+让田总乡约慢慢儿点去。
+”鹿子霖叹惋起来：“恐怕你这十麻包银元撂不响！”冷先生说：“撂响也罢不响也罢，反正撂出手我就不管它了。
+”
+
+田福贤当夜把麻包里装的银元腾出来，埋到院子西墙根那棵合抱粗的香椿树底下。
+他也没有数数儿，用竹条担笼象揽拾石头瓦碴一样把银元倒进香椿树下的深坑里，点数儿已经没有多少意思了。
+他接着在西原故居的房屋里住了三天，谢绝一切前来问安的巴结的新朋友。
+只说他在外头干公事累得受不了了，需要在家里养息几天。
+第四天早上他骑马回到白鹿仓，后晌召集起九个保障所乡约和一些大村有影响的头面人物的联席会议，提出一条建议：“要求省府将共匪鹿兆鹏押回白鹿原正法。
+”得到与会者一致响应。
+田福贤第二天骑马进省城去，闯这个机关奔那个衙门牙硬辞坚，申述白鹿原几万乡民正当而又强烈的要求，把在白鹿原上滋生又在白鹿原上闹事作乱的共匪鹿某押回原上就地正法；三天后，以贺耀祖打头的三十多人的乡民请愿团一呼啦跪倒在省府门前，声言不答应他们的要求就永远跪下去绝不起来；国民党滋水县党部书记岳维山被党部召回城里；他不仅不劝退乡民而且说服省党部郑重考虑乡民要求，如此一来不仅可以达到杀一儆百的效果，而且可以让社会各界看看共匪作为是何等不得人心……鹿兆鹏被押回白鹿原来了。
+
+
+杀人场地选择在县立白鹿镇初级小学的土围墙西边，离上墙五尺挖着一排七个深坑，七个被捆绑着的人面对墙壁，穿着显眼的是唯一身着褐色袍衫的鹿兆鹏，他跪伏在中间，其中六个被宣布为杀人抢劫截路挡道的土匪和贼娃子。
+选择这儿做刑场再明白不过，这所学校是鹿兆鹏在原上煽动共党革命的老窝巢，以示震慑。
+执行刑法的是白鹿仓的团丁，他们自级建以来第一次得到出风头的机会，格外威武地站成一徘。
+枪声响过，墙头上冒起一片蓝烟，七个人不见谁哼一声就毙命了，他们的上下嘴唇铁丝串结在一起。
+尽管石印的杀人通先贴到每一个村庄的街巷里，仍然激不起乡民的热情好奇，饥饿同样以无与伦比的强大权威把本来惊心动魄的杀人场景淡化为冷漠。
+
+
+鹿兆鹏已经被转移到白鹿书院。
+田福贤玩了一个换人的把戏。
+在鹿兆鹏被押解回原之前，田福贤从县监提回来六个死刑。
+说是以壮声势，其实是为了鱼目混珠。
+鹿兆鹏被解回白鹿仓的当天晚上，只在那个临时作为监房的小屋里躺了不到一个小时，随后就被悄悄抬上他父亲亲自赶来的骡马大车，顶替他的替死鬼被强迫换上了他的长袍。
+“冷先生故伎重演，大车上又垒堆起十个药材麻包，只不过没有装进银元。
+而是掩盖着一个死刑犯人。
+他们把车赶到原坡头上，搀扶着兆鹏走进白鹿书院。
+朱先生接过人以后说：“你们走吧！再不要来了。
+”
+
+鹿兆鹏躲在白鹿书院连睡三天，轮番审讯整得他精疲力竭，种种民国新刑法整得他体无完肤，睡过三夭三夜才缓过精神，饭量骤增。
+师母朱启氏给他精心调养，早起一碗鸡蛋羹，午间是变换花样的面，晚上熬下红豆小米粥，他很快就调养得面色温润了。
+
+
+朱先生在他来到之前被县府抽调去做赈济灾民的事，隔三错五回书院来，回来时只问问他的身体恢复状况就离开了，没有一丝他闲谈的意向。
+这一晚，朱先生回来了，他走进先生的卧室去告别，也向温柔敦厚的师母表示谢意，他看见先生和师母在昏黄的油灯。
+下喝着一碗黑糊糊的东西，凭着气味可以辨别出黑豆的苦涩，心藏的感激的话倒说不出口来。
+鹿兆鹏默默地坐下来，“我要走了。
+”师母说：“你能走得动？”朱先生没有说话，用筷子搅着碗里的黑豆惨儿。
+兆鹏做出一副轻松玩笑的样子问：“先生，请你算一卦，顶卜一下国共两党将来的结局如何？”朱先生芜尔一笑：“卖荞面的和卖合络的谁能赢谁呢？二者源出一物喀！”兆鹏想申述一下，朱先生却竟自说下去：“我观‘三民主义，和‘共产主义’大同小异，一家主张“天下为公’，一家昌扬‘天下为共’，既然两家都以救国扶民为宗旨，合起来不就是‘天下为公共）吗，合不到一块反倒弄得自杀相戕杀？公字和共字之争不过是想独立字典，卖荞面和卖合络的争斗也无非是为独占集市！既如此，我就不在注重“结局”了……鹿兆鹏忍不住痛心疾首：“是他们破坏国共合作……”朱先生说：“不过‘公婆之争’，鹿光鹏便改换话题，说出一直窝在心里的疑问：“我爸和冷先生救我我没料到，田福贤怎么会放过我？我想见他们一面……”朱先生说：“他们不想见你只给你捎来两句话。
+把名字改了离开西安，不然救你的人全不得活。
+”鹿兆鹏说：“无须他们叮嘱我也得这样做，我在西安已难立足。
+还有什么话？朱先生说：“田福贤让冷先生问你一句话：如若你们日后真的得势，你还能容得下他？”鹿兆鹏不禁愣住，缓过神来说：“让他好好活着。
+我要是给活到他说的那种时候，一定要叫他看到，我们比他们更光明磊落！”朱先生说：“冷先生本人留给你的一句纯系家事：给女人个娃娃。
+给个娃，他女子在你屋就能活下去，他自己在白鹿镇也能撑一张人脸……”鹿兆鹏软软地坐下去，双手抱住脑袋：“天哪！倒不如让田福贤杀了我痛快！”朱先生说：“怎么又变得如此心窄量小了？”鹿兆鹏猛然站起来：“我能豁出命，可背不起他们救命的债……先生。
+我走了，你老有话给我吗？”朱先生淡然一笑：“我嘛只期盼着落一场透雨……”
+
+饥饿比世界上任何灾给都更难忍受，鸦片的烟瘾发作似乎比饥饿还要难熬，孝文跌入双重渴望双重痛苦的深渊，博大纷繁的世界已经变得十分简单，简单到不过一碗稀粥一个蒸馍或者一只乌紫油亮的烟泡儿。
+当小娥扫了瓦瓮又扫了瓷瓮，把塞在窑洞壁壁洞里包裹过鸦片的乳黄油纸刮了再刮，既扫不出一星面也捏捻不出一颗烟泡的时候，那个冬暖夏凉的窑洞，那个使他无数次享受过人生终权欢愉的火炕，也就顿时失去了魅力。
+八亩半水旱地和门房，全都经过小娥灵巧的手指捻搓成一个个烟泡塞进烟枪小孔儿，化作青烟吸进喉咙里。
+孝文从火炕上溜下来趿拉上鞋，刚跨出窑洞一步，小娥在喊：“你走了我咋办？”孝文回过头去：“我总不能引上你去要饭？等着，我要下馍给你拿回来。
+”他走出窑洞时没有任何依恋，胸间猛然燃烧的饥饿之火使他眼冒金星鼻腔喷焰。
+孝文不加思索地往白鹿村东邻最近的神禾村去，进了村子几乎无暇顾及那些破烂低矮的门，端直走到神禾村头家财东李龟年的青砖门楼下。
+李龟年看他撇了撇嘴角就走进门去，支使孙子给他送来一个豌豆面搅着麦子面的混面馍馍。
+孝文不大在乎李龟年撇拉的嘴脸，沉浸在咀嚼混面馍馍的香甜甘美之中。
+他斜倚在门楼下，一只肩膀抵在门楼突前的青砖柱体上，双手掬捧着那个泛着豌豆黄色的馍馍，腮帮上鼓起一个圆圆的蠕动着的圪塔。
+吃完以后，他小心认真地吸食撒漏在手心和指缝的馍渣碎屑儿，忽然记起小娥来，他顿时懊悔不迭随即又宽宥了自己：“算咧算咧已经吃完了算咧！等下回要到手一定给她送回去！”当他转到贺家坊贺耀祖家门楼下的当儿。
+正当午饭时间。
+贺耀祖家人报告了孝文来讨饭的消息走出门来，亲热备至他说：“啊呀孝文！你扛在门楼下做啥？进屋进屋快进屋来！”孝文跟着贺耀祖走进门楼进入院庭，心里想着，这回可以饱吃一顿了！
+
+贺耀祖一家正围在厅房明间的方桌上吃饭，全部停住筷子惊奇地注视着他的到来。
+贺耀祖指示家人给他舀饭，拉过一只矮凳放到厅房台阶上说：“坐下，在这儿坐下吃。
+”在哪儿坐下都无关宏旨，孝文接过贺家儿媳递来的饭碗，迫不急待地开始陶醉在纯粹白面条的美好享受之中，滚烫的面条丝毫不能减缓他吞食的速度，额头上的热汗吊线似的滴流下来，当他吃光喝净期盼再舀一碗的时候，才听见背后响着贺耀祖的声音：“你们今日个看见师傅了。
+我专门把这个好师傅请进门来给你们开开眼界，白嘉轩在咱原上算得头一个仁义忠厚之人，还是保不定要出败家子儿，你们没见过败家子今日个就见上了，你们要学败家子他可是个好师傅……”孝文刚刚接住舀来的第二碗面条，心里猛然蹿起一股火来，想把那碗摔扣到贺家父子当面，临了却软软坐下挑动细长的面条进人口中，他吃完之后抹抹嘴巴，回过头对贺耀狙说：“你看中我当师傅，那我就住下不走了好不好？你啥时间还想让我当师傅尽管捎话，咱不要工钱只图个肚儿圆……”
+
+孝文继续往东南走，越往南走人地愈生疏，一天两天也难得讨一口剩饭一块馍，却不断遭到恶狗的袭击，迫使他捡起一根木根，而腿脚上被狗咬烂的伤口开始化脓，紫红的脓血从小腿肚上流过脚腕灌进鞋帮里。
+他随后就开始发烧，强烈的恶心使他干呕出一串串带血的粘液。
+那一夜他从栖息的庙台上翻跌下来，浑身象浸透了井水一样冷颤不止，脑子里却得到几天来的第一次清醒，而且意识到死亡即将临近了。
+这一刻突然想起小娥，他放声痛哭，呼喊着小娥的名字，趔趔趄趄离开庙台……
+
+经过两天连挪带爬殊死的行程，终于眺望得见白鹿村树木笼罩着村庄了。
+他在路经熟悉的土壕时一阵情切过度的昏厥，就软软地从斜坡上翻滚下去，跌落在大土壕里。
+他看见小娥正朝他抿嘴勾眼笑着爬上炕来，右手伸到左腋下款款地解开一个又一个布圪塔纽扣儿，两只雪白的鹁鸽儿扑飞出来；她侧身倚躺在他的身旁，把一粒搓捻得油亮的土填进烟枪小孔，俩人便你一口我一口地对抽起来；烟劲上足了，俩人便在火炕上折腾瞎闹，破席上的一根蔑扦刺得他跳起来，趴在炕上撅起光溜溜的屁股，让小娥捉着给他从皮肉里挑出扦刺来……孝文从针刺的剧疼里跳起来，一只皮毛染着血污的白狗鸣呜叫着纵起尾巴跳开了，回头对他凝视一阵儿，便失望地叫了两声溜走了。
+他抱住脚一看，脚面上和脚掌上留着两排对称的洞眼儿，却没有血流出来，他猜想自己的皮肉里大概挤不出一滴血了。
+他的心头掠过一幅阴森恐怖的景象，那些被饿死的村道或庙台下的外乡人，村里人恐怕尸体变臭，就吆喝起几个人把尸首拖到远远的坡沟里，胡乱挖个土坑塞进去埋掉了。
+狗们随后跟踪而至，先是一条几条接着便拥来几十条颜色各异的大狗小狗公狗母狗，围着土坑扒挖，一当那无名死尸扒出来，狗们就疯了似的撕扯噬咬，原上几乎所有的狗全都变成了野狗，吃人的肉吃得眼睛血红皮手上也染着血痕。
+白孝文几次看过被狗们咬得白光光的人的腿骨，被撕得条条绺绺的烂衫烂裤，不由得一阵痉挛，又软软地躺倒在土壕塄坎下，一声硌耳的车轴擦磨的嘶响传来，有人赶车到土壕来取土，孝文瞅了一眼，便认出吆车的人是鹿三，不由地闭上眼睛。
+
+
+鹿三呛着马拉的木轮牛车进入土壕，拉紧木闸缚死闸绳，从车厢里取下铁锨和镢头转身走向塄坎土的当儿，瞅见蜷卧在旯旮里的人，他见惯了饿殍卧道所以并不太惊奇，用镢头尖头钩拉一下腿脚，探试一下是死尸还是活物。
+孝文就支起胳膊扬起头来，叫了一声“三叔”。
+鹿三扔了镢头跨前一步蹲下身来，双手扶着孝文的肩膀坐起来：“噢呀呀呀弄成这光景了？”孝文麻木许久的脑袋顿时活跃起来，他意识到自己现在的一言半语，都会以鹿三这个媒介一字不漏地传达给父亲，丝毫的怯弱和懊悔都会使父亲得意。
+他不想让他得意，于是就说：“这光景不错，这光景美得很！”鹿三撇了撇嘴角儿：“想想你早先是啥光景，而今是啥光景？”孝文不假思索地说：“早先那光景再好我不想过了，而今这不景我喜悦我畅快。
+”鹿三听了，缓缓地站起来退后两步，和孝文之间形成一段距离，嘲弄他说：“你生装嘴硬，你后悔来不及了！你原先人上人，而今卧蜷在土壕里成了人下人！你放着正道不走走邪路，摆着高桌低凳的席面你不坐，偏要钻到桌子底下啃骨头，你把人活成了狗，你还生装嘴硬说不后悔！你现时后悔说不出口喀！”孝文气得颤颤抖抖：“嗬呀三老汉！别人训我骂我我倒是罢了，你也来训我烧骚我，你算老几？”鹿三冷笑着拍拍胸口，鄙夷地瞅着孝文：“我算老——三。
+甭看三老汉硬熬一辈子长工，眼窝里把你这号败家子还拾不进去！我要是把人活到这步光景，早拨一根求毛勒死了……还知啥人哩？”鹿三从地上捞起镢头，狠狠地照着塄坎挖起来，土块哗哗哗倒下来，拥堆在脚下，接着又换上铁头木锨，装满一车土块；再把镢头和铁锨架上车帮，牵着红马解开闸绳，临出土壕的时候回过头来，半是同情半是挪揄地说：“你要是没有狼劲儿勒死，快到白鹿仓里头去，那儿今日放舍饭……”
+
+孝文仰躺地土壕气得半死，串村溜墙根什饭时，熟人用白眼瞅他孩子喝狗咬他他都能做到心平气和，料想不及鹿三竟会如此强烈地刺激起他的羞耻感，盛怒终于冷寂下去，腹腔里似有一条蚰蜒的在蠕蠕拱动，接着一条变成二条三条无以数计的蚰蜒在空荡荡的腹腔里翻搅攻掘，脑子里盘旋着鹿三走出土壕时留给他的三个字：放舍饭。
+饭已经十分陌生，现在又变得十分切近十分鲜活十分生动。
+两三天来水米不进，孝文早已没有饥饿的感觉也没有饥饿的胁迫，现在饥饿的感觉重新苏醒，饥饿的痛苦又胁迫着他站立起来，到白鹿仓去吃舍饭：他的意志集中心劲强烈，拄着打狗棍子站立起来，走出土壕爬上慢道扬起头来，弟弟孝武刚刚走到跟前，孝武是从鹿三口中得知孝文在上壕濒死的消息，他说：“哥，回家吧！”
+
+“不回！”孝文昂起头执拗他说。
+
+
+“你已经走到绝路了，再没路可走了。
+”
+
+“你该想想，你咋能去抢舍饭？”
+
+“抢舍饭好！比讨饭比回家吃你一碗饭都好！”
+
+“你不顾脸面……也该想想祖先！”
+
+“要脸的滚开……不要脸的吃舍饭去罗！”
+
+孝文得意自己对鹿三和孝武的强硬态度，凭着骤然起的一股气力走到白鹿仓外的舍饭场上来了。
+白鹿仓围墙外开阔的原野上，因为干旱未能播种因而闲歇着的田地里，万头攒动，喧哗如雷，象是打开了箱盖嗡嗡作响的蜂群，更象是一个倾巢而出的庞大蚂蚁家族，站着的躺着的坐着的躜动着的男人女人老人和娃娃，一片褴褛的衣裤构成混浊的洪水，四面人方仍然涌动着朝这里汇入。
+孝文刚刚直进入时心里一阵畏怯，很快就被一张张饥饿的脸孔和粗鲁的咒骂所激励，拄着棍子朝人流密集的地方躜去，开阔的原野上临时垒起八九个露天灶台，支着足有五尺口径的大铁锅，锅台的两边务架着一只大风箱往灶台下送进风去，火焰从前后两个灶口呼呼呼啸叫着蹿起一丈多高，灶锅拥挤着的尽是年轻人，密实到连一根麦草也插不进去。
+民团团丁挥舞着棍棒，强令人们排起三路纵队，刚刚形成的队列在团丁们转过身时倾刻瓦解，蜂拥的程度更加激烈。
+孝文在这种混乱中趁机挤到前沿，看见了热气蒸腾的铁锅里翻涌着黄亮亮的米粥，顿时懊悔得哭叫起来，天哪！旁人手里都攥着一只黄碗或一只瓦盆儿，自己空着手拿什么盛饭呢？他又挤出人窝儿，打算跑回镇子去借一只碗来，肩膀却被谁一把揪住了，他情急得愤怒地回过头，鹿子霖惊讶地笑着说：“啊呀呀老侄儿！你咋能跟这些人往一窝里挤哩嘛！”孝文挣了挣肩膀没有挣脱就急了：“哎呀快丢开手！我忘了拿碗我去借碗呀！来迟了就给旁人舀完咧！”他觉得鹿子霖的手抓得更紧更狠了，愈加气急地叫：“你再不放手我就骂呀……”鹿子霖脸上浮起一缕难过的神色，倒换了一只手又抓住他的胳膊，拨开混乱拥挤的人群，不由分说拉着他走进白鹿仓围墙上临时挖开的豁口。
+孝文根本没有力气与抓着他的胳膊的那只手抗衡，他被拉进白鹿仓的院子又进入一间屋子，一抬头就看见姑夫朱先生坐在一张桌子旁边，哑然闭口垂下头来。
+
+
+屋子里的人全都嘘叹起来。
+这里坐着的是临时组成的白鹿仓赈济会的成员，包括鹿子霖在内的九个保障所的乡约，各管一项分工向原上饥民施舍饭食，总乡约田福贤自任会长，他们构成了白鹿原上流社会。
+大家瞅着鹿子霖拉进门来的白孝文，衣裤肮脏邋遢，头发里锈结土屑灰未儿和草渣儿，脸颊和脖颈粘满污垢，眼角积结着的干涸的眼屎上又涌出黄蜡蜡的新鲜眼屎，令人看了作呕，挽卷着裤脚的小腿上，五花血脓散发着恶臭。
+从德高望重的白家门楼里逃逸出来的这个不肖之徒，使在座的白鹿原上层人物触目惊心感慨不已，争相发出真切痛心惋惜怜悯的话。
+孝文不仅得不到丝毫的温暖和慰藉，反而更加窘迫，透彻地领受到堕落者的羞耻，再也说不出对鹿三和孝武那些赌气的硬话了。
+鹿子霖端着四五个馍馍走进来，正要递给孝文，一直也没有开口的朱先生制止了鹿子霖的举动，挥手让他把馍馍拿走，沉静他说：“让他多饿一阵儿好。
+”鹿子霖有点尴尬，在坐的人无人不晓他买地拆房的事，才有点后悔不该拉扯孝文进来；原只想把这个浇破落子弟推到上流社会的人们面前展览一番，却使自己受到牵扯；他忽然灵机一动，对田福贤说：“总乡约，你不是说县保安大队要扩编吗？要你给他举荐可靠的年轻人吗？让孝文去多好！咱们瞅嘉轩兄的脸面，不能看着孝文到这儿来抢舍饭呀……”众人一齐拍手称好。
+田福贤摇了摇手说：“你不提这事我倒忘了。
+好好好！孝文在朱先生书院念过好几年书，文墨深。
+县保安大队队长特意叮咛，让我给他物色个有文墨的人哩！”说着，趴在桌上写下一纸举荐信，折叠后装人信封，走过来交给孝文说：“你立马就去，晚了当心旁人顶占了位子。
+”孝文接过信封，感激地流出泪来：“田叔子霖叔……”扑塔一声跪下了，孝文被田福贤抻进来，转身就要出门，姑夫朱先生挡住他说：“等等。
+你去抢一碗舍饭吃了再走。
+吃一碗舍饭好处匪浅……”孝文瞅了一眼姑夫就靠在门框上。
+朱先生对屋子里的人说：“我提议，咱们赈济会同人都去舀一碗舍饭，与民同食这个机会千载难遇。
+给我一个碗，你们不去我可去了……”
+
+朱先生常常有出奇之举，成为经久不衰流传的奇事轶闻。
+朱先生抢舍饭顿时风传白鹿原，又传进县府，新任郝县长扼腕流泪，庆幸自己选中了一位好人。
+郝县长自任滋水县赈济灾民总监，朱先生被委任为副总监，县长选中朱先生是排除种种障碍阻力而表现了种为民请命的凛凛气魄。
+这个肥缺给了谁，谁就会在半年间成为本县首富，郝县长亲临白鹿书院，请求朱先生出山，词恳意切：“不才机运不佳，刚来滋水就遇到年馑，已无任何抱负可言，唯有救灾赈济是命。
+诚恐宵小之等待从中克扣对百姓犹如雪上加霜，以先生的品格和声望正堪此重任，暂且搁县志编撰，先救民人度过饥荒，你再续修县志……”朱先生慨然击掌：“书院以外，啼饥号寒，阡陌之上，饥民如蚁，我也难得平心静气伏案执笔；我一生不堪重任。
+无甚作为，虚有其名矣！当此生灵毁绝之际，能予本县民人递送一口救命饭食，也算做了一件实事，平生之愿足矣！”朱先生亲自召各仓总乡约联席会议，核对人了数目，发放赈济粮食。
+他亲临本县原区山区和川道地区的三十余个仓里，监督检查发放舍饭的地点，把那几位编撰县志的文人先生分派到仓里，专司赈济粮食的数目账表，力主灾粮一定要一粒不漏地吃到饥民口中堵塞营私舞弊的漏洞。
+朱先生一身布衣，到各个仓里巡查。
+第一次到河口仓视察时，仓里为他备下一桌饭，四碟炒菜，一盘雪白的蒸馍。
+朱先生看了一眼，就拿起一只碗到舍饭场上舀来－碗小米粥喝起来。
+仓里的总乡约和他的幕僚目瞪口呆，连声检讨自己失职。
+朱先生指令他们端上盘里的蒸馍和碟里的炒莱，一起走到舍饭场的大铁锅前，一齐倒进去。
+朱先生说“你给民人说说这馍是用啥粮蒸出来的？”总乡约瞅了瞅拥挤着的饥民，吓得面色蜡黄不敢吭声。
+朱先生说，“青天白日旗下，无须挤眉弄眼悄悄话。
+你敞开喉咙向民人说——”总乡约刚说出用赈济粮来招待朱先生的原委，站在前头的饥民便跪下了，后头的人一拨一拨无声地跪下来，整个舍饭场上鸦雀无声。
+朱先生满脸淌流着泪珠说：“谁忍心从饥民口里叼食，谁还能算人吗。
+”
+
+一月后的一个黄昏时分，孝文骑着一匹马走进白鹿镇，一身笔挺的黑色制服，腰里束着一根黑色皮带，头顶大盖白圈儿黑檐帽子，马不停蹄地走进白鹿仓，向田福贤恭恭敬敬施了一个举手礼，然后解开挎包取出一瓶酒一包点心一包南糖一包笋干共四样礼物，诚恳他说：“不成敬意哦田叔……”他随后把同样一份礼物送到鹿子霖手中（穿过村巷路经自家门口时没有驻足停步），仍然是那句至诚的话：“不成敬意哦子霖叔………”
+
+到滋水县保安大队仅仅一月，孝文身体复原了信心也恢复了，接受过十天军事操练之后，他就被抽调到大队部去做文秘书手，可望将来有辉煌的发展前程。
+他早已谋划确定，第一次领晌之后，就去酬答指给他一条活路的恩人田福贤和鹿子霖，再把剩余的钱给小娥，那个可怜人儿想吃舍饭怕也挤不动抢不到手哩！鹿子霖让人炒下一盘鸡蛋和一盘自生的黄豆芽招待孝文。
+酒过三巡之后，鹿子霖好心地告诉他：“好咧好咧倒是好咧！那个货死了，你也就一心注定在县上干你的差事……”孝文直着眼问：“谁死了你说谁死？”鹿子霖做出轻淡不屑的样子：“就是东头窑里那个货……”孝文失控地站起来：“你说她……饿死了？”鹿子霖按着他的肩膀让他坐下来才说：“不像是饿死的，像是被人害死的，炕上有血……”
+
+一股奇异的臭气在村庄里浮游，村人们以为是野狗吃剩的死尸在腐烂，找遍了荒园坟岗土壕却不见踪迹。
+那股令人恶心窒息的臭气与日俱增恶臭难闻，有人终于发现臭气散发的根源在村子东头慢道旁边的窑洞，报告了族长白嘉轩。
+白嘉轩对二儿子孝武说：“你叫上几个去看看，咋么回事？”白孝武和一帮族人来到慢坡道跨上窑院，恶臭熏得人不断地恶心干呕起来，臭气的确是从窑洞里散发出来的。
+窑门上拴着一把提盒笼形的铁锁，独扇木板门不留缝隙，窑窗的木扇也关死着，窗扇细微的夹缝里一片黑暗。
+有人开始追忆，似乎有好多天这窑门一直锁着未见开过，似乎好久未见那个婊子到集镇上去了；有人断定她肯定饿死在窑洞里了，有人立即指出铁锁锁门证明她根本不在里头，说不定她杀死了某个野汉逃跑了。
+无论如何，恶臭确凿是从这孔窑洞里散发出来的，孝武在乱纷纷的争议中拿下主意，吩咐两个扛着镢头的汉子说：“把窗扇砸开！”两声脆响之后，两个砸烂窗扇的汉子争抢着把头伸进窗洞，同时大叫一声跌坐在窗台下，吓得妈呀爸呀直叫。
+孝武走上前去扒住窗台往里一瞅，立时毛骨惊然头发倒立，一个一丝不挂的女人趴伏在炕边上，一条腿脚搭吊在炕边下。
+孝武瞅了一眼就捂着鼻子退到窑院来。
+既然这个女人饿死在窑里，是谁从外边锁上了窑门？人们纷纷挤到窗台上去看究竟，又噢噢惊叫着急退到窑院里来。
+孝武又指使那两个汉子砸开窑门上的铁锁。
+俩人说啥也不再冒险了，孝武从他们一个手里拿过镢头走向窑门，咣当一声砸掉铁锁，一脚蹬开独扇门板，嗡的一声，苍蝇像蜜蜂一样在门口盘旋，恶臭一下子扑出门来。
+孝武又指使几个小伙子爬上椿树去采些树枝，在窑院里燃起麦草，把椿树的枝叶覆盖到火上，烧出苦味的浓烟，驱散扑到窑院里的苍蝇。
+他又带着三个小伙子抱着柴草和椿树枝叶进入窑洞，在窑顶头点火熏烟。
+火着烟起之后就奔出窑来。
+浓黑的烟气从窑门窑窗和天窗里流泄出来，荸荠一般大小的绿头红头苍蝇随着烟流仓皇飞窜，往人的脸上爬往人的衣服上爬，人们惊叫着脱下衣服摔打，那些娇气十足的苍蝇是鬼魅的象征。
+
+
+烟气消敬净尽，臭气暂得减轻，孝武和几个胆大的人走进窑门去察看究竟。
+小娥上身趴伏在炕上，一只胳膊压肋下，另一只胳膊伸到头前的炕席上，一条腿压在尻子底下另一条腿吊在炕边下，通体精赤，只有一双小脚上缠着裹脚布勒着套鞋。
+尸体已经完全腐烂，大大小小的蛆虫结成圪塔，右肩上的肩甲骨已被蛆虫嚼透，窝成一堆的头发里也有万千蛆虫在蠕扭攒爬，炕席上被子上脚地上和连着火炕的锅台上，到处都是蛆虫的世界。
+孝武弯下腰，终于发现炕边的土皮上溅着干涸的变成黑色的血迹，也就明白这女人不是饿死而被人杀死的，杀死她的人出门以后就锁上窑门。
+一件夹衫压在她身下，从精赤的身子和脚上的套鞋判断，她被杀的时间是在夜里，因为套鞋只有夜里脱了衣服睡觉时才换穿的，这些都是很容易作出判断的生活常识。
+她的死因似乎更容易猜断，既然脱得一丝不挂只穿睡鞋，肯定是某个野汉子跟她闹翻脸了杀的或是一伙野汉子争风吃醋失败了报复杀了，对于这个臭名远扬的官碾子女人，除了奸情不会再有什么更深更多的因素令人思索。
+孝武退出窑门到了场院上，越聚越多的白姓和鹿姓的男人们一致谴责，这个婊子死了使全村老少闻她的气，不过这下总算除了一个祸害。
+几个老年人倚老卖老地责备孝武；看啥哩那臭婊子有啥好看的呢？赶快取锨来把那臭肉臭骨铲出去呢？孝武犹疑他说：“万一她娘家或旁的人告官咋办？总是一条人命案子！”老者们不耐烦他说：“我敢作证在场的人都能作证。
+总不能吧人再闻臭气嘛！”孝武说：“那好！”就指使大伙回家去取工具，挖个深坑把她深埋起来。
+
+
+这当儿白嘉轩佝偻着腰走上慢道，端直朝窑门走去。
+孝武劝他不要进去，白嘉轩仰起脸说：“活的还怕死的？怪事！”白嘉轩背着手观察一番，看见被蛆虫餐着的腐烂的躯体，也看见了溅在炕边土墙上变黑的血痕，没有久停就跷出窑门门坎，看着已有三三五五的人取来锨头铁锨，对孝武说：“从窑墩崖上放下土来，把这窑给封堵了算了！”说罢又佝偻着腰走出场院走下慢道去了。
+孝武着人从窑里用砸断的窗板挡住窗孔，重新闭上窑门，就让众人从窑墩崖上挖土。
+土块哗啦哗啦奔泻下来；堵封了窑门窑面，最后盖封了四方形的小小的天窗，从外表上看，黑娃和小娥的这孔不断在白鹿村惹是生非的窑洞就完全消失了
+
+“是谁下的这毒手？”孝文问。
+
+
+“弄不清楚。
+”鹿子霖说，“我那天在仓里忙着向灾民发放舍饭，没在现场，是后来听人说的。
+人都嘈嘈说，肯定是哪个野汉子做的活！可究竟是谁，谁也猜不透。
+”
+
+孝文愣愣地捏着酒杯，猛然倾杯灌了进去。
+
+
+“算咧老侄儿。
+”鹿子霖心平气和地劝慰孝文。
+孝文提着礼物来谢恩的举动证明了这样一点，小娥至死也不曾给孝文泄漏过，导致孝文一系列灾难的戏台下到砖瓦窑的风流，正是他的一个计谋或者说圈套；庆幸的是凶手为自己清除了心头隐患，再不用担心小娥向孝文漏底儿的危险了，他将安然无虞地与孝文保持一种友好的叔侄关系。
+他说：“你而今在保安队干上了，其实她死了倒少给你添麻缠嘈口声；你和先前不一样了，而今人头里的人哩！”
+
+孝文连连灌着酒，一句话也不说，站起身来就走了，从马号里牵出自己的马，一出门就跨上马去，和鹿子霖连个招呼也不打，孝文纵马跑过村巷上了慢道，把马拴在一棵树上，踩着虚土爬上窑墩，凭着记忆判断出天窗的位置，就用双手扒掏起来。
+天窗外覆盖的虚上很薄，很快就露出来了。
+孝文从天窗钻进窑里，里面一片漆黑，他连着擦来了三根火柴，在第四根火柴的亮光里找见了搁置在炕台上的油灯，油灯里残留着一丝清油，油稔儿迟迟地亮了起来，孝文站在脚地上，看见一具白骨，骨架在炕上摆放的位置和姿势，与白嘉轩叙说的情况基本吻合。
+孝文双膝一软就跪倒在地上，轻轻叫一声：“亲亲呀我来迟了……”他似乎吸到窑顶空中有咝咝声响，看见一只雪白的蛾子在翩翩飞动，忽隐忽现，绕着油灯的火焰，飘飘闪闪，孝文哇地一声哭出声来：“你知道我回来了呀亲亲……”一阵昏厥就扑倒在炕上了。
+
+
+孝文醒过来时，油灯已经燃尽，蛾子也不见踪影。
+他划着一根火柴，眼光落到那两排精美的糯米牙齿上，他曾经永无满足地吻过亲过它们，它们现在泛着冰凉的绿光。
+他从伸到炕边的右臂的骨头上取下一只石镯，套在腕上，摸黑爬上天窗。
+他从窑垴扒下土来，重新封堵住天窗就跳下窑院，解开马缰：“我一定要把凶手杀了，割下他的脑爪来祭你！亲亲……”
+
+
+
+第二十章
+
+黑娃骑着一匹乌青马朝白鹿村赶来，月亮下去了，星光昏暗。
+他和弟兄们刚刚做毕一件活儿，就像种罢一垄麦子或是收割完一畦水稻，弟兄们用马驮着粮食回山里去了，自己单身匹马去给小娥送一袋粮食。
+沿路所过的大村小寨不见一星灯火，偶尔有几声狗的叫声，饥荒使白鹿原来完全陷入死般的静寂，无论大村小寨再也无法组织得起巡更护村的人手了，即使他们入室抢动富家大户，住在东西隔壁的邻居明知发生了什么事也懒得吭声。
+进入白鹿村之前，黑娃首先看见吊庄白兴儿的房舍，处于整个拥拥挤挤的白鹿村外首的这个吊庄，恰如中华版图外系的台湾或者海南岛。
+他对白兴儿的庄场忘记忆深刻，那头种牛雄健无比，牛头上的两只银灰色的抵角朝两边弯成两个半圆的圈儿，脖颈子下的肉脸子一低头就垂到地上。
+那头灰驴和一匹骡子一样高大，浑圆的尻蛋子毛色油亮，看见母马时就蹦达起来，尖嘎的叫声十分硌耳。
+最引人的还数那匹种马，赤红的鬃毛象一团盛开的石榴花。
+他那时候就知道，公牛压过母牛生牛犊，种马压过母马母马也生马驹，而叫驴压了母马母马既不生马也不生驴却生下一头骡驹来。
+每年春天和秋天，白鹿原上远远近近的大庄稼户和小庄稼户牵着发情的母牛草驴或母牛到吊庄来，白兴儿笑殷殷地让客户坐到凉棚下去喝茶，然后把母畜牵到一个栅栏式的木架里头去。
+每年夏收或秋收以后，白兴儿就牵着种牛叫驴或者种马，脖子上拴一匝红绸，红绸下系一只金黄色的铜铃，到各个村庄里转游；那些配过种而且已经得到了小牛犊小马驹小骡驹的庄户人，听见铀铃叮当叮当的响声就用木斗提出豌豆来，倒进白兴儿搭在牲畜背上的口袋，连一句多余的饶舌话也无须罗索; 白兴儿一边是意在收账，另一边意思是夸庄，向各个村庄凡饲养母畜的庄稼户展示种畜的英姿，名曰夸庄，吸引更多的人把发情的母畜牵到他的吊庄里去，算是一种最原始最古老的广告形式……黑娃在山寨时与白牡丹或黑牡丹干过那种事后，总是想到小时候偷看白兴儿的配种场里的秘密。
+
+
+黑娃驱马从村子东头的慢道上下来不由一惊，进入窑院跳下马来，却看不见熟悉的窑门和窑窗了，坍塌的黄土覆盖着原先的窑洞。
+他旋即翻身上马，返身奔到吊庄白兴儿的庄场上来。
+昔时人欢马叫的庄场一片凄凉，专供不驯顺的母畜就范的木头栅架已经拆毁，庄场大约关闭停业了，大饥馑年月，牲畜早被庄稼人卖了钱换了粮或进杀坊卖了肉，还有鬼来配种哩！黑娃把马拴到暗处树下，敲响了白兴儿的门板，好半天才听见白兴儿在门里惊恐的问话声。
+黑娃说：“老哥你甭害怕，我是黑娃。
+我只问你一句话，你不开门也行。
+我媳妇到哪达去咧？窑咋也塌了？”白兴儿大约犹疑了片刻还是拉开了门闩，压低声儿说：“黑娃兄弟！你真个到这会儿还不知道？”黑娃也急了：“咋回事你快说到底是咋回事？”白兴儿说：“你媳妇给人杀咧！”黑娃大吃一惊，一把抓住白兴儿瘦削的肩胛问：“谁下的毒手？你给我实说你甭害怕。
+”白兴儿说：“不知道。
+瞎咧好咧都没逮住一句影踪儿话柄儿。
+你那窑里散出臭气时，我才寻见发现的，后来就挖土把窑封了。
+”黑娃又问：“你真个没听到一句半句影踪话把儿？”白兴儿连连摇头：“没有没有……”黑娃狠着劲儿说：“算了不麻烦你了。
+我把马拴在椿树上你照看一下，我一会儿来骑……”
+
+黑娃端直找到鹿子霖的门下。
+白兴儿一告知小娥被杀的消息，他脑子里第一个反应出来的就是鹿子霖那张眼窝很深鼻梁细长的脸。
+他一纵身攀住墙头，轻轻一跃就跌落到院中，双脚着地以后就捅死了一条扑到腿前的黑狗。
+院子里一丝声息也没有，他用刀片插人门缝拨开木闩，进入漆黑的上房东屋。
+鹿子霖睡得正香正死，他的婆娘背对着他侧身面里睡着。
+一刀子下去，鹿子霖可能连睁眼认的机会也不曾得到就完结了。
+黑娃想着就坐在太师椅上。
+顺手摸过黄铀水烟壶儿，捻了一撮水烟丝儿塞进烟筒，拼打火镰，火石的响声惊醒了鹿子霖。
+鹿子霖粘糊着嗓音说：“你呀烟瘾倒比我还大咧！”鹿子霖把黑娃当作他的婆娘了。
+黑娃吸得水烟壶咕噜响，吹燃火纸点燃了灯，瞅着鹿子霖枕在玉石枕头上那颗硕长的脑袋。
+鹿子霖大约摸到了身旁僵睡着女人而意识到事情不妙，一骨碌翻起身来问：“你是谁？”黑娃说：“甭摸甭摸。
+”鹿子霖换一种口气问：“黑娃噢我当是谁……”黑娃说：“我来问你一件事，说在你，不说也在你；你要是动手动脚，你那两下子不胜我那两下子，你不信不要紧，说完话咱摆开场子明着弄。
+你知道我为着啥事来问你——”鹿子霖穿衣蹬裤，又推醒了身旁的女人，吩咐她去烧茶，回过头说：“老侄儿！我知道你为着啥事来的。
+我早就料到你总有一天要来寻我的。
+”黑娃说：“那就不要罗罗索索。
+”鹿子霖说：“你媳妇遭害，我一听说就想到给我惹下麻烦了，咋哩？人自然会想到你游我半我。
+你跑了我杀你女人出气。
+可人都想不到另一层，我要是想杀小娥还不如杀了兆鹏！他整我比谁都叫我更伤心。
+再说，不怕你侄儿犯心病，你逃走了，小娥几次找我哭哭啼啼，让我给田总说情宽容你。
+我这人心软，一见谁哭就哭得我仇也消了气儿也跑了。
+我虽则没有为你说成人情，田总在后总算宽饶了小娥。
+我看她一个女人空牺牺惶惶，周济给她一点点粮食，有人还借机胡扬脏哩！给我脸上抹屎尿哩！你想想我怎么会下毒手？”黑娃梗着脖子说，“你的舌头软和我是知道的。
+我要是再想不来谁只想到杀小娥的就是你，你说咋办？鹿子霖反倒挺胸睁眼说：“你老侄儿要是想杀我我没办法，你因旁的事杀我我不说啥；你要是为小娥报仇杀了我，你老侄儿日后要后悔的。
+事情终究有开明的一天，你明白了杀小娥的不是我，你就后悔了，搁旁人做错事也许不后悔，你会后悔的，因你是个讲义气的直杠子脾气……”黑娃反倒心动了：“你听没听说谁下的毒手？”鹿子霖说：“这事人命关天，我没实据不敢乱说。
+我只管保我没做对不住老侄儿的事。
+你要是有实据证明是我下的毒手，我就把脖顶伸到你刀下给你割。
+”黑娃说：“那好嘛！你现时上炕去续着睡你的觉，我从哪儿进来再由哪儿出去，免得你开门关门。
+鹿子霖抱歉他说：“那我不送你了失礼了……”
+
+黑娃进入白嘉轩的卧室后不像在鹿子霖那样从容，倒不全是鹿家只有鹿子霖一个男人在家而白家人手硬邦，不能不防；从纵上墙头攀住柿树落进院中的那一刻，他悲哀地发觉，儿时给白家割草那阵儿每次进入这个院子的紧张和卑怯又从心底浮泛起来，无法克制。
+排除了怀疑对象之一鹿子霖之后，黑娃十拿九稳地肯定杀死小娥的人非白嘉轩莫属，白嘉轩要除掉小娥的因由比鹿子霖更充分十倍，这人又是个想得出也做得出一马跑到头绝不拐弯的冷硬心肠。
+他一把把白嘉轩从被窝里拉出来，像拎一只鸡似的把他拎到炕下，用黑色的枪管抵住他的脑门，白嘉轩没有呼叫也没有惊慌失措，他从迷蒙状态清醒过来明白发生了什么事以后，便梗着脖子一声不吭，只是心里揣猜这个土匪是谁。
+黑娃对着被子围裹着身子的白吴氏说：“明人不做暗事。
+你去把灯点着，咱们打明说。
+我是黑娃——”白吴氏黑暗摸索着穿上衣裤。
+点燃了油灯：“黑娃你要啥就去拿啥，钱在炕头匣子里，粮食在上囤包里……你快把枪收了……”白嘉轩冷笑着对妻子说：“放心放心。
+黑娃这回来不要你的钱也不要你的粮食，专门是提我的人头来咧！这我明白。
+”黑娃说：“明白就好！你就明说吧，是你还是你派谁杀了我女人？”白嘉轩说：“那我就明说吧！我没杀她也不会指派旁人去杀她。
+我一生没做过偷偷摸摸暗处做手脚的事。
+这你知道。
+你女人犯了族规我用刺刷刷她，是在祠堂里当着众人的面刷的，孝文犯了族规也一样处治。
+”黑娃说：“我现在就认定是你下的毒手。
+白鹿村我再想不到谁会下这个毒手。
+我知道你为啥杀她——”白嘉轩说：“那你就开枪吧！反正我是活下长头儿了。
+你上回让人打断我的腰杆后来我就权当活下长头儿了。
+”黑娃问：“你凭啥说我让人打断你的腰？”白嘉轩说：“你自小就看不惯我的腰。
+你的弟兄动手之前说了你的那句话，你的腰挺得太直……”黑娃说：“这是真的，我小时一看见你的腰就害怕就难受。
+你的阳寿到了，今晚跟你把这话说明也好。
+”门里突然飞进一把镢头，黑娃一扬手就把它隔开了。
+黑娃对扑进门来的孝武说：“你要是不想当族长了，你再来！”白吴氏一把抱住孝武。
+孝武说：“你把俺爸放开！有话跟我说，杀呀剐呀朝我来。
+”黑娃冷笑说：“轮不到你哩！等你日后当了族长，看看你怎么行事再说。
+”孝武说：“你一定要寻个替死鬼给你那个婊子偿命，我顶上；你放开俺爸，算是我杀的她！”黑娃说：“杀了就是杀了没杀就是没杀，怎么是‘算’？是你自个要杀呢，还是你爸指派你杀的？”孝武说：“是我要杀的，谁也没指派我。
+”黑娃说：“我不信。
+我只信是你爸杀的。
+我就要拿他抵命。
+你老实点你快滚开——”说着一抖左手，把白嘉轩一下子拖到门口，迎面撞见一个人。
+那人说：“是我杀的。
+”黑娃辩出声音，是父亲鹿三站在当面，堵住了门，恼怒而又沉静他说：“龟孙，那个婊子是我杀的。
+”“这——”黑娃愣怔一下，说，“你不要搅和。
+”“是我杀的。
+”鹿三愈加沉静地瞅着儿子说，“你把嘉轩放开。
+你跟我招嘴，杀哩剐哩枪崩哩？由你！”“你甭胡说！”白嘉轩猛然扬起头，盯住鹿三说，“你想搭救我，故意把事往你身上揽，你把屎擦不干净反倒抹匀了！”鹿三没有话说，把垂在腿胯旁侧的右手扬起来，是一只烂布裹着的包儿，再用左手撕开一层又一层烂布，一个梭镖的钢刃赫然呈现在油灯的亮光里，他把梭镖钢刃撂到黑娃脚下，说：“拿去！这是物证。
+”
+
+白嘉轩白吴氏白孝武和随后闻声赶来的白赵氏白孝义以及孝武媳妇二姐儿拥在门外，惊愕地瞅着鹿三撂到黑娃脚下的梭镖钢刃儿。
+黑娃松开揪着白嘉轩肩胛的左手，从地上拾起梭镖钢刃儿，眼睛忽然一黑，脑袋里轰然爆响。
+这个双刃尖头的梭镖钢刃并不陌生，原来安着一根丈余长的桑木棍柄，是祖传的一件兵器；钢刃上的血迹已经变成黑紫色，糊住了原本锃亮的锋刃。
+这是确凿无疑的物证凶器，黑娃抬起头瞅着父亲，意料不及的这个结局使他陷入慌恐，说不出一个字来。
+鹿三说：“她害的人大多了，不能叫她再去害人了。
+”说着挺一挺胸脯，“我存着梭镖是准备官府查问的，你倒先来了。
+给——朝老子胸口上戳一刀！”黑娃的腮巴骨扭动着，又低下头，从地上拣起那块烂布重新裹缠到梭镖刃上，塞到腰里说：“大！我最后叫你一声算完了。
+从今日起，我就认不得你了……”鹿三说：“龟孙！你甭叫我大。
+我早都认不得你了！”
+
+黑娃从白嘉轩家出来，疾步赶到吊庄白兴儿破落的庄场上，从树上解下马翻身骑上。
+白兴儿从黑影里儿溜出来说；“兄弟你快走。
+兄弟你可甭给人说在我这儿拴过马……”黑娃已经策马驰去了。
+他重新进入白鹿村，转过马头来到村子中心作过家协总部的祠堂门前，连发三枪，枪声震撼死寂的夜空，他再骑马走过村巷来到慢道上，勒马伫立在窑院里，对着天空又放了三枪，垂臂默默片刻，就猛然转过身催马奔上慢道。
+在他转身背向窑洞也背向村庄的一霎问，心里便涌上一句慨叹来，至死再不进自鹿村咯！
+
+鹿三杀死儿媳妇小娥的准确时间，是在土壕里撞见白孝文的那天晚上。
+鹿三看着苟延残喘垂死挣扎着的白孝文的那一刻，脑子里猛然噼啪一声闪电，亮出了那把祖传的梭镖。
+他手里拄着镢把儿瞅着躺在上壕里的孝文竟然没有惊奇，他庆贺他出生看着他长大看着他稳步走上白鹿村至尊的位置，成为一个既有学识又懂礼仪而且仪表堂堂的族长；又看着他一步步滑溜下来，先是踢地接着卖房随后拉上枣棍子沿门乞讨，以至今天沦落到土壕里坐待野狗分尸。
+鹿三亲眼目睹了一个败家子不大长久的生命历程的全套儿，又一次验证了他的生活守则的不可冒犯；黑娃是第一个不听他的劝谕冒犯过他的生活信条的人，后果早在孝文之前摆在白鹿村人眼里了。
+造成黑娃和孝文堕落的直接诱因是女色，而且是同一个女人，她给他和他尊敬的白嘉轩两个家庭带来的灾难不堪回味。
+鹿三当时给孝文说：“你去抢舍饭”，不是指给他一条生命，而是出于一种鄙夷一种嘲笑。
+
+
+鹿三整个后晌都是从土壕里拉运黄土，干旱的天气使黄土从地表一直干到土壕根底，不需晾晒直接倒进土房储藏起来。
+天黑以后，饱和往常一样沉默寡语地坐在饭桌上吃了晚饭，和嘉轩没有说话只招呼一声“你慢吃我走咧”就走出院子。
+进了他的马号，给唯一剩下的红马添了一槽草料，就背抄着手回家去了。
+
+
+鹿三走进自家院子的时候，女人在夏屋炕上听到脚步声，问“你回来了，等等。
+我给你开门。
+”鹿三立在院子里说：“你甭开门我不进去了。
+”女人就再没吭声。
+鹿三推开储藏杂物家具的隔扎着墙的厦屋，摸到了梭镖光骨的把柄，就着朦胧的月光，在门坎上垫住梭镖，用斧头褪下镖尖头儿来。
+叮叮当当的响声引来女人的问询：“黑麻咕咚的你砸啥哩？”鹿三说：“你睡你的觉喀！”
+
+鹿三回到马号，从铡墩旁把磨石抱进来，支在土炕和槽帮之间的空脚地上，反身关死了马号的木门，用瓢舀上清水，支在脚地的一个洼坑上，然后坐在木马架上，蘸着清水磨起梭镖钢刀子来。
+久置不用的梭镖刃子锈迹斑驳，在磨石的槽面上褪下红溜溜的铁锈，嚓嚓嚓嚓的磨擦声中，钢刃在油灯光亮里显现出亮幽幽的冷光来，他用左手的大拇指头试试锋刃，还有点钝，就去给红马再拌下一槽草料添上，坐下来继续磨着，脑子里十分沉静十分专注十单分一。
+他第四次炸起左手拇指试锋刃时，就感到了钢刃上的那种理想的效果，如同往常铡草前磨铡刀刃和割麦子前磨镰刀片子一样的感觉，然后用一块烂布擦了擦钢刃上的水，压到被子底下，点燃一锅旱烟，坐在炕边上，一只脚踏在炕下的脚地上，另一只脚踩在炕边上，左手钩着弓起的膝盖，右手捉着尺把长的烟袋杆儿，雕像一般坐着，他等待鸡叫等待夜静以免撞见熟人，就像往昔里要走远路起鸡啼一样沉静。
+他的沉默不是脑子简单，主要归于他对自己的生活信条坚信崇拜。
+他连着磕掉两锅黑色的烟灰又装进了涸未儿。
+悠悠飘浮的烟雾里，猛然想起那年“交农”的情景，在三官庙的场院里，他面对群龙无首嘈嘈纷乱的场面就跳了起来：“我算一个！”他领着众人进副县府又被五花大绑着投进监牢，没有后悔过也没有害怕过。
+鹿三心里说：我就要做成我一生中的第二件大事了，去杀一个婊子去除一个祸害。
+
+
+公鸡的啼声沉闪滞涩，鸡脖子里似乎塞着干稻草。
+鹿三磕掉烟灰，把烟袋插进腰间的蓝色带子下，用烂布裹着的锃亮的梭镖钢刃也在辊在腰后，吹灭油灯，走出马号，合上门板，就出了圈场的木栅栏大门，再回身把双扇栅栏门闭合，扣上链扣，背起双手，走进白鹿村村巷。
+月亮已经沉落，村巷一片漆黑。
+
+
+鹿三背着手走过村巷，出了村口就踏上慢坡道，树木稀少了光线亮晰一些了，踏上窑院的平场，止不住一阵心跳。
+自从黑娃和这个来路不明的女人被他撵出家门住进这孔窑洞以后，鹿三从来也没有光顾这个龌龊的窑院，宁可多绕两三里路也要避开窑门前头的慢坡道儿。
+他略一稳步压抑住胸膀里的搏动，走到窑门前，铁链儿吊垂着，门是从里头插死的，人肯定在窑里无疑。
+在他抬手敲叩门板时，刚刚稳沉的心又嗵嗵嗵嗵跳起来他稍有迟疑就拍击响了木板门；这一拍击之后，心反而沉稳不跳了。
+“谁呀？”窑洞里传出小娥粘涩的声音。
+鹿三继续拍击门板，不开口“唉呀你个挨刀子的这几天逛哪达去咧？”小娥的嗓门顺畅了也就嗔声嗔气起来，她猜估是孝文来了，“你甭急你甭敲了我就下炕开门来咧！”鹿三头皮上呼喇呼喇直蹿火，咬着牙屏声闭息待立在门的一侧。
+咣当一声门闩滑动的声音，鹿三一把推开独扇子木门板。
+小娥被门板猛烈地碰憧一下，怨声嗔气地骂：“挨刀子的你求疯了咧？开门鼓恁大劲！”鹿三闪身踏进窑门，顺手推上门板，呵斥说：“悄着！闭上你的臭嘴再甭吭声。
+”“哦哟妈也！”小娥吓缩成一团，双臂抱住胸膀上的奶子，顺着炕墙就势蹲下去，用上身遮往光裸着的腹部，悲悲切切抱怨说：“你来做啥嘛？鹿三瞧着缩在炕墙根下的一团白肉，喝令说：“上炕去穿上衣裳，我有话说。
+”
+
+小娥从坑墙根下颤悠悠羞怯怯直起身来，转过身去，抬起右腿搭上炕边儿，左腿刚刚跷起，背部就整个面对着鹿三。
+鹿三从后腰抽出梭镖钢刃，捋掉裹缠的烂布，对准小娥后心刺去。
+从手感上判断，刀尖已经穿透胸肋。
+那一瞬间，小娥猛然回过头来，双手撑往炕边，惊异而又凄腕地叫了一声：“啊……大呀……”鹿三瞧见眼前的黑暗里有两束的亮的光，那是她的骤然闪现地眼睛，他瞪着双眼死死逼视着那两束亮光（对死人不能背过脸去，必须瞅住不放，鬼魂怯了就逃了），两束光亮渐渐细弱以至消失。
+她扑倒在炕边上，那只跷起的左腿落下来吊垂到炕边下，一只胳膊压在身下，另一只胳膊抓扑到前头。
+鹿三这时才拨出梭镖钢刃，封堵着血咕嘟嘟响着从前胸后心涌出来，窑里就再听不到一丝声息。
+他从地上捡起那块烂布，重新裹缠住梭镖钢刃，走出门来，拉上门板，锁上那把条笼形的铁锁，出了窑院，下了慢坡，走进屋墙和树木遮蔽着星光的村巷，公鸡刚刚啼鸣二遍。
+
+
+白鹿村乃至整个白鹿原上最淫荡的一个女人以这样的结局终结了一生，直至她的肉体在窑洞里腐烂散发出臭气，白孝武领着白鹿两姓的族人挖崖放上封死了窑洞，除了诅骂就是唾骂，整个村子的男人女人老人娃娃没有一个人说一句这个女人好话，鹿三完成了这个人人称快的壮举却陷入忧郁，忧郁是回到马号以后就开始了的，他把梭镖钢刃连同裹缠着浸满鲜血的烂布原样未动塞进火坑底的炕洞里，用厚厚的柴灰掩埋起来，防备某一天官府前来查问，他就准备把自己和凶器一起交出去。
+藏好凶器之后，鹿三从水缸里撩出一把水搓洗手上的血污时，看见水缸里有一双惊诧凄怆的眼睛，分明是小娥在背上遭到戳杀时回过头来的那双眼睛，奇怪的是耳际同时响起“啊……大呀……”的声音。
+鹿三细看细听时。
+水缸里什么也没有，马号里只有红马的鼾息声，他没有在意以为是眼花了耳邪了，拉开被子躺下以后。
+耳朵甲又传来小娥垂死时把他叫大的声音。
+只是没有重现那双眼睛。
+从此，那个声音说不定什么时辰就在他耳边响起，有时他正在吃饭，有时他正在专心致志吆车，有时正开心地听旁人说笑谝闲话，那个“大呀”的叫声突然冒出来，使他顿时没了食欲鞭下闪失听笑话的兴致立即散失，陷入无法排解忧郁之中……直至黑娃掐着白嘉轩的脖子要抵命，鹿三把那窝藏在炕洞里的淤血干涸的梭镖钢刃掷到儿子脚下，心中的忧郁才得以爽脱……
+
+黑娃气呼呼走后，白吴氏仙草哇地一声哭了，趴到地上朝鹿三磕头：“三哥呀要不是你，他爸今黑没命咧……你俩还不赶快给你干大磕头！”孝武孝义扑通一齐跪下了。
+鹿三连忙把她们母子三人拉扶起来，对坐在太师椅上的白嘉轩说：“这回我把俺爷儿们的圪塔算是弄零干了……这与你无干。
+你们母子不要给我磕头。
+”说罢，转过身子走出门去。
+白嘉轩没有吭声也没有挽留鹿三，对仙草说：“快弄俩下酒菜，我想喝酒了！”。

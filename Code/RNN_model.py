@@ -154,7 +154,7 @@ def generate_text(model, start_string):
   # 低温度会生成更可预测的文本
   # 较高温度会生成更令人惊讶的文本
   # 可以通过试验以找到最好的设定
-  temperature = 1.0
+  temperature = 0.5
 
   # 这里批大小为 1
   model.reset_states()
@@ -172,4 +172,4 @@ def generate_text(model, start_string):
     text_generated.append(idx2char[predicted_id])
   return (start_string + ''.join(text_generated))
 
-print(generate_text(model, start_string=u"abstract: "))
+print(generate_text(model, start_string=u"感觉"))
