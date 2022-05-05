@@ -25,7 +25,7 @@ def delblankline(infile, outfile):
     infopen = open(infile,'r',encoding="utf-8")
     outfopen = open(outfile,'w',encoding="utf-8")
     db = infopen.read().lower()
-    outfopen.write(db.replace('。','。\n'))
+    outfopen.write(db.replace('。','。'))
     infopen.close()
     outfopen.close()
 

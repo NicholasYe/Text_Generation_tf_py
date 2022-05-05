@@ -89,9 +89,9 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
 
 model = build_model(
   vocab_size = len(vocab),
-  embedding_dim=embedding_dim,
-  rnn_units=rnn_units,
-  batch_size=BATCH_SIZE)
+  embedding_dim = embedding_dim,
+  rnn_units = rnn_units,
+  batch_size = BATCH_SIZE)
 
 # 试试这个模型
 for input_example_batch, target_example_batch in dataset.take(1):
@@ -102,8 +102,6 @@ model.summary()
 
 sampled_indices = tf.random.categorical(example_batch_predictions[0], num_samples=1)
 sampled_indices = tf.squeeze(sampled_indices,axis=-1).numpy()
-
-sampled_indices
 
 print("Input: \n", repr("".join(idx2char[input_example_batch[0]])))
 print()
@@ -124,12 +122,12 @@ checkpoint_dir = './training_checkpoints'
 # 检查点的文件名
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
 
-checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
+checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
   filepath=checkpoint_prefix,
   save_weights_only=True)
 
 # 模型训练周期
-EPOCHS=10
+EPOCHS = 20
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback]) 
 #steps_per_epoch=dataset.shape[0]//BATCH_SIZE
 tf.train.latest_checkpoint(checkpoint_dir)
