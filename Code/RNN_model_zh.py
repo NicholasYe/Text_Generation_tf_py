@@ -4,31 +4,37 @@ tf.enable_eager_execution()
 import numpy as np
 import os
 import time
+import jieba
+
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
+tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 # 读取并为 py2 compat 解码
 text = open('test.txt', 'rb').read().decode(encoding='utf-8')
+token_text = list(jieba.cut(text))
 
 # 文本长度是指文本中的字符个数
 print ('Length of text: {} characters'.format(len(text)))
 
 # 文本中的非重复字符
-vocab = sorted(set(text))
+vocab = sorted(set(token_text))
 print ('{} unique characters'.format(len(vocab)))
 
 # 创建从非重复字符到索引的映射
 char2idx = {u:i for i, u in enumerate(vocab)}
 idx2char = np.array(vocab)
-text_as_int = np.array([char2idx[c] for c in text])
+text_as_int = np.array([char2idx[c] for c in token_text])
 
 # 设定每个输入句子长度的最大值
 seq_length = 32
-examples_per_epoch = len(text)//seq_length
+examples_per_epoch = len(token_text)//seq_length
 
 # 创建训练样本 / 目标
 char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
 
-for i in char_dataset.take(5):
-  print(idx2char[i.numpy()])
+# for i in char_dataset.take(5):
+#   print(idx2char[i.numpy()])
 
 # batch把单个字符转换为所需长度的序列。
 sequences = char_dataset.batch(seq_length+1, drop_remainder=True)
@@ -152,7 +158,7 @@ def generate_text(model, start_string):
   # 低温度会生成更可预测的文本
   # 较高温度会生成更令人惊讶的文本
   # 可以通过试验以找到最好的设定
-  temperature = 0.5
+  temperature = 0.7
 
   # 这里批大小为 1
   model.reset_states()
