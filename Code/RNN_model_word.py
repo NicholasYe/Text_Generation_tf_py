@@ -130,7 +130,7 @@ model.set_models(inference=False)
 
 # params
 batch_size = 256
-epoch = 20
+epoch = 15
 optimizer = rm.Adam()
 # learning curves
 learning_curve = []
