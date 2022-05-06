@@ -3,7 +3,7 @@ import tensorflow as tf
 tf.enable_eager_execution()
 import numpy as np
 import os
-import time
+import time 
 
 # 读取并为 py2 compat 解码
 text = open('test.txt', 'rb').read().decode(encoding='utf-8')
@@ -140,7 +140,7 @@ def generate_text(model, start_string):
   # 评估步骤（用学习过的模型生成文本）
 
   # 要生成的字符个数
-  num_generate = 800
+  num_generate = 200
 
   # 将起始字符串转换为数字（向量化）
   input_eval = [char2idx[s] for s in start_string]
@@ -171,3 +171,4 @@ def generate_text(model, start_string):
   return (start_string + ''.join(text_generated))
 
 print(generate_text(model, start_string=u"电"))
+print(generate_text(model, start_string=u"变"))
